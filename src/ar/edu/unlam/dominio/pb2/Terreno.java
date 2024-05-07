@@ -1,35 +1,16 @@
 package ar.edu.unlam.dominio.pb2;
 
-public class Terreno {
+public class Terreno extends Propiedad{
 
-	private String localidad;
 	private Double tamanio;
 	private String forma;
 	private String condicionDeSuelo;
-	private Double precio;
-	private Integer codigo;
-	private Boolean fueVendido;
-	private Boolean fueAlquilado;
 	
-	public Terreno() {
-		
-	}
-	
-	public Terreno(String localidad, Double tamanio, String forma, String condicionDeSuelo, Double precio, Integer codigo) {
-		this.localidad = localidad;
+	public Terreno(String localidad, Double tamanio, String forma, String condicionDeSuelo, Double precio, Integer codigo, Boolean fueAlquilado, Boolean fueVendido) {
+		super(localidad, precio, codigo, fueAlquilado, fueVendido);
 		this.tamanio = tamanio;
 		this.forma = forma;
 		this.condicionDeSuelo = condicionDeSuelo;
-		this.precio = precio;
-		this.codigo = codigo;
-	}
-
-	public String getLocalidad() {
-		return localidad;
-	}
-
-	public void setLocalidad(String localidad) {
-		this.localidad = localidad;
 	}
 
 	public Double getTamanio() {
@@ -55,38 +36,5 @@ public class Terreno {
 	public void setCondicionDeSuelo(String condicionDeSuelo) {
 		this.condicionDeSuelo = condicionDeSuelo;
 	}
-
-	public Double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(Double precio) {
-		this.precio = precio;
-	}
-
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public Boolean getFueVendido() {
-		return fueVendido;
-	}
-
-	public void setFueVendido(Boolean fueVendido) {
-		this.fueVendido = fueVendido;
-	}
-
-	public Boolean getFueAlquilado() {
-		return fueAlquilado;
-	}
-
-	public void setFueAlquilado(Boolean fueAlquilado) {
-		this.fueAlquilado = fueAlquilado;
-	}
-	
 	
 }

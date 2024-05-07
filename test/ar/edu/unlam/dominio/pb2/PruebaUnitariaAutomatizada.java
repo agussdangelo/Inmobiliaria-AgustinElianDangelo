@@ -12,12 +12,12 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaDarDeAltaUnaCasaEnLaInmobiliaria() {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Casa casa = new Casa();
-		String valorCalleEsperado = casa.setCalle("Mitre");
-		Integer valorAlturaEsperado = casa.setAltura(1234);
-		Double valorPrecioEsperado = casa.setPrecio(45000.0);
-		String valorLocalidadEsperado = casa.setLocalidad("Merlo");
-		Integer valorCodigoEsperado = casa.setCodigo(111);
+		Casa casa = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, false);
+		String valorCalleEsperado = "Mitre";
+		Integer valorAlturaEsperado = 1234;
+		Double valorPrecioEsperado = 45000.0;
+		String valorLocalidadEsperado = "Merlo";
+		Integer valorCodigoEsperado = 111;
 		// Ejecucion
 		inmobiliaria.agregarCasa(casa);
 		// Validacion
@@ -32,20 +32,20 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedanDarDeAltaDosCasasEnLaInmobiliaria() {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Casa casa1 = new Casa();
-		Casa casa2 = new Casa();
+		Casa casa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, false);
+		Casa casa2 = new Casa("Liniers", "Costa", 4557, 95000.0, 222, true, false);
 		// primera casa
-		String valorCalleEsperadoCasa1 = casa1.setCalle("Mitre");
-		Integer valorAlturaEsperadoCasa1 = casa1.setAltura(1234);
-		Double valorPrecioEsperadoCasa1 = casa1.setPrecio(45000.0);
-		String valorLocalidadEsperadoCasa1 = casa1.setLocalidad("Merlo");
-		Integer valorCodigoEsperadoCasa1 = casa1.setCodigo(111);
+		String valorCalleEsperadoCasa1 = "Mitre";
+		Integer valorAlturaEsperadoCasa1 = 1234;
+		Double valorPrecioEsperadoCasa1 = 45000.0;
+		String valorLocalidadEsperadoCasa1 = "Merlo";
+		Integer valorCodigoEsperadoCasa1 = 111;
 		// segunda casa
-		String valorCalleEsperadoCasa2 = casa2.setCalle("Costa");
-		Integer valorAlturaEsperadoCasa2 = casa2.setAltura(4557);
-		Double valorPrecioEsperadoCasa2 = casa2.setPrecio(95000.0);
-		String valorLocalidadEsperadoCasa2 = casa2.setLocalidad("Liniers");
-		Integer valorCodigoEsperadoCasa2 = casa2.setCodigo(222);
+		String valorCalleEsperadoCasa2 = "Costa";
+		Integer valorAlturaEsperadoCasa2 = 4557;
+		Double valorPrecioEsperadoCasa2 = 95000.0;
+		String valorLocalidadEsperadoCasa2 = "Liniers";
+		Integer valorCodigoEsperadoCasa2 = 222;
 		// Ejecucion
 		inmobiliaria.agregarCasa(casa1);
 		inmobiliaria.agregarCasa(casa2);
@@ -66,20 +66,20 @@ public class PruebaUnitariaAutomatizada {
 	public void queNoSePuedanDarDeAltaDosCasasConUnaMismaDireccion(){   // Calle, número y localidad(
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Casa casa1 = new Casa();
-		Casa casa2 = new Casa();
+		Casa casa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, false);
+		Casa casa2 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, false);
 		// primera casa
-		String valorCalleEsperadoCasa1 = casa1.setCalle("Mitre");
-		Integer valorAlturaEsperadoCasa1 = casa1.setAltura(1234);
-		Double valorPrecioEsperadoCasa1 = casa1.setPrecio(45000.0);
-		String valorLocalidadEsperadoCasa1 = casa1.setLocalidad("Merlo");
-		Integer valorCodigoEsperadoCasa1 = casa1.setCodigo(111);
+		String valorCalleEsperadoCasa1 = "Mitre";
+		Integer valorAlturaEsperadoCasa1 = 1234;
+		Double valorPrecioEsperadoCasa1 = 45000.0;
+		String valorLocalidadEsperadoCasa1 = "Merlo";
+		Integer valorCodigoEsperadoCasa1 = 111;
 		// segunda casa
-		String valorCalleEsperadoCasa2 = casa2.setCalle("Mitre");
-		Integer valorAlturaEsperadoCasa2 = casa2.setAltura(1234);
-		Double valorPrecioEsperadoCasa2 = casa2.setPrecio(95000.0);
-		String valorLocalidadEsperadoCasa2 = casa2.setLocalidad("Merlo");
-		Integer valorCodigoEsperadoCasa2 = casa2.setCodigo(222);
+		String valorCalleEsperadoCasa2 = "Mitre";
+		Integer valorAlturaEsperadoCasa2 = 1234;
+		Double valorPrecioEsperadoCasa2 = 45000.0;
+		String valorLocalidadEsperadoCasa2 = "Merlo";
+		Integer valorCodigoEsperadoCasa2 = 111;
 		// Ejecucion
 		inmobiliaria.agregarCasa(casa1);
 		inmobiliaria.agregarCasa(casa2);
@@ -100,14 +100,14 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaDarDeAltaUnDepartamentoEnLaInmobiliaria() {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Departamento depto1 = new Departamento();
+		Departamento depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, true);
 		// Ejecucion
-		String valorCalleEsperadoDepto = depto1.setCalle("Montiel");
-		Integer valorAlturaEsperadaDepto = depto1.setAltura(9090);
-		Double valorPrecioEsperadoDepto = depto1.setPrecio(49000.0);
-		String valorLocalidadEsperadaDepto = depto1.setLocalidad("CABA");
-		Integer valorCodigoEsperadoDepto = depto1.setCodigo(333);
-		Integer valorPisoEsperadoDepto = depto1.setPiso(7);
+		String valorCalleEsperadoDepto = "Montiel";
+		Integer valorAlturaEsperadaDepto = 9090;
+		Double valorPrecioEsperadoDepto = 49000.0;
+		String valorLocalidadEsperadaDepto = "CABA";
+		Integer valorCodigoEsperadoDepto = 333;
+		Integer valorPisoEsperadoDepto = 7;
 		inmobiliaria.agregarDepartamento(depto1);
 		// Validacion
 		assertEquals(valorCalleEsperadoDepto, depto1.getCalle());
@@ -122,23 +122,23 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaDarDeAltaDosDepartamentoEnLaInmobiliaria() {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Departamento depto1 = new Departamento();
-		Departamento depto2 = new Departamento();
+		Departamento depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, true);
+		Departamento depto2 = new Departamento("RamosMejia", "Suarez", 3355, 86500.0, 555, 9, true, false);
 		// Ejecucion
 		// depto1
-		String valorCalleEsperadoDepto = depto1.setCalle("Montiel");
-		Integer valorAlturaEsperadaDepto = depto1.setAltura(9090);
-		Double valorPrecioEsperadoDepto = depto1.setPrecio(49000.0);
-		String valorLocalidadEsperadaDepto = depto1.setLocalidad("CABA");
-		Integer valorCodigoEsperadoDepto = depto1.setCodigo(333);
-		Integer valorPisoEsperadoDepto = depto1.setPiso(7);
+		String valorCalleEsperadoDepto = "Montiel";
+		Integer valorAlturaEsperadaDepto = 9090;
+		Double valorPrecioEsperadoDepto = 49000.0;
+		String valorLocalidadEsperadaDepto = "CABA";
+		Integer valorCodigoEsperadoDepto = 333;
+		Integer valorPisoEsperadoDepto = 7;
 		// depto2
-		String valorCalleEsperadoDepto2 = depto2.setCalle("Suarez");
-		Integer valorAlturaEsperadaDepto2 = depto2.setAltura(3355);
-		Double valorPrecioEsperadoDepto2 = depto2.setPrecio(86500.0);
-		String valorLocalidadEsperadaDepto2 = depto2.setLocalidad("RamosMejia");
-		Integer valorCodigoEsperadoDepto2 = depto2.setCodigo(444);
-		Integer valorPisoEsperadoDepto2 = depto2.setPiso(9);
+		String valorCalleEsperadoDepto2 = "Suarez";
+		Integer valorAlturaEsperadaDepto2 = 3355;
+		Double valorPrecioEsperadoDepto2 = 86500.0;
+		String valorLocalidadEsperadaDepto2 = "RamosMejia";
+		Integer valorCodigoEsperadoDepto2 = 555;
+		Integer valorPisoEsperadoDepto2 = 9;
 		inmobiliaria.agregarDepartamento(depto1);
 		inmobiliaria.agregarDepartamento(depto2);
 		// Validacion
@@ -160,23 +160,23 @@ public class PruebaUnitariaAutomatizada {
 	public void queNoSePuedanDarDeAltaDosDepartamentoConUnaMismaDireccion() {  // Calle, numero, depto, piso y localidad
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Departamento depto1 = new Departamento();
-		Departamento depto2 = new Departamento();
+		Departamento depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, true);
+		Departamento depto2 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, true);
 		// Ejecucion
 		// depto1
-		String valorCalleEsperadoDepto = depto1.setCalle("Montiel");
-		Integer valorAlturaEsperadaDepto = depto1.setAltura(9090);
-		Double valorPrecioEsperadoDepto = depto1.setPrecio(49000.0);
-		String valorLocalidadEsperadaDepto = depto1.setLocalidad("CABA");
-		Integer valorCodigoEsperadoDepto = depto1.setCodigo(333);
-		Integer valorPisoEsperadoDepto = depto1.setPiso(7);
+		String valorCalleEsperadoDepto = "Montiel";
+		Integer valorAlturaEsperadaDepto = 9090;
+		Double valorPrecioEsperadoDepto = 49000.0;
+		String valorLocalidadEsperadaDepto = "CABA";
+		Integer valorCodigoEsperadoDepto = 333;
+		Integer valorPisoEsperadoDepto = 7;
 		// depto2
-		String valorCalleEsperadoDepto2 = depto2.setCalle("Montiel");
-		Integer valorAlturaEsperadaDepto2 = depto2.setAltura(9090);
-		Double valorPrecioEsperadoDepto2 = depto2.setPrecio(49000.0);
-		String valorLocalidadEsperadaDepto2 = depto2.setLocalidad("CABA");
-		Integer valorCodigoEsperadoDepto2 = depto2.setCodigo(333);
-		Integer valorPisoEsperadoDepto2 = depto2.setPiso(7);
+		String valorCalleEsperadoDepto2 = "Montiel";
+		Integer valorAlturaEsperadaDepto2 = 9090;
+		Double valorPrecioEsperadoDepto2 = 49000.0;
+		String valorLocalidadEsperadaDepto2 = "CABA";
+		Integer valorCodigoEsperadoDepto2 = 333;
+		Integer valorPisoEsperadoDepto2 = 7;
 		inmobiliaria.noAgregarDepartamentoMismaDireccion(depto1);
 		boolean agregoDepartamento2 = inmobiliaria.noAgregarDepartamentoMismaDireccion(depto2);
 		// Validacion
@@ -187,9 +187,9 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaObtenerElValorPromedioDeLasCasas() {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Casa casa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111);
-		Casa casa2 = new Casa("Liniers", "Costa", 4557, 95000.0, 222);
-		Casa casa3 = new Casa("Palomar", "Peron", 3399, 15000.0, 333);
+		Casa casa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, false, true);
+		Casa casa2 = new Casa("Liniers", "Costa", 4557, 95000.0, 222, true, false);
+		Casa casa3 = new Casa("Palomar", "Peron", 3399, 15000.0, 333, false, true);
 		// Ejecucion
 		inmobiliaria.agregarCasa(casa1);
 		inmobiliaria.agregarCasa(casa2);
@@ -203,9 +203,9 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaObtenerElValorPromedioDeLosDepartamentos() {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Departamento depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 444, 7);
-		Departamento depto2 = new Departamento("RamosMejia", "Suarez", 3355, 86500.0, 555, 9);
-		Departamento depto3 = new Departamento("Haedo", "SanMartin", 6890, 55300.0, 666, 10);
+		Departamento depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, true);
+		Departamento depto2 = new Departamento("RamosMejia", "Suarez", 3355, 86500.0, 555, 9, true, false);
+		Departamento depto3 = new Departamento("Haedo", "SanMartin", 6890, 55300.0, 666, 10, false, true);
 		// Ejecucion
 		inmobiliaria.agregarDepartamento(depto1);
 		inmobiliaria.agregarDepartamento(depto2);
@@ -219,8 +219,8 @@ public class PruebaUnitariaAutomatizada {
 	public void queLaBusquedaPorRangoDePrecioDeMeArrojeUnArrayNoNuloSiAplicanResultados() {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111);
-		Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222);
+		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
+		Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222, false, true);
 		inmobiliaria.agregarCasa(casa1);
 		inmobiliaria.agregarCasa(casa2);
 		// Ejecucion
@@ -235,8 +235,8 @@ public class PruebaUnitariaAutomatizada {
 	public void queLaBusquedaPorRangoDePrecioDeCasasMeArrojeUnArrayNuloSiNoAplicanResultados() {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111);
-		Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222);
+		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
+		Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222, false, true);
 		// Ejecucion
 		Double precioMin = 90000.0;
 		Double precioMax = 100000.0;
@@ -264,7 +264,7 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaAgregarUnaCasaYLaDimensionDelArraySeaLaMinimaPosible() {
 		Integer dimensionArrayEsperado = 1;
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111);
+		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
 		
 		inmobiliaria.agregarCasa(casa1);
 		
@@ -275,9 +275,9 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedanAgregar3CasasYElTamanioDelArraySea3() {
 		Integer dimensionArrayEsperado = 3;
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111);
-		Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222);
-		Casa casa3 = new Casa("SanJusto", "Bransen", 9977, 34000.0, 333);
+		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
+		Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222, false, true);
+		Casa casa3 = new Casa("SanJusto", "Bransen", 9977, 34000.0, 333, true, false);
 		
 		inmobiliaria.agregarCasa(casa1);
 		inmobiliaria.agregarCasa(casa2);
@@ -313,4 +313,5 @@ public class PruebaUnitariaAutomatizada {
 		
 		
 	}
+	
 }

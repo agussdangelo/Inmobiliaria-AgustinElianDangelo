@@ -45,7 +45,11 @@ public class Main {
 							Integer pisoDepto = teclado.nextInt();
 							System.out.println("Ingrese el código del Departamento:");
 							Integer codigoDepto = teclado.nextInt();
-							Departamento nuevoDepto = new Departamento(localidadDepto, calleDepto, alturaDepto, precioDepto, codigoDepto, pisoDepto);
+							System.out.println("Fue Alquilada? ");
+							Boolean fueAlquilada = teclado.nextBoolean();
+							System.out.println("Fue vendida? ");
+							Boolean fueVendida = teclado.nextBoolean();
+							Departamento nuevoDepto = new Departamento(localidadDepto, calleDepto, alturaDepto, precioDepto, codigoDepto, pisoDepto, fueAlquilada, fueVendida);
 							departamento[i] = nuevoDepto;
 							System.err.println("Ingrese otra propiedad...");
 						}
@@ -63,7 +67,11 @@ public class Main {
 							Double precioCasa = teclado.nextDouble();
 							System.out.println("Ingrese el código de la casa:");
 							Integer codigoCasa = teclado.nextInt();
-							Casa nuevaCasa = new Casa(localidadCasa, calleCasa, alturaCasa, precioCasa, codigoCasa);
+							System.out.println("Fue Alquilada? ");
+							Boolean fueAlquilada = teclado.nextBoolean();
+							System.out.println("Fue vendida? ");
+							Boolean fueVendida = teclado.nextBoolean();
+							Casa nuevaCasa = new Casa(localidadCasa, calleCasa, alturaCasa, precioCasa, codigoCasa, fueAlquilada, fueVendida);
 							casa[i] = nuevaCasa;
 							System.err.println("Ingrese otra propiedad...");
 						}
@@ -84,7 +92,11 @@ public class Main {
 							Double precioTerreno = teclado.nextDouble();
 							System.out.println("Ingrese el código de la casa:");
 							Integer codigoTerreno = teclado.nextInt();
-							Terreno nuevoTerreno = new Terreno(ubicacionTerreno, tamanioTerreno, formaTerreno, condicionDeSuelo, precioTerreno, codigoTerreno);
+							System.out.println("Fue Alquilada? ");
+							Boolean fueAlquilada = teclado.nextBoolean();
+							System.out.println("Fue vendida? ");
+							Boolean fueVendida = teclado.nextBoolean();
+							Terreno nuevoTerreno = new Terreno(ubicacionTerreno, tamanioTerreno, formaTerreno, condicionDeSuelo, precioTerreno, codigoTerreno, fueAlquilada, fueVendida);
 							terreno[i] = nuevoTerreno;
 							System.err.println("Ingrese otra propiedad...");
 						}
@@ -102,7 +114,11 @@ public class Main {
 							Double precioPh = teclado.nextDouble();
 							System.out.println("Ingrese el código del PH:");
 							Integer codigoPh = teclado.nextInt();
-							Ph nuevoPh = new Ph(localidadPh, callePh, alturaPh, precioPh, codigoPh);
+							System.out.println("Fue Alquilada? ");
+							Boolean fueAlquilada = teclado.nextBoolean();
+							System.out.println("Fue vendida? ");
+							Boolean fueVendida = teclado.nextBoolean();
+							Ph nuevoPh = new Ph(localidadPh, callePh, alturaPh, precioPh, codigoPh, fueAlquilada, fueVendida);
 							ph[i] = nuevoPh;
 							System.err.println("Ingrese otra propiedad...");
 						}
@@ -122,7 +138,11 @@ public class Main {
 							Double precioCampo = teclado.nextDouble();
 							System.out.println("Ingrese el código del campo:");
 							Integer codigoCampo = teclado.nextInt();
-							Campo nuevoCampo = new Campo(ubicacionCampo, tamanioCampo, climaDeLaRegionCampo, tipoDeSueloCampo, codigoCampo, precioCampo);
+							System.out.println("Fue Alquilada? ");
+							Boolean fueAlquilada = teclado.nextBoolean();
+							System.out.println("Fue vendida? ");
+							Boolean fueVendida = teclado.nextBoolean();
+							Campo nuevoCampo = new Campo(ubicacionCampo, tamanioCampo, climaDeLaRegionCampo, tipoDeSueloCampo, codigoCampo, precioCampo, fueAlquilada, fueVendida);
 							campo[i] = nuevoCampo;
 							System.err.println("Ingrese otra propiedad...");
 						}
@@ -160,7 +180,11 @@ public class Main {
 							Integer pisoDepto = teclado.nextInt();
 							System.out.println("Ingrese el código del Departamento a modificar:");
 							Integer codigoDepto = teclado.nextInt();
-							Departamento nuevoDepto = new Departamento(localidadDepto, calleDepto, alturaDepto, precioDepto, pisoDepto, codigoDepto);
+							System.out.println("Fue Alquilada? ");
+							Boolean fueAlquilada = teclado.nextBoolean();
+							System.out.println("Fue vendida? ");
+							Boolean fueVendida = teclado.nextBoolean();
+							Departamento nuevoDepto = new Departamento(localidadDepto, calleDepto, alturaDepto, precioDepto, pisoDepto, codigoDepto, fueAlquilada, fueVendida);
 							departamento[i] = nuevoDepto;
 							System.err.println("Ingrese otra propiedad...");
 						}
@@ -180,7 +204,11 @@ public class Main {
 							Double precioCasa = teclado.nextDouble();
 							System.out.println("Ingrese el código de la casa a modificar:");
 							Integer codigoCasa = teclado.nextInt();
-							Casa nuevaCasa = new Casa(localidadCasa, calleCasa, alturaCasa, precioCasa, codigoCasa);
+							System.out.println("Fue Alquilada? ");
+							Boolean fueAlquilada = teclado.nextBoolean();
+							System.out.println("Fue vendida? ");
+							Boolean fueVendida = teclado.nextBoolean();
+							Casa nuevaCasa = new Casa(localidadCasa, calleCasa, alturaCasa, precioCasa, codigoCasa, fueAlquilada, fueVendida);
 							casa[i] = nuevaCasa;
 							System.err.println("Ingrese otra propiedad...");
 						}
@@ -203,7 +231,11 @@ public class Main {
 							Double precioTerreno = teclado.nextDouble();
 							System.out.println("Ingrese el código de la casa a modificar:");
 							Integer codigoTerreno = teclado.nextInt();
-							Terreno nuevoTerreno = new Terreno(ubicacionTerreno, tamanioTerreno, formaTerreno, condicionDeSuelo, precioTerreno, codigoTerreno);
+							System.out.println("Fue Alquilada? ");
+							Boolean fueAlquilada = teclado.nextBoolean();
+							System.out.println("Fue vendida? ");
+							Boolean fueVendida = teclado.nextBoolean();
+							Terreno nuevoTerreno = new Terreno(ubicacionTerreno, tamanioTerreno, formaTerreno, condicionDeSuelo, precioTerreno, codigoTerreno, fueAlquilada, fueVendida);
 							terreno[i] = nuevoTerreno;
 							System.err.println("Ingrese otra propiedad...");
 						}
@@ -224,7 +256,11 @@ public class Main {
 							Double precioPh = teclado.nextDouble();
 							System.out.println("Ingrese el código del PH a modificar:");
 							Integer codigoPh = teclado.nextInt();
-							Ph nuevoPh = new Ph(localidadPh, callePh, alturaPh, precioPh, codigoPh);
+							System.out.println("Fue Alquilada? ");
+							Boolean fueAlquilada = teclado.nextBoolean();
+							System.out.println("Fue vendida? ");
+							Boolean fueVendida = teclado.nextBoolean();
+							Ph nuevoPh = new Ph(localidadPh, callePh, alturaPh, precioPh, codigoPh, fueAlquilada, fueVendida);
 							ph[i] = nuevoPh;
 							System.err.println("Ingrese otra propiedad...");
 						}
@@ -246,7 +282,11 @@ public class Main {
 							Double precioCampo = teclado.nextDouble();
 							System.out.println("Ingrese el código del campo a modificar:");
 							Integer codigoCampo = teclado.nextInt();
-							Campo nuevoCampo = new Campo(ubicacionCampo, tamanioCampo, climaDeLaRegionCampo, tipoDeSueloCampo, codigoCampo, precioCampo);
+							System.out.println("Fue Alquilada? ");
+							Boolean fueAlquilada = teclado.nextBoolean();
+							System.out.println("Fue vendida? ");
+							Boolean fueVendida = teclado.nextBoolean();
+							Campo nuevoCampo = new Campo(ubicacionCampo, tamanioCampo, climaDeLaRegionCampo, tipoDeSueloCampo, codigoCampo, precioCampo, fueAlquilada, fueVendida);
 							campo[i] = nuevoCampo;
 							System.err.println("Ingrese otra propiedad...");
 						}
