@@ -163,23 +163,10 @@ public class PruebaUnitariaAutomatizada {
 		Departamento depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, true);
 		Departamento depto2 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, true);
 		// Ejecucion
-		// depto1
-		String valorCalleEsperadoDepto = "Montiel";
-		Integer valorAlturaEsperadaDepto = 9090;
-		Double valorPrecioEsperadoDepto = 49000.0;
-		String valorLocalidadEsperadaDepto = "CABA";
-		Integer valorCodigoEsperadoDepto = 333;
-		Integer valorPisoEsperadoDepto = 7;
-		// depto2
-		String valorCalleEsperadoDepto2 = "Montiel";
-		Integer valorAlturaEsperadaDepto2 = 9090;
-		Double valorPrecioEsperadoDepto2 = 49000.0;
-		String valorLocalidadEsperadaDepto2 = "CABA";
-		Integer valorCodigoEsperadoDepto2 = 333;
-		Integer valorPisoEsperadoDepto2 = 7;
-		inmobiliaria.noAgregarDepartamentoMismaDireccion(depto1);
-		boolean agregoDepartamento2 = inmobiliaria.noAgregarDepartamentoMismaDireccion(depto2);
+		Boolean agregoDepartamento1 = inmobiliaria.noAgregarDepartamentoMismaDireccion(depto1);
+		Boolean agregoDepartamento2 = inmobiliaria.noAgregarDepartamentoMismaDireccion(depto2);
 		// Validacion
+		assertFalse(agregoDepartamento1);
 		assertFalse(agregoDepartamento2);
 	}
 

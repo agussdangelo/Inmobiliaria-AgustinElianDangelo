@@ -536,7 +536,6 @@ public class Inmobiliaria {
         }
     }
 	
-	@SuppressWarnings("unlikely-arg-type")
 	public Boolean agregarCliente(Persona clienteNuevo) {
 		for (Persona cliente : cliente) {
 			if(cliente != null && cliente.getNombre().equals(clienteNuevo.getNombre()) && 
