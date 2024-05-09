@@ -1,6 +1,6 @@
 package ar.edu.unlam.dominio.pb2;
 
-public class Propiedad {
+public abstract class Propiedad {
 	
 	private String localidad;
 	private Double precio;

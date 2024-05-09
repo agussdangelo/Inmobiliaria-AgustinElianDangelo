@@ -222,12 +222,15 @@ public class PruebaUnitariaAutomatizada {
 	public void queLaBusquedaPorRangoDePrecioDeCasasMeArrojeUnArrayNuloSiNoAplicanResultados() {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria();
-		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
-		Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222, false, true);
+		ArrayList<Casa> casas = new ArrayList<>();
+	    Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
+	    Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222, false, true);
+	    casas.add(casa1);
+	    casas.add(casa2);
 		// Ejecucion
 		Double precioMin = 90000.0;
 		Double precioMax = 100000.0;
-		ArrayList<Casa> casasEnRango = Inmobiliaria.buscarCasasPorRangoDePrecioNulo(precioMin, precioMax);
+		ArrayList<Casa> casasEnRango = Inmobiliaria.buscarCasasPorRangoDePrecioNulo(casas, precioMin, precioMax);
 		// Validacion
 		assertNull(casasEnRango);
 	}

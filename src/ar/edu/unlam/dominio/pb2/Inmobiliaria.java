@@ -600,16 +600,21 @@ public class Inmobiliaria {
 		return resultado;
     }
 		
-	public static ArrayList<Casa> buscarCasasPorRangoDePrecioNulo(Double precioMin, Double precioMax) {
+	public static ArrayList<Casa> buscarCasasPorRangoDePrecioNulo(ArrayList<Casa> casas, Double precioMin, Double precioMax) {
 		ArrayList<Casa> casasBuscadas = new ArrayList<>();
 
-        for (Casa casa : casa) {
+        for (Casa casa : casas) {
             if (casa != null && casa.getPrecio() >= precioMin && casa.getPrecio() <= precioMax) {
                 casasBuscadas.add(casa);
             }
         }
+        
+        if (casasBuscadas.isEmpty()) {
+        	return casasBuscadas; 
+        } else {
+        	return null; // Devuelve null si se encontraron casas
+        }
 
-        return casasBuscadas;
    }
 
 }
