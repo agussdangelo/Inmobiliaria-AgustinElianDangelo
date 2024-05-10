@@ -572,7 +572,7 @@ public class Inmobiliaria {
 		return resultado;
 	}
 	
-	public Double calcularPrecioPromedioDepartamento() {
+	public Integer calcularPrecioPromedioDepartamento() {
 		Double promedio = 0.0;
 		Double sumatoria = 0.0;
 		
@@ -582,7 +582,8 @@ public class Inmobiliaria {
 			}
 		}
 		promedio = sumatoria / departamento.size();
-		return promedio;
+		Integer resultado = (int) Math.round(promedio);
+		return resultado;
 	}
 
 	public static ArrayList<Casa> buscarCasasPorRangoDePrecios(Double precioMin, Double precioMax) {
