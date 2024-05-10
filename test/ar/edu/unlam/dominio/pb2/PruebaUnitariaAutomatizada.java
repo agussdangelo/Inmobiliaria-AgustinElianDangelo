@@ -205,7 +205,7 @@ public class PruebaUnitariaAutomatizada {
 		inmobiliaria.agregarDepartamento(depto1);
 		inmobiliaria.agregarDepartamento(depto2);
 		inmobiliaria.agregarDepartamento(depto3);
-		Double promedioEsperadoDepto = 19080.0;
+		Double promedioEsperadoDepto = 63600.0;
 		// Validacion
 		assertEquals(promedioEsperadoDepto, inmobiliaria.calcularPrecioPromedioDepartamento());
 	}

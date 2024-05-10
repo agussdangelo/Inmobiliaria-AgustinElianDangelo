@@ -13,7 +13,7 @@ public class Inmobiliaria {
 	private Integer telefono;
 	private static ArrayList<Casa> casa;
 	private Integer cantidadCasas;
-	private Departamento departamento[];
+	private static ArrayList<Departamento> departamento;
 	private Integer cantidadDepartamentos;
 	private Ph ph[];
 	private Integer cantidadPh;
@@ -25,11 +25,11 @@ public class Inmobiliaria {
 	private Integer cantidadCliente;
 	
 	public Inmobiliaria() {
-		this.cantidadCliente = 0;
 		Inmobiliaria.casa = new ArrayList<Casa>();
 		Inmobiliaria.cliente = new HashSet<Persona>();
+		Inmobiliaria.departamento = new ArrayList<Departamento>();
+		this.cantidadCliente = 0;
 		this.cantidadCasas = 0;
-		this.departamento = new Departamento[CANTIDAD_MAXIMA_DEPARTAMENTO];
 		cantidadDepartamentos = 0;
 		this.cantidadCampos = 0;
 		this.cantidadPh = 0;
@@ -42,7 +42,7 @@ public class Inmobiliaria {
 		this.telefono = telefono;
 		Inmobiliaria.cliente = new HashSet<Persona>();
 		Inmobiliaria.casa = new ArrayList<Casa>();
-		this.departamento = new Departamento[CANTIDAD_MAXIMA_PROPIEDADES];
+		Inmobiliaria.departamento = new ArrayList<Departamento>();
 		this.campo = new Campo[CANTIDAD_MAXIMA_PROPIEDADES];
 		this.ph = new Ph[CANTIDAD_MAXIMA_PROPIEDADES];
 	    this.terreno = new Terreno[CANTIDAD_MAXIMA_PROPIEDADES];
@@ -97,12 +97,12 @@ public class Inmobiliaria {
 		Inmobiliaria.casa = casa;
 	}
 
-	public Departamento[] getDepartamento() {
+	public ArrayList<Departamento> getDepartamento() {
 		return departamento;
 	}
 
-	public void setDepartamento(Departamento departamento[]) {
-		this.departamento = departamento;
+	public void setDepartamento(ArrayList<Departamento> departamento) {
+		Inmobiliaria.departamento = departamento;
 	}
 
 	public Ph[] getPh() {
@@ -527,13 +527,8 @@ public class Inmobiliaria {
 		return casa.add(casaNueva);
     }
 	
-	public void agregarDepartamento(Departamento depto) {
-        if (cantidadDepartamentos < CANTIDAD_MAXIMA_DEPARTAMENTO) {
-            departamento[cantidadDepartamentos++] = depto;
-            System.out.println("Departamento agregado correctamente.");
-        } else {
-            System.err.println("No es posible agregar más departamentos, se ha alcanzado el límite.");
-        }
+	public Boolean agregarDepartamento(Departamento deptoNuevo) {
+       return departamento.add(deptoNuevo);
     }
 	
 	public Boolean agregarCliente(Persona clienteNuevo) {
@@ -586,7 +581,7 @@ public class Inmobiliaria {
 				sumatoria += deptoActual.getPrecio();
 			}
 		}
-		promedio = sumatoria / departamento.length;
+		promedio = sumatoria / departamento.size();
 		return promedio;
 	}
 
