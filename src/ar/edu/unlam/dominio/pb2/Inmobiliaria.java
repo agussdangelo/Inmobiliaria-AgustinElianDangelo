@@ -557,6 +557,19 @@ public class Inmobiliaria {
 	    agregarDepartamento(nuevoDepartamento); // Si no hay otro departamento con la misma dirección, lo agregamos
 	    return false;
 	}
+	
+	public boolean noAgregarCasasMismaDireccion(Casa nuevaCasa) {
+	    for (Casa casaActual : casa) {
+	        if (casaActual != null && casaActual.getCalle().equals(nuevaCasa.getCalle()) &&
+	                casaActual.getAltura() == nuevaCasa.getAltura() &&
+	                casaActual.getLocalidad().equals(nuevaCasa.getLocalidad())) {
+	            System.err.println("Ya existe un departamento en la misma dirección.");
+	            return true;
+	        }
+	    }
+	    agregarCasa(nuevaCasa); // Si no hay otro departamento con la misma dirección, lo agregamos
+	    return false;
+	}
 
 	public Integer calcularPrecioPromedioCasas() {
 		Double promedio = 0.0;

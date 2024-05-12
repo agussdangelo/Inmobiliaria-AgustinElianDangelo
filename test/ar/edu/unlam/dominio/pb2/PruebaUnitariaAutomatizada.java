@@ -71,32 +71,11 @@ public class PruebaUnitariaAutomatizada {
 		Casa casa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, false);
 		Casa casa2 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, false);
 		// primera casa
-		String valorCalleEsperadoCasa1 = "Mitre";
-		Integer valorAlturaEsperadoCasa1 = 1234;
-		Double valorPrecioEsperadoCasa1 = 45000.0;
-		String valorLocalidadEsperadoCasa1 = "Merlo";
-		Integer valorCodigoEsperadoCasa1 = 111;
-		// segunda casa
-		String valorCalleEsperadoCasa2 = "Mitre";
-		Integer valorAlturaEsperadoCasa2 = 1234;
-		Double valorPrecioEsperadoCasa2 = 45000.0;
-		String valorLocalidadEsperadoCasa2 = "Merlo";
-		Integer valorCodigoEsperadoCasa2 = 111;
-		// Ejecucion
-		inmobiliaria.getCasa();
-		inmobiliaria.agregarCasa(casa1);
-		inmobiliaria.agregarCasa(casa2);
+		Boolean agregoCasa1 = inmobiliaria.noAgregarCasasMismaDireccion(casa1);
+		Boolean agregoCasa2 = inmobiliaria.noAgregarCasasMismaDireccion(casa2);
 		// Validacion
-		assertEquals(valorCalleEsperadoCasa1, casa1.getCalle());
-		assertEquals(valorCalleEsperadoCasa2, casa2.getCalle());
-		assertEquals(valorAlturaEsperadoCasa1, casa1.getAltura(), 0.0);
-		assertEquals(valorAlturaEsperadoCasa2, casa2.getAltura(), 0.0);
-		assertEquals(valorPrecioEsperadoCasa1, casa1.getPrecio(), 0.1);
-		assertEquals(valorPrecioEsperadoCasa2, casa2.getPrecio(), 0.1);
-		assertEquals(valorLocalidadEsperadoCasa1, casa1.getLocalidad());
-		assertEquals(valorLocalidadEsperadoCasa2, casa2.getLocalidad());
-		assertEquals(valorCodigoEsperadoCasa1, casa1.getCodigo(), 0.0);
-		assertEquals(valorCodigoEsperadoCasa2, casa2.getCodigo(), 0.0);
+		assertFalse(agregoCasa1);
+		assertFalse(agregoCasa2);
 	}
 	
 	@Test
