@@ -7,7 +7,6 @@ public class Inmobiliaria {
 	
 	private static Integer CANTIDAD_MAXIMA_CLIENTES = 100;
 	private static Integer CANTIDAD_MAXIMA_PROPIEDADES = 50;
-	private static Integer CANTIDAD_MAXIMA_DEPARTAMENTO = 10;
 	private String nombre;
 	private String direccion;
 	private Integer telefono;
@@ -15,11 +14,11 @@ public class Inmobiliaria {
 	private Integer cantidadCasas;
 	private static ArrayList<Departamento> departamento;
 	private Integer cantidadDepartamentos;
-	private Ph ph[];
+	private static ArrayList<Ph> ph;
 	private Integer cantidadPh;
-	private Terreno terreno[];
+	private static ArrayList<Terreno> terreno;
 	private Integer cantidadTerrenos;
-	private Campo campo[];
+	private static ArrayList<Campo> campo;
 	private Integer cantidadCampos;
 	private static HashSet<Persona> cliente;
 	private Integer cantidadCliente;
@@ -28,24 +27,22 @@ public class Inmobiliaria {
 		Inmobiliaria.casa = new ArrayList<Casa>();
 		Inmobiliaria.cliente = new HashSet<Persona>();
 		Inmobiliaria.departamento = new ArrayList<Departamento>();
+		Inmobiliaria.campo = new ArrayList<Campo>();
+		Inmobiliaria.ph = new ArrayList<Ph>();
+	    Inmobiliaria.terreno = new ArrayList<Terreno>();
 		this.cantidadCliente = 0;
 		this.cantidadCasas = 0;
-		cantidadDepartamentos = 0;
+		this.cantidadDepartamentos = 0;
 		this.cantidadCampos = 0;
 		this.cantidadPh = 0;
 	    this.cantidadTerrenos = 0;
 	}
 	
+	// CONSTRUCTOR PARA CREAR LA INMOBILIARIA	
 	public Inmobiliaria(String nombre, String direccion, Integer telefono) {
-		this.nombre = nombre;
+		this.nombre = nombre;	
 		this.direccion = direccion;
 		this.telefono = telefono;
-		Inmobiliaria.cliente = new HashSet<Persona>();
-		Inmobiliaria.casa = new ArrayList<Casa>();
-		Inmobiliaria.departamento = new ArrayList<Departamento>();
-		this.campo = new Campo[CANTIDAD_MAXIMA_PROPIEDADES];
-		this.ph = new Ph[CANTIDAD_MAXIMA_PROPIEDADES];
-	    this.terreno = new Terreno[CANTIDAD_MAXIMA_PROPIEDADES];
 	}
 
 	// GETTERS AND SETTERS
@@ -105,28 +102,28 @@ public class Inmobiliaria {
 		Inmobiliaria.departamento = departamento;
 	}
 
-	public Ph[] getPh() {
+	public ArrayList<Ph> getPh() {
 		return ph;
 	}
 
-	public void setPh(Ph ph[]) {
-		this.ph = ph;
+	public void setPh(ArrayList<Ph> ph) {
+		Inmobiliaria.ph = ph;
 	}
 
-	public Terreno[] getTerreno() {
+	public ArrayList<Terreno> getTerreno() {
 		return terreno;
 	}
 
-	public void setTerreno(Terreno terreno[]) {
-		this.terreno = terreno;
+	public void setTerreno(ArrayList<Terreno> terreno) {
+		Inmobiliaria.terreno = terreno;
 	}
 
-	public Campo[] getCampo() {
+	public ArrayList<Campo> getCampo() {
 		return campo;
 	}
 
-	public void setCampo(Campo campo[]) {
-		this.campo = campo;
+	public void setCampo(ArrayList<Campo> campo) {
+		Inmobiliaria.campo = campo;
 	}
 
 	public HashSet<Persona> getCliente() {
@@ -185,6 +182,8 @@ public class Inmobiliaria {
 		this.cantidadCliente = cantidadCliente;
 	}
 	
+	// METODOS
+	
 	public static void buscarPropiedadesPorCodigoCasas(Inmobiliaria inmobiliaria, int codigoBusqueda) {
         System.out.println("Propiedades encontradas en el codigo " + codigoBusqueda + " : ");
         for (Casa p : inmobiliaria.getCasa()) {
@@ -215,7 +214,7 @@ public class Inmobiliaria {
             }
         }
     }
-	
+
 	public static void buscarPropiedadesPorCodigoPh(Inmobiliaria inmobiliaria, int codigoBusqueda) {
         System.out.println("Propiedades encontradas en el codigo " + codigoBusqueda + " : ");
         for (Ph phs : inmobiliaria.getPh()) {
@@ -545,11 +544,13 @@ public class Inmobiliaria {
 		return retorno;
     }
 	
-	public boolean noAgregarDepartamentoMismaDireccion(Departamento nuevoDepartamento) {
+	public Boolean noAgregarDepartamentoMismaDireccion(Departamento nuevoDepartamento) {
 	    for (Departamento deptoExistente : departamento) {
 	        if (deptoExistente != null && deptoExistente.getCalle().equals(nuevoDepartamento.getCalle()) &&
 	                deptoExistente.getAltura() == nuevoDepartamento.getAltura() &&
-	                deptoExistente.getLocalidad().equals(nuevoDepartamento.getLocalidad())) {
+	                deptoExistente.getLocalidad().equals(nuevoDepartamento.getLocalidad()) &&
+	                deptoExistente.getFueAlquilado().equals(nuevoDepartamento.getFueAlquilado()) &&
+	                deptoExistente.getFueVendido().equals(nuevoDepartamento.getFueVendido())) {
 	            System.err.println("Ya existe un departamento en la misma dirección.");
 	            return true;
 	        }
@@ -558,11 +559,13 @@ public class Inmobiliaria {
 	    return false;
 	}
 	
-	public boolean noAgregarCasasMismaDireccion(Casa nuevaCasa) {
+	public Boolean noAgregarCasasMismaDireccion(Casa nuevaCasa) {
 	    for (Casa casaActual : casa) {
 	        if (casaActual != null && casaActual.getCalle().equals(nuevaCasa.getCalle()) &&
 	                casaActual.getAltura() == nuevaCasa.getAltura() &&
-	                casaActual.getLocalidad().equals(nuevaCasa.getLocalidad())) {
+	                casaActual.getLocalidad().equals(nuevaCasa.getLocalidad()) &&
+	                casaActual.getFueAlquilado().equals(nuevaCasa.getFueAlquilado()) &&
+	                casaActual.getFueVendido().equals(nuevaCasa.getFueVendido())) {
 	            System.err.println("Ya existe un departamento en la misma dirección.");
 	            return true;
 	        }

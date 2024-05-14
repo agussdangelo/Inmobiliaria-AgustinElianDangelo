@@ -11,7 +11,7 @@ public class PruebaUnitariaAutomatizada {
 	@Test
 	public void queSePuedaDarDeAltaUnaCasaEnLaInmobiliaria() {
 		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Casa casa = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, false);
 		String valorCalleEsperado = "Mitre";
 		Integer valorAlturaEsperado = 1234;
@@ -32,7 +32,7 @@ public class PruebaUnitariaAutomatizada {
 	@Test
 	public void queSePuedanDarDeAltaDosCasasEnLaInmobiliaria() {
 		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Casa casa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, false);
 		Casa casa2 = new Casa("Liniers", "Costa", 4557, 95000.0, 222, true, false);
 		// primera casa
@@ -67,7 +67,7 @@ public class PruebaUnitariaAutomatizada {
 	@Test
 	public void queNoSePuedanDarDeAltaDosCasasConUnaMismaDireccion(){   // Calle, número y localidad(
 		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Casa casa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, false);
 		Casa casa2 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, false);
 		// primera casa
@@ -81,7 +81,7 @@ public class PruebaUnitariaAutomatizada {
 	@Test
 	public void queSePuedaDarDeAltaUnDepartamentoEnLaInmobiliaria() {
 		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Departamento depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, true);
 		String valorCalleEsperadoDepto = "Montiel";
 		Integer valorAlturaEsperadaDepto = 9090;
@@ -104,7 +104,7 @@ public class PruebaUnitariaAutomatizada {
 	@Test
 	public void queSePuedaDarDeAltaDosDepartamentoEnLaInmobiliaria() {
 		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Departamento depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, true);
 		Departamento depto2 = new Departamento("RamosMejia", "Suarez", 3355, 86500.0, 555, 9, true, false);
 		// Ejecucion
@@ -143,7 +143,7 @@ public class PruebaUnitariaAutomatizada {
 	@Test
 	public void queNoSePuedanDarDeAltaDosDepartamentoConUnaMismaDireccion() {  // Calle, numero, depto, piso y localidad
 		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Departamento depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, true);
 		Departamento depto2 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, true);
 		// Ejecucion
@@ -158,7 +158,7 @@ public class PruebaUnitariaAutomatizada {
 	@Test
 	public void queSePuedaObtenerElValorPromedioDeLasCasas() {
 		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Casa casa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, false, true);
 		Casa casa2 = new Casa("Liniers", "Costa", 4557, 95000.0, 222, true, false);
 		Casa casa3 = new Casa("Palomar", "Peron", 3399, 15000.0, 333, false, true);
@@ -175,7 +175,7 @@ public class PruebaUnitariaAutomatizada {
 	@Test
 	public void queSePuedaObtenerElValorPromedioDeLosDepartamentos() {
 		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Departamento depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, true);
 		Departamento depto2 = new Departamento("RamosMejia", "Suarez", 3355, 86500.0, 555, 9, true, false);
 		Departamento depto3 = new Departamento("Haedo", "SanMartin", 6890, 55300.0, 666, 10, false, true);
@@ -192,7 +192,7 @@ public class PruebaUnitariaAutomatizada {
 	@Test
 	public void queLaBusquedaPorRangoDePrecioDeMeArrojeUnArrayNoNuloSiAplicanResultados() {
 		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
 		Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222, false, true);
 		Double precioMin = 40000.0;
@@ -209,7 +209,7 @@ public class PruebaUnitariaAutomatizada {
 	@Test
 	public void queLaBusquedaPorRangoDePrecioDeCasasMeArrojeUnArrayNuloSiNoAplicanResultados() {
 		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		ArrayList<Casa> casas = new ArrayList<>();
 	    Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
 	    Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222, false, true);
@@ -228,7 +228,7 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedanAgregar3ClienteYElTamanioDelArraySea3() {
 		// Preparacion de datos
 		Integer dimensionArrayEsperado = 3;
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Persona cliente1 = new Persona("Raul", "Gimenez", 33445566, 1198585454, TipoDePropiedad.CASAS);
 		Persona cliente2 = new Persona("Fernando", "Lopez", 77889900, 117657454, TipoDePropiedad.DEPARTAMENTOS);
 		Persona cliente3 = new Persona("Luis", "Rodriguez", 11223344, 1145456634, TipoDePropiedad.PH);
@@ -245,7 +245,7 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaAgregarUnaCasaYLaDimensionDelArraySeaLaMinimaPosible() {
 		// Preparacion de datos
 		Integer dimensionArrayEsperado = 1;
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
 		// Ejecucion
 		inmobiliaria.agregarCasa(casa1);
@@ -257,7 +257,7 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedanAgregar3CasasYElTamanioDelArraySea3() {
 		// Preparacion de datos
 		Integer dimensionArrayEsperado = 3;
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
 		Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222, false, true);
 		Casa casa3 = new Casa("SanJusto", "Bransen", 9977, 34000.0, 333, true, false);
@@ -273,7 +273,7 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaAgregarUnClienteYLaDimensionDelArraySeaLaMinimaPosible() {
 		// Preparacion de datos
 		Integer dimensionArrayEsperado = 1;
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Persona cliente1 = new Persona("Raul", "Gimenez", 33445566, 1198585454, TipoDePropiedad.CASAS);
 		// Ejecucion
 		inmobiliaria.agregarCliente(cliente1);
@@ -285,7 +285,7 @@ public class PruebaUnitariaAutomatizada {
 	public void queNoSePuedaAgregar2ClientesConLosMismosDatosEnUnArrayDe1() {
 		// Preparacion de datos
 		Integer dimensionArrayEsperado = 1;
-		Inmobiliaria inmobiliaria = new Inmobiliaria();
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Persona cliente1 = new Persona("Raul", "Gimenez", 33445566, 1198585454, TipoDePropiedad.CASAS);
 		Persona cliente2 = new Persona("Raul", "Gimenez", 33445566, 1198585454, TipoDePropiedad.CASAS);
 		// Ejecucion
