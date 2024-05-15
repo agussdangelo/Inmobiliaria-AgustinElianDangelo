@@ -20,6 +20,7 @@ public class Main {
 		do {
 			verMenu();
 			opcion = teclado.nextInt();
+			teclado.nextLine();
 			switch(opcion) {
 			case 1:
 				// AGREGAR NUEVAS PROPIEDADES
@@ -29,26 +30,33 @@ public class Main {
 					verTiposDePropiedades();
 					System.out.println("Ingrese el tipo de inmueble deseado: ");
 					opcionPropiedad = teclado.nextInt();
+					teclado.nextLine();
 					switch(opcionPropiedad) {
 					case 1:
 						for (int i = 0; i < departamento.length; i++) {
 							personaInteresadaVenta.setPropiedadInteres(TipoDePropiedad.DEPARTAMENTOS);
 							System.out.println("Ingrese la localidad del Departamento:");
-							String localidadDepto = teclado.next();
+							String localidadDepto = teclado.nextLine();
 							System.out.println("Ingrese la calle del Departamento:");
-							String calleDepto = teclado.next();
+							String calleDepto = teclado.nextLine();
 							System.out.println("Ingrese la altura del Departamento:");
 							Integer alturaDepto = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Ingrese el precio del Departamento:");
 							Double precioDepto = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese el piso del Departamento:");
 							Integer pisoDepto = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Ingrese el código del Departamento:");
 							Integer codigoDepto = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Fue Alquilada? ");
 							Boolean fueAlquilada = teclado.nextBoolean();
+							teclado.nextLine();
 							System.out.println("Fue vendida? ");
 							Boolean fueVendida = teclado.nextBoolean();
+							teclado.nextLine();
 							Departamento nuevoDepto = new Departamento(localidadDepto, calleDepto, alturaDepto, precioDepto, codigoDepto, pisoDepto, fueAlquilada, fueVendida);
 							departamento[i] = nuevoDepto;
 							System.err.println("Ingrese otra propiedad...");
@@ -58,19 +66,24 @@ public class Main {
 						for (int i = 0; i < casa.length; i++) {
 							personaInteresadaVenta.setPropiedadInteres(TipoDePropiedad.CASAS);
 							System.out.println("Ingrese la localidad de la casa:");
-							String localidadCasa = teclado.next();
+							String localidadCasa = teclado.nextLine();
 							System.out.println("Ingrese la calle de la casa:");
-							String calleCasa = teclado.next();
+							String calleCasa = teclado.nextLine();
 							System.out.println("Ingrese la altura de la casa:");
 							Integer alturaCasa = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Ingrese el precio de la casa:");
 							Double precioCasa = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese el código de la casa:");
 							Integer codigoCasa = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Fue Alquilada? ");
 							Boolean fueAlquilada = teclado.nextBoolean();
+							teclado.nextLine();
 							System.out.println("Fue vendida? ");
 							Boolean fueVendida = teclado.nextBoolean();
+							teclado.nextLine();
 							Casa nuevaCasa = new Casa(localidadCasa, calleCasa, alturaCasa, precioCasa, codigoCasa, fueAlquilada, fueVendida);
 							casa[i] = nuevaCasa;
 							System.err.println("Ingrese otra propiedad...");
@@ -81,21 +94,26 @@ public class Main {
 						for (int i = 0; i < terreno.length; i++) {
 							personaInteresadaVenta.setPropiedadInteres(TipoDePropiedad.TERRENOS);
 							System.out.println("Ingrese la ubicacion del terreno:");
-							String ubicacionTerreno = teclado.next();
+							String ubicacionTerreno = teclado.nextLine();
 							System.out.println("Ingrese el tamanio del terreno:");
 							Double tamanioTerreno = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese la forma del terreno:");
-							String formaTerreno = teclado.next();
+							String formaTerreno = teclado.nextLine();
 							System.out.println("Ingrese la condicion de suelo del terreno:");
-							String condicionDeSuelo = teclado.next();
+							String condicionDeSuelo = teclado.nextLine();
 							System.out.println("Ingrese el precio del terreno:");
 							Double precioTerreno = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese el código de la casa:");
 							Integer codigoTerreno = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Fue Alquilada? ");
 							Boolean fueAlquilada = teclado.nextBoolean();
+							teclado.nextLine();
 							System.out.println("Fue vendida? ");
 							Boolean fueVendida = teclado.nextBoolean();
+							teclado.nextLine();
 							Terreno nuevoTerreno = new Terreno(ubicacionTerreno, tamanioTerreno, formaTerreno, condicionDeSuelo, precioTerreno, codigoTerreno, fueAlquilada, fueVendida);
 							terreno[i] = nuevoTerreno;
 							System.err.println("Ingrese otra propiedad...");
@@ -105,19 +123,24 @@ public class Main {
 						for (int i = 0; i < ph.length; i++) {
 							personaInteresadaVenta.setPropiedadInteres(TipoDePropiedad.PH);
 							System.out.println("Ingrese la localidad del PH:");
-							String localidadPh = teclado.next();
+							String localidadPh = teclado.nextLine();
 							System.out.println("Ingrese la calle del PH:");
-							String callePh = teclado.next();
+							String callePh = teclado.nextLine();
 							System.out.println("Ingrese la altura del PH");
 							Integer alturaPh = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Ingrese el precio del PH:");
 							Double precioPh = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese el código del PH:");
 							Integer codigoPh = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Fue Alquilada? ");
 							Boolean fueAlquilada = teclado.nextBoolean();
+							teclado.nextLine();
 							System.out.println("Fue vendida? ");
 							Boolean fueVendida = teclado.nextBoolean();
+							teclado.nextLine();
 							Ph nuevoPh = new Ph(localidadPh, callePh, alturaPh, precioPh, codigoPh, fueAlquilada, fueVendida);
 							ph[i] = nuevoPh;
 							System.err.println("Ingrese otra propiedad...");
@@ -127,21 +150,26 @@ public class Main {
 						for (int i = 0; i < campo.length; i++) {
 							personaInteresadaVenta.setPropiedadInteres(TipoDePropiedad.CAMPOS);
 							System.out.println("Ingrese la ubicacion del campo:");
-							String ubicacionCampo = teclado.next();
+							String ubicacionCampo = teclado.nextLine();
 							System.out.println("Ingrese el tamanio del campo:");
 							Double tamanioCampo = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese el clima de la region del campo:");
-							String climaDeLaRegionCampo = teclado.next();
+							String climaDeLaRegionCampo = teclado.nextLine();
 							System.out.println("Ingrese el tipo de suelo del campo:");
-							String tipoDeSueloCampo = teclado.next();
+							String tipoDeSueloCampo = teclado.nextLine();
 							System.out.println("Ingrese el precio del campo");
 							Double precioCampo = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese el código del campo:");
 							Integer codigoCampo = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Fue Alquilada? ");
 							Boolean fueAlquilada = teclado.nextBoolean();
+							teclado.nextLine();
 							System.out.println("Fue vendida? ");
 							Boolean fueVendida = teclado.nextBoolean();
+							teclado.nextLine();
 							Campo nuevoCampo = new Campo(ubicacionCampo, tamanioCampo, climaDeLaRegionCampo, tipoDeSueloCampo, codigoCampo, precioCampo, fueAlquilada, fueVendida);
 							campo[i] = nuevoCampo;
 							System.err.println("Ingrese otra propiedad...");
@@ -169,21 +197,27 @@ public class Main {
 							Inmobiliaria departamentos = new Inmobiliaria();
 							Inmobiliaria.buscarPropiedadesPorCodigoDepto(departamentos, codigoBusqueda);
 							System.out.println("Ingrese la localidad del Departamento a modificar:");
-							String localidadDepto = teclado.next();
+							String localidadDepto = teclado.nextLine();
 							System.out.println("Ingrese la calle del Departamento a modificar:");
-							String calleDepto = teclado.next();
+							String calleDepto = teclado.nextLine();
 							System.out.println("Ingrese la altura del Departamento a modificar:");
 							Integer alturaDepto = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Ingrese el precio del Departamento a modificar:");
 							Double precioDepto = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese el piso del Departamento a modificar:");
 							Integer pisoDepto = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Ingrese el código del Departamento a modificar:");
 							Integer codigoDepto = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Fue Alquilada? ");
 							Boolean fueAlquilada = teclado.nextBoolean();
+							teclado.nextLine();
 							System.out.println("Fue vendida? ");
 							Boolean fueVendida = teclado.nextBoolean();
+							teclado.nextLine();
 							Departamento nuevoDepto = new Departamento(localidadDepto, calleDepto, alturaDepto, precioDepto, pisoDepto, codigoDepto, fueAlquilada, fueVendida);
 							departamento[i] = nuevoDepto;
 							System.err.println("Ingrese otra propiedad...");
@@ -200,14 +234,19 @@ public class Main {
 							String calleCasa = teclado.nextLine();
 							System.out.println("Ingrese la altura de la casa a modificar:");
 							Integer alturaCasa = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Ingrese el precio de la casa a modificar:");
 							Double precioCasa = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese el código de la casa a modificar:");
 							Integer codigoCasa = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Fue Alquilada? ");
 							Boolean fueAlquilada = teclado.nextBoolean();
+							teclado.nextLine();
 							System.out.println("Fue vendida? ");
 							Boolean fueVendida = teclado.nextBoolean();
+							teclado.nextLine();
 							Casa nuevaCasa = new Casa(localidadCasa, calleCasa, alturaCasa, precioCasa, codigoCasa, fueAlquilada, fueVendida);
 							casa[i] = nuevaCasa;
 							System.err.println("Ingrese otra propiedad...");
@@ -223,18 +262,23 @@ public class Main {
 							String ubicacionTerreno = teclado.nextLine();
 							System.out.println("Ingrese el tamanio del terreno a modificar:");
 							Double tamanioTerreno = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese la forma del terreno a modificar:");
-							String formaTerreno = teclado.next();
+							String formaTerreno = teclado.nextLine();
 							System.out.println("Ingrese la condicion de suelo del terreno a modificar:");
-							String condicionDeSuelo = teclado.next();
+							String condicionDeSuelo = teclado.nextLine();
 							System.out.println("Ingrese el precio del terreno a modificar:");
 							Double precioTerreno = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese el código de la casa a modificar:");
 							Integer codigoTerreno = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Fue Alquilada? ");
 							Boolean fueAlquilada = teclado.nextBoolean();
+							teclado.nextLine();
 							System.out.println("Fue vendida? ");
 							Boolean fueVendida = teclado.nextBoolean();
+							teclado.nextLine();
 							Terreno nuevoTerreno = new Terreno(ubicacionTerreno, tamanioTerreno, formaTerreno, condicionDeSuelo, precioTerreno, codigoTerreno, fueAlquilada, fueVendida);
 							terreno[i] = nuevoTerreno;
 							System.err.println("Ingrese otra propiedad...");
@@ -252,14 +296,19 @@ public class Main {
 							String callePh = teclado.nextLine();
 							System.out.println("Ingrese la altura del PH a modificar");
 							Integer alturaPh = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Ingrese el precio del PH a modificar:");
 							Double precioPh = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese el código del PH a modificar:");
 							Integer codigoPh = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Fue Alquilada? ");
 							Boolean fueAlquilada = teclado.nextBoolean();
+							teclado.nextLine();
 							System.out.println("Fue vendida? ");
 							Boolean fueVendida = teclado.nextBoolean();
+							teclado.nextLine();
 							Ph nuevoPh = new Ph(localidadPh, callePh, alturaPh, precioPh, codigoPh, fueAlquilada, fueVendida);
 							ph[i] = nuevoPh;
 							System.err.println("Ingrese otra propiedad...");
@@ -271,21 +320,26 @@ public class Main {
 							Inmobiliaria campos = new Inmobiliaria();
 							Inmobiliaria.buscarPropiedadesPorCodigoCampos(campos, codigoBusqueda);
 							System.out.println("Ingrese la ubicacion del campo a modificar:");
-							String ubicacionCampo = teclado.next();
+							String ubicacionCampo = teclado.nextLine();
 							System.out.println("Ingrese el tamanio del campo a modificar:");
 							Double tamanioCampo = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese el clima de la region del campo a modificar:");
-							String climaDeLaRegionCampo = teclado.next();
+							String climaDeLaRegionCampo = teclado.nextLine();
 							System.out.println("Ingrese el tipo de suelo del campo a modificar:");
-							String tipoDeSueloCampo = teclado.next();
+							String tipoDeSueloCampo = teclado.nextLine();
 							System.out.println("Ingrese el precio del campo a modificar:");
 							Double precioCampo = teclado.nextDouble();
+							teclado.nextLine();
 							System.out.println("Ingrese el código del campo a modificar:");
 							Integer codigoCampo = teclado.nextInt();
+							teclado.nextLine();
 							System.out.println("Fue Alquilada? ");
 							Boolean fueAlquilada = teclado.nextBoolean();
+							teclado.nextLine();
 							System.out.println("Fue vendida? ");
 							Boolean fueVendida = teclado.nextBoolean();
+							teclado.nextLine();
 							Campo nuevoCampo = new Campo(ubicacionCampo, tamanioCampo, climaDeLaRegionCampo, tipoDeSueloCampo, codigoCampo, precioCampo, fueAlquilada, fueVendida);
 							campo[i] = nuevoCampo;
 							System.err.println("Ingrese otra propiedad...");
@@ -314,6 +368,7 @@ public class Main {
 			            dniRepetido = false;
 			            System.out.println("Ingrese el DNI del cliente: ");
 			            long dni = teclado.nextLong();
+			            teclado.nextLine();
 			            // Verifica si el DNI ya existe en la lista de clientes
 			            for (int j = 0; j < i; j++) {
 			                if (clientes[j].getDni() == dni) {
@@ -329,8 +384,10 @@ public class Main {
 			        } while (dniRepetido);
 					System.out.println("Ingrese el telefono de contacto: ");
 					p.setTelefono(teclado.nextLong());
+					teclado.nextLine();
 					System.out.println("Ingrese la cantidad de dinero del cliente: ");
 					p.setDinero(teclado.nextDouble());
+					teclado.nextLine();
 					clientes[i] = p;
 	    			System.out.println(clientes.length - i - 1 + " Clientes restantes");
 	    			
@@ -480,8 +537,10 @@ public class Main {
 			                if (!preciosIngresados) {
 			                    System.out.println("Ingrese el precio minimo deseado: ");
 			                    long precioMin = teclado.nextLong();
+			                    teclado.nextLine();
 			                    System.out.println("Ingrese el precio maximo deseado: ");
 			                    long precioMax = teclado.nextLong();
+			                    teclado.nextLine();
 			                    
 			                    if (casa[0] != null) {
 			                        Inmobiliaria.buscarPropiedadesPorPrecioCasa(casa, precioMin, precioMax);
@@ -508,7 +567,7 @@ public class Main {
 			                // buscar por ubicacion
 			                if (!ubicacionIngresada) {
 			                    System.out.println("Ingrese la ubicacion a buscar: ");
-			                    String ubicacionBuscada = teclado.next();
+			                    String ubicacionBuscada = teclado.nextLine();
 			                    if (casa[0] != null) {
 			                        Inmobiliaria.buscarPropiedadesPorUbicacionCasa(casa, ubicacionBuscada);
 			                    }else {

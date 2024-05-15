@@ -5,8 +5,6 @@ import java.util.HashSet;
 
 public class Inmobiliaria {
 	
-	private static Integer CANTIDAD_MAXIMA_CLIENTES = 100;
-	private static Integer CANTIDAD_MAXIMA_PROPIEDADES = 50;
 	private String nombre;
 	private String direccion;
 	private Integer telefono;
@@ -43,6 +41,12 @@ public class Inmobiliaria {
 		this.nombre = nombre;	
 		this.direccion = direccion;
 		this.telefono = telefono;
+		Inmobiliaria.casa = new ArrayList<Casa>();
+		Inmobiliaria.cliente = new HashSet<Persona>();
+		Inmobiliaria.departamento = new ArrayList<Departamento>();
+		Inmobiliaria.campo = new ArrayList<Campo>();
+		Inmobiliaria.ph = new ArrayList<Ph>();
+	    Inmobiliaria.terreno = new ArrayList<Terreno>();
 	}
 
 	// GETTERS AND SETTERS
@@ -68,22 +72,6 @@ public class Inmobiliaria {
 
 	public void setTelefono(Integer telefono) {
 		this.telefono = telefono;
-	}
-
-	public static Integer getCANTIDAD_MAXIMA_CLIENTES() {
-		return CANTIDAD_MAXIMA_CLIENTES;
-	}
-
-	public static void setCANTIDAD_MAXIMA_CLIENTES(Integer cANTIDAD_MAXIMA_CLIENTES) {
-		CANTIDAD_MAXIMA_CLIENTES = cANTIDAD_MAXIMA_CLIENTES;
-	}
-
-	public static Integer getCANTIDAD_MAXIMA_PROPIEDADES() {
-		return CANTIDAD_MAXIMA_PROPIEDADES;
-	}
-
-	public static void setCANTIDAD_MAXIMA_PROPIEDADES(Integer cANTIDAD_MAXIMA_PROPIEDADES) {
-		CANTIDAD_MAXIMA_PROPIEDADES = cANTIDAD_MAXIMA_PROPIEDADES;
 	}
 
 	public ArrayList<Casa> getCasa() {
