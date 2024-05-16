@@ -1,22 +1,21 @@
 package ar.edu.unlam.dominio.pb2;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {
 	
-	public static Inmobiliaria inmobiliaria = new Inmobiliaria();
+	public static Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 	public static ArrayList<Persona> clientes = new ArrayList<Persona>();
 	public static ArrayList<Departamento> departamento = new ArrayList<Departamento>();
 	public static ArrayList<Casa> casa = new ArrayList<Casa>();
 	public static ArrayList<Ph> ph = new ArrayList<Ph>();
 	public static ArrayList<Terreno> terreno = new ArrayList<Terreno>();
 	public static ArrayList<Campo> campo = new ArrayList<Campo>();
+	public static Scanner teclado = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		
-		Scanner teclado = new Scanner(System.in);
 		int opcion;
 		int opcionPropiedadCodigo;
 		String opcionBuscar;
@@ -62,7 +61,7 @@ public class Main {
 						teclado.nextLine();
 						Departamento nuevoDepto = new Departamento(localidadDepto, calleDepto, alturaDepto, precioDepto, codigoDepto, pisoDepto, fueAlquiladaDepto, fueVendidaDepto);
 						departamento.add(nuevoDepto);
-						System.err.println("Ingrese otra propiedad...");
+						System.err.println("Propiedad agregada con exito!");
 						break;
 					case 2:
 						personaInteresadaVenta.setPropiedadInteres(TipoDePropiedad.CASAS);
@@ -87,7 +86,7 @@ public class Main {
 						teclado.nextLine();
 						Casa nuevaCasa = new Casa(localidadCasa, calleCasa, alturaCasa, precioCasa, codigoCasa, fueAlquiladaCasa, fueVendidaCasa);
 						casa.add(nuevaCasa);
-						System.err.println("Ingrese otra propiedad...");
+						System.err.println("Propiedad agregada con exito!");
 						break;
 					case 3:
 						personaInteresadaVenta.setPropiedadInteres(TipoDePropiedad.TERRENOS);
@@ -114,7 +113,7 @@ public class Main {
 						teclado.nextLine();
 						Terreno nuevoTerreno = new Terreno(ubicacionTerreno, tamanioTerreno, formaTerreno, condicionDeSuelo, precioTerreno, codigoTerreno, fueAlquiladaTerreno, fueVendidaTerreno);
 						terreno.add(nuevoTerreno);
-						System.err.println("Ingrese otra propiedad...");
+						System.err.println("Propiedad agregada con exito!");
 						break;
 					case 4:
 						personaInteresadaVenta.setPropiedadInteres(TipoDePropiedad.PH);
@@ -139,7 +138,7 @@ public class Main {
 						teclado.nextLine();
 						Ph nuevoPh = new Ph(localidadPh, callePh, alturaPh, precioPh, codigoPh, fueAlquiladaPh, fueVendidaPh);
 						ph.add(nuevoPh);
-						System.err.println("Ingrese otra propiedad...");
+						System.err.println("Propiedad agregada con exito!");
 						break;
 					case 5:
 						personaInteresadaVenta.setPropiedadInteres(TipoDePropiedad.CAMPOS);
@@ -166,7 +165,7 @@ public class Main {
 						teclado.nextLine();
 						Campo nuevoCampo = new Campo(ubicacionCampo, tamanioCampo, climaDeLaRegionCampo, tipoDeSueloCampo, codigoCampo, precioCampo, fueAlquiladaCampo, fueVendidaCampo);
 						campo.add(nuevoCampo);
-						System.err.println("Ingrese otra propiedad...");
+						System.err.println("Propiedad agregada con exito!");
 						break;
 					case 6:
 						System.out.println("Saliendo del menu tipos de propiedades...");
@@ -212,7 +211,7 @@ public class Main {
 						teclado.nextLine();
 						Departamento nuevoDepto = new Departamento(localidadDepto, calleDepto, alturaDepto, precioDepto, pisoDepto, codigoDepto, fueAlquiladaDepto, fueVendidaDepto);
 						departamento.add(nuevoDepto);
-						System.err.println("Ingrese otra propiedad...");
+						System.err.println("Propiedad modificada con exito!");
 						break;
 					case 2:
 						PersonaInteresada.setPropiedadInteres(TipoDePropiedad.CASAS);
@@ -239,7 +238,7 @@ public class Main {
 						teclado.nextLine();
 						Casa nuevaCasa = new Casa(localidadCasa, calleCasa, alturaCasa, precioCasa, codigoCasa, fueAlquiladaCasa, fueVendidaCasa);
 						casa.add(nuevaCasa);
-						System.err.println("Ingrese otra propiedad...");
+						System.err.println("Propiedad modificada con exito!");
 						break;				
 					case 3:
 						PersonaInteresada.setPropiedadInteres(TipoDePropiedad.TERRENOS);
@@ -268,7 +267,7 @@ public class Main {
 						teclado.nextLine();
 						Terreno nuevoTerreno = new Terreno(ubicacionTerreno, tamanioTerreno, formaTerreno, condicionDeSuelo, precioTerreno, codigoTerreno, fueAlquiladaTerreno, fueVendidaTerreno);
 						terreno.add(nuevoTerreno);
-						System.err.println("Ingrese otra propiedad...");
+						System.err.println("Propiedad modificada con exito!");
 						break;
 					case 4:
 						PersonaInteresada.setPropiedadInteres(TipoDePropiedad.PH);
@@ -295,7 +294,7 @@ public class Main {
 						teclado.nextLine();
 						Ph nuevoPh = new Ph(localidadPh, callePh, alturaPh, precioPh, codigoPh, fueAlquiladaPh, fueVendidaPh);
 						ph.add(nuevoPh);
-						System.err.println("Ingrese otra propiedad...");
+						System.err.println("Propiedad modificada con exito!");
 						break;
 					case 5:
 						PersonaInteresada.setPropiedadInteres(TipoDePropiedad.CAMPOS);
@@ -324,7 +323,7 @@ public class Main {
 						teclado.nextLine();
 						Campo nuevoCampo = new Campo(ubicacionCampo, tamanioCampo, climaDeLaRegionCampo, tipoDeSueloCampo, codigoCampo, precioCampo, fueAlquiladaCampo, fueVendidaCampo);
 						campo.add(nuevoCampo);
-						System.err.println("Ingrese otra propiedad...");
+						System.err.println("Propiedad modificada con exito!");
 						break;
 					case 6:
 						System.out.println("Saliendo del menu tipos de propiedades...");
@@ -369,7 +368,7 @@ public class Main {
 				nuevoCliente.setDinero(teclado.nextDouble());
 				teclado.nextLine();
 				clientes.add(nuevoCliente);
-    			System.out.println(clientes.size() - 1 + " Clientes restantes");				
+				System.out.println("Cliente agregado con Exito!");
 				break;
 			case 4:
 				// LISTADO DE PROPIEDADES ORDENADOS POR PRECIO
@@ -597,111 +596,85 @@ public class Main {
 					opcionPropiedadVenta = teclado.nextInt();
 					switch(opcionPropiedadVenta) {
 					case 1:
-						System.out.println("Ingrese el codigo de la propiedad a vender: ");
-						Integer codigoPropiedadVentaDepto = teclado.nextInt();
-						for (int i = 0; i < departamento.size(); i++) {
-						    Departamento deptoActual = departamento.get(i); // Obtener el departamento actual
-						    if (deptoActual != null && deptoActual.getCodigo() == codigoPropiedadVentaDepto) {
-					            for (int j = 0; j < clientes.size(); j++) {
-					                Persona cliente = clientes.get(j);
-					                if (cliente != null) {
-					                    // Realizar la venta del departamento
-					                    deptoActual.setFueVendido(true);
-					                    double operacionVentaDepto = deptoActual.getPrecio() - clientes.get(j).getDinero();
-					                    System.out.println("Departamento vendido exitosamente! Ahora el cliente posee un saldo de: " + operacionVentaDepto);
-					                    // Actualiza el departamento en el ArrayList si es necesario
-					                    departamento.set(i, deptoActual);
-					                    break; // Sale del bucle si la venta se ha realizado
-					                }
-					            }
-					        }
-						}
-						break;
+		                System.out.println("Ingrese el codigo de la propiedad a vender: ");
+		                Integer codigoPropiedadVentaDepto = teclado.nextInt();
+		                for (int i = 0; i < departamento.size(); i++) {
+		                    Departamento deptoActual = departamento.get(i);
+		                    if (deptoActual != null && deptoActual.getCodigo() == codigoPropiedadVentaDepto) {
+		                        Persona cliente = clientes.get(i); // Obtener el cliente interesado
+		                        if (cliente != null) {
+		                            deptoActual.setFueVendido(true);
+		                            Double operacionVentaDepto = deptoActual.getPrecio() - cliente.getDinero();
+		                            System.out.println("Departamento vendido exitosamente! Ahora el " + cliente.getNombre() + " posee un saldo de: " + operacionVentaDepto);
+		                            departamento.set(i, deptoActual);
+		                        }
+		                    }
+		                }
+		                break;
 					case 2:
-					    System.out.println("Ingrese el codigo de la propiedad a vender: ");
-					    Integer codigoPropiedadVentaCasa = teclado.nextInt();
-
-					    for (int i = 0; i < casa.size(); i++) {
-					        Casa casaActual = casa.get(i); // Obtener la casa actual
-					        if (casaActual != null && casaActual.getCodigo() == codigoPropiedadVentaCasa) {
-					            for (int j = 0; j < clientes.size(); j++) {
-					                Persona cliente = clientes.get(j);
-					                if (cliente != null) {
-					                    // Realizar la venta de la casa
-					                    casaActual.setFueVendido(true);
-					                    double operacionVentaCasa = casaActual.getPrecio() - clientes.get(j).getDinero();
-					                    System.out.println("Casa vendida exitosamente! Ahora el cliente posee un saldo de: " + operacionVentaCasa);					          
-					                    // Actualiza la casa en el ArrayList si es necesario
-					                    casa.set(i, casaActual);
-					                    break; // Sale del bucle si la venta se ha realizado
-					                }
-					            }
-					        }
-					    }
-						break;
+		                System.out.println("Ingrese el codigo de la propiedad a vender: ");
+		                Integer codigoPropiedadVentaCasa = teclado.nextInt();
+		                for (int i = 0; i < casa.size(); i++) {
+		                    Casa casaActual = casa.get(i);
+		                    if (casaActual != null && casaActual.getCodigo() == codigoPropiedadVentaCasa) {
+		                        Persona cliente = clientes.get(i); // Obtener el cliente interesado
+		                        if (cliente != null) {
+		                            casaActual.setFueVendido(true);
+		                            Double operacionVentaCasa = casaActual.getPrecio() - cliente.getDinero();
+		                            System.out.println("Casa vendido exitosamente! Ahora el " + cliente.getNombre() + " posee un saldo de: " + operacionVentaCasa);
+		                            casa.set(i, casaActual);
+		                        }
+		                    }
+		                }
+		                break;
 					case 3:
-					    System.out.println("Ingrese el codigo de la propiedad a vender: ");
-					    int codigoPropiedadVentaTerreno = teclado.nextInt();
-
-					    for (int i = 0; i < terreno.size(); i++) {
-					        Terreno terrenoActual = terreno.get(i); // Obtener el terreno actual
-					        if (terrenoActual != null && terrenoActual.getCodigo() == codigoPropiedadVentaTerreno) {
-					            for (int j = 0; j < clientes.size(); j++) {
-					                Persona cliente = clientes.get(j);
-					                if (cliente != null) {
-					                    // Realizar la venta del terreno
-					                    terrenoActual.setFueVendido(true);
-					                    double operacionVentaTerreno = terrenoActual.getPrecio() - clientes.get(j).getDinero();
-					                    System.out.println("Terreno vendido exitosamente! Ahora el cliente posee un saldo de: " + operacionVentaTerreno);
-					                    terreno.set(i, terrenoActual); // Actualizar el terreno en la lista
-					                    break; // Sale del bucle si la venta se ha realizado
-					                }
-					            }
-					        }
-					    }
-					    break;
+						System.out.println("Ingrese el codigo de la propiedad a vender: ");
+		                Integer codigoPropiedadVentaTerreno = teclado.nextInt();
+		                for (int i = 0; i < terreno.size(); i++) {
+		                	Terreno terrenoActual = terreno.get(i);
+		                    if (terrenoActual != null && terrenoActual.getCodigo() == codigoPropiedadVentaTerreno) {
+		                        Persona cliente = clientes.get(i); // Obtener el cliente interesado
+		                        if (cliente != null) {
+		                            terrenoActual.setFueVendido(true);
+		                            Double operacionVentaTerreno = terrenoActual.getPrecio() - cliente.getDinero();
+		                            System.out.println("Casa vendido exitosamente! Ahora el " + cliente.getNombre() + " posee un saldo de: " + operacionVentaTerreno);
+		                            terreno.set(i, terrenoActual);
+		                        }
+		                    }
+		                }
+		                break;
 					case 4:
-					    System.out.println("Ingrese el codigo de la propiedad a vender: ");
-					    int codigoPropiedadVentaPh = teclado.nextInt();
-
-					    for (int i = 0; i < ph.size(); i++) {
-					        Ph phActual = ph.get(i); // Obtener el ph actual
-					        if (phActual != null && phActual.getCodigo() == codigoPropiedadVentaPh) {
-					            for (int j = 0; j < clientes.size(); j++) {
-					                Persona cliente = clientes.get(j);
-					                if (cliente != null) {
-					                    // Realizar la venta del ph
-					                    phActual.setFueVendido(true);
-					                    double operacionVentaPh = phActual.getPrecio() - cliente.getDinero();
-					                    System.out.println("Ph vendida exitosamente! Ahora el cliente posee un saldo de: " + operacionVentaPh);
-					                    ph.set(i, phActual); // Actualizar el ph en la lista
-					                    break; // Sale del bucle si la venta se ha realizado
-					                }
-					            }
-					        }
-					    }
-					    break;
+						System.out.println("Ingrese el codigo de la propiedad a vender: ");
+		                Integer codigoPropiedadVentaPh = teclado.nextInt();
+		                for (int i = 0; i < ph.size(); i++) {
+		                	Ph phActual = ph.get(i);
+		                    if (phActual != null && phActual.getCodigo() == codigoPropiedadVentaPh) {
+		                        Persona cliente = clientes.get(i); // Obtener el cliente interesado
+		                        if (cliente != null) {
+		                            phActual.setFueVendido(true);
+		                            Double operacionVentaPh = phActual.getPrecio() - cliente.getDinero();
+		                            System.out.println("Casa vendido exitosamente! Ahora el " + cliente.getNombre() + " posee un saldo de: " + operacionVentaPh);
+		                            ph.set(i, phActual);
+		                        }
+		                    }
+		                }
+		                break;
 					case 5:
-					    System.out.println("Ingrese el codigo de la propiedad a vender: ");
-					    int codigoPropiedadVentaCampo = teclado.nextInt();
-
-					    for (int i = 0; i < campo.size(); i++) {
-					        Campo campoActual = campo.get(i); // Obtener el campo actual
-					        if (campoActual != null && campoActual.getCodigo() == codigoPropiedadVentaCampo) {
-					            for (int j = 0; j < clientes.size(); j++) {
-					                Persona cliente = clientes.get(j);
-					                if (cliente != null) {
-					                    // Realizar la venta del campo
-					                    campoActual.setFueVendido(true);
-					                    double operacionVentaCampo = campoActual.getPrecio() - cliente.getDinero();
-					                    System.out.println("Campo vendido exitosamente! Ahora el cliente posee un saldo de: " + operacionVentaCampo);
-					                    campo.set(i, campoActual); // Actualizar el campo en la lista
-					                    break; // Sale del bucle si la venta se ha realizado
-					                }
-					            }
-					        }
-					    }
-					    break;
+						System.out.println("Ingrese el codigo de la propiedad a vender: ");
+		                Integer codigoPropiedadVentaCampo = teclado.nextInt();
+		                for (int i = 0; i < campo.size(); i++) {
+		                	Campo campoActual = campo.get(i);
+		                    if (campoActual != null && campoActual.getCodigo() == codigoPropiedadVentaCampo) {
+		                        Persona cliente = clientes.get(i); // Obtener el cliente interesado
+		                        if (cliente != null) {
+		                            campoActual.setFueVendido(true);
+		                            Double operacionVentaCampo = campoActual.getPrecio() - cliente.getDinero();
+		                            System.out.println("Casa vendido exitosamente! Ahora el " + cliente.getNombre() + " posee un saldo de: " + operacionVentaCampo);
+		                            campo.set(i, campoActual);
+		                        }
+		                    }
+		                }
+		                break;
 					case 6:
 						System.out.println("Saliendo del menu tipos de propiedades...");
 						break;
@@ -717,95 +690,85 @@ public class Main {
 					opcionPropiedadAlquiler = teclado.nextInt();
 					switch(opcionPropiedadAlquiler) {
 					case 1:
-					    System.out.println("Ingrese el código de la propiedad a alquilar: ");
-					    Integer codigoPropiedadAlquilerDepto = teclado.nextInt();
-					    for (int i = 0; i < departamento.size(); i++) {
-					        Departamento deptoActual = departamento.get(i); // Obtener el departamento actual
-					        for (int j = 0; j < clientes.size(); j++) {
-					            Persona cliente = clientes.get(j); // Obtener el cliente actual
-					            // Alquiler de departamento
-					            if (deptoActual != null && deptoActual.getCodigo() == codigoPropiedadAlquilerDepto) {
-					                deptoActual.setFueAlquilado(true);
-					                Double operacionAlquilerDepto = deptoActual.getPrecio() - cliente.getDinero();
-					                System.out.println("Departamento alquilado exitosamente! Ahora el cliente posee un saldo de: " + operacionAlquilerDepto);
-					                // Actualizar el departamento en el ArrayList si es necesario
-					                departamento.set(i, deptoActual);
-					            }
-					        }
-					    }
-					    break;
+						System.out.println("Ingrese el código de la propiedad a alquilar: ");
+		                Integer codigoPropiedadAlquilerDepto = teclado.nextInt();
+		                for (int i = 0; i < departamento.size(); i++) {
+		                    Departamento deptoActual = departamento.get(i);
+		                    if (deptoActual != null && deptoActual.getCodigo() == codigoPropiedadAlquilerDepto) {
+		                        Persona cliente = clientes.get(i); // Obtener el cliente interesado
+		                        if (cliente != null) {
+		                            deptoActual.setFueAlquilado(true);
+		                            Double operacionAlquilerDepto = deptoActual.getPrecio() - cliente.getDinero();
+		                            System.out.println("Departamento alquilado exitosamente! Ahora el " + cliente.getNombre() + " posee un saldo de: " + operacionAlquilerDepto);
+		                            departamento.set(i, deptoActual);
+		                        }
+		                    }
+		                }
+		                break;
 					case 2:
-					    System.out.println("Ingrese el código de la propiedad a alquilar: ");
-					    Integer codigoPropiedadAlquilerCasa = teclado.nextInt();
-					    for (int i = 0; i < casa.size(); i++) {
-					        Casa casaActual = casa.get(i); // Obtener la casa actual
-					        for (int j = 0; j < clientes.size(); j++) {
-					            Persona cliente = clientes.get(j); // Obtener el cliente actual
-					            // Alquiler de casa
-					            if (casaActual != null && casaActual.getCodigo() == codigoPropiedadAlquilerCasa) {
-					                casaActual.setFueAlquilado(true);
-					                Double operacionAlquilerCasa = casaActual.getPrecio() - cliente.getDinero();
-					                System.out.println("Casa alquilada exitosamente! Ahora el cliente posee un saldo de: " + operacionAlquilerCasa);
-					                // Actualizar la casa en el ArrayList si es necesario
-					                casa.set(i, casaActual);
-					            }
-					        }
-					    }
-					    break;
+						System.out.println("Ingrese el código de la propiedad a alquilar: ");
+		                Integer codigoPropiedadAlquilerCasa = teclado.nextInt();
+		                for (int i = 0; i < casa.size(); i++) {
+		                    Casa casaActual = casa.get(i);
+		                    if (casaActual != null && casaActual.getCodigo() == codigoPropiedadAlquilerCasa) {
+		                        Persona cliente = clientes.get(i); // Obtener el cliente interesado
+		                        if (cliente != null) {
+		                            casaActual.setFueAlquilado(true);
+		                            Double operacionAlquilerCasa = casaActual.getPrecio() - cliente.getDinero();
+		                            System.out.println("Departamento alquilado exitosamente! Ahora el " + cliente.getNombre() + " posee un saldo de: " + operacionAlquilerCasa);
+		                            casa.set(i, casaActual);
+		                        }
+		                    }
+		                }
+		                break;
 					case 3:
-					    System.out.println("Ingrese el código de la propiedad a alquilar: ");
-					    Integer codigoPropiedadAlquilerTerreno = teclado.nextInt();
-					    for (int i = 0; i < terreno.size(); i++) {
-					        Terreno terrenoActual = terreno.get(i); // Obtener el terreno actual
-					        for (int j = 0; j < clientes.size(); j++) {
-					            Persona cliente = clientes.get(j); // Obtener el cliente actual
-					            // Alquiler de terreno
-					            if (terrenoActual != null && terrenoActual.getCodigo() == codigoPropiedadAlquilerTerreno) {
-					                terrenoActual.setFueAlquilado(true);
-					                Double operacionAlquilerTerreno = terrenoActual.getPrecio() - cliente.getDinero();
-					                System.out.println("Terreno alquilado exitosamente! Ahora el cliente posee un saldo de: " + operacionAlquilerTerreno);
-					                // Actualizar el terreno en el ArrayList si es necesario
-					                terreno.set(i, terrenoActual);
-					            }
-					        }
-					    }
-					    break;
+						System.out.println("Ingrese el código de la propiedad a alquilar: ");
+		                Integer codigoPropiedadAlquilerTerreno = teclado.nextInt();
+		                for (int i = 0; i < terreno.size(); i++) {
+		                    Terreno terrenoActual = terreno.get(i);
+		                    if (terrenoActual != null && terrenoActual.getCodigo() == codigoPropiedadAlquilerTerreno) {
+		                        Persona cliente = clientes.get(i); // Obtener el cliente interesado
+		                        if (cliente != null) {
+		                            terrenoActual.setFueAlquilado(true);
+		                            Double operacionAlquilerTerreno = terrenoActual.getPrecio() - cliente.getDinero();
+		                            System.out.println("Departamento alquilado exitosamente! Ahora el " + cliente.getNombre() + " posee un saldo de: " + operacionAlquilerTerreno);
+		                            terreno.set(i, terrenoActual);
+		                        }
+		                    }
+		                }
+		                break;
 					case 4:
-					    System.out.println("Ingrese el código de la propiedad a alquilar: ");
-					    Integer codigoPropiedadAlquilerPh = teclado.nextInt();
-					    for (int i = 0; i < ph.size(); i++) {
-					        Ph phActual = ph.get(i); // Obtener el PH actual
-					        for (int j = 0; j < clientes.size(); j++) {
-					            Persona cliente = clientes.get(j); // Obtener el cliente actual
-					            // Alquiler de PH
-					            if (phActual != null && phActual.getCodigo() == codigoPropiedadAlquilerPh) {
-					                phActual.setFueAlquilado(true);
-					                Double operacionAlquilerPh = phActual.getPrecio() - cliente.getDinero();
-					                System.out.println("PH alquilado exitosamente! Ahora el cliente posee un saldo de: " + operacionAlquilerPh);
-					                // Actualizar el PH en el ArrayList si es necesario
-					                ph.set(i, phActual);
-					            }
-					        }
-					    }
-					    break;
+						System.out.println("Ingrese el código de la propiedad a alquilar: ");
+		                Integer codigoPropiedadAlquilerPh = teclado.nextInt();
+		                for (int i = 0; i < ph.size(); i++) {
+		                    Ph phActual = ph.get(i);
+		                    if (phActual != null && phActual.getCodigo() == codigoPropiedadAlquilerPh) {
+		                        Persona cliente = clientes.get(i); // Obtener el cliente interesado
+		                        if (cliente != null) {
+		                            phActual.setFueAlquilado(true);
+		                            Double operacionAlquilerPh = phActual.getPrecio() - cliente.getDinero();
+		                            System.out.println("Departamento alquilado exitosamente! Ahora el " + cliente.getNombre() + " posee un saldo de: " + operacionAlquilerPh);
+		                            ph.set(i, phActual);
+		                        }
+		                    }
+		                }
+		                break;
 					case 5:
-					    System.out.println("Ingrese el código de la propiedad a alquilar: ");
-					    Integer codigoPropiedadAlquilerCampo = teclado.nextInt();
-					    for (int i = 0; i < campo.size(); i++) {
-					        Campo campoActual = campo.get(i); // Obtener el campo actual
-					        for (int j = 0; j < clientes.size(); j++) {
-					            Persona cliente = clientes.get(j); // Obtener el cliente actual
-					            // Alquiler de campo
-					            if (campoActual != null && campoActual.getCodigo() == codigoPropiedadAlquilerCampo) {
-					                campoActual.setFueAlquilado(true);
-					                Double operacionAlquilerCampo = campoActual.getPrecio() - cliente.getDinero();
-					                System.out.println("Campo alquilado exitosamente! Ahora el cliente posee un saldo de: " + operacionAlquilerCampo);
-					                // Actualizar el campo en el ArrayList si es necesario
-					                campo.set(i, campoActual);
-					            }
-					        }
-					    }
-					    break;
+						System.out.println("Ingrese el código de la propiedad a alquilar: ");
+		                Integer codigoPropiedadAlquilerCampo = teclado.nextInt();
+		                for (int i = 0; i < campo.size(); i++) {
+		                    Campo campoActual = campo.get(i);
+		                    if (campoActual != null && campoActual.getCodigo() == codigoPropiedadAlquilerCampo) {
+		                        Persona cliente = clientes.get(i); // Obtener el cliente interesado
+		                        if (cliente != null) {
+		                            campoActual.setFueAlquilado(true);
+		                            Double operacionAlquilerCampo = campoActual.getPrecio() - cliente.getDinero();
+		                            System.out.println("Departamento alquilado exitosamente! Ahora el " + cliente.getNombre() + " posee un saldo de: " + operacionAlquilerCampo);
+		                            campo.set(i, campoActual); 
+		                        }
+		                    }
+		                }
+		                break;
 					case 6:
 						System.out.println("Saliendo del menu tipos de propiedades...");
 						break;
@@ -814,7 +777,7 @@ public class Main {
 				break;
 			}	
 		}while(opcion != 9);
-		System.out.println("Saliendo del programa...");
+		System.err.println("Saliendo del programa...");
 	}
 
 	public static void verMenu() {
@@ -822,15 +785,16 @@ public class Main {
 		System.out.println("1) Agregar nuevas propiedades");
 		System.out.println("2) Modificar propiedades existentes");
 		System.out.println("3) Agregar clientes");
-		System.out.println("4) Obtener listado de propiedades ordenados por precio");
-		System.out.println("5) Obtener listado de propiedades ordenados por ubicacion");
+		System.out.println("4) Obtener listado de propiedades ORDENADOS por PRECIO");
+		System.out.println("5) Obtener listado de propiedades ORDENADOS por UBICACION");
 		System.out.println("6) Buscar propiedades por diferentes parametros: ");
-		System.out.println("7) Realizar la venta de una propiedad");
-		System.out.println("8) Realizar el alquiler de una propiedad");
+		System.out.println("7) Realizar la VENTA de una propiedad");
+		System.out.println("8) Realizar el ALQUILER de una propiedad");
 		System.out.println("9) SALIR");
 	}
 	
 	public static void verMenuOpcionBuscar() {
+		System.out.println("--------MENU BUSQUEDA--------");
 		System.out.println("A) Buscar por rango de precios");
 		System.out.println("B) Buscar por ubicacion");
 		System.out.println("C) Buscar por VENTA o ALQUILER");
@@ -838,6 +802,7 @@ public class Main {
 	}
 	
 	public static void verTiposDePropiedades() {
+		System.out.println("---------MENU PROPIEDADES--------");
 		System.out.println("1) Elegir propiedad Departamentos");
 		System.out.println("2) Elegir propiedad Casas");
 		System.out.println("3) Elegir propiedad Terrenos");
