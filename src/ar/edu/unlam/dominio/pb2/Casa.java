@@ -26,5 +26,10 @@ public class Casa extends Propiedad{
 	public Integer setAltura(Integer altura) {
 		return this.altura = altura;
 	}
+
+	@Override
+	public String toString() {
+		return "Casa [calle=" + calle + ", altura=" + altura + "]";
+	}
 	
 }

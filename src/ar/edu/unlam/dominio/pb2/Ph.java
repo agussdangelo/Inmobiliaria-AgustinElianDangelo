@@ -27,4 +27,9 @@ public class Ph extends Propiedad{
 		this.altura = altura;
 	}
 
+	@Override
+	public String toString() {
+		return "Ph [calle=" + calle + ", altura=" + altura + "]";
+	}
+
 }

@@ -37,4 +37,10 @@ public class Campo extends Propiedad{
 		this.tipoDeSuelo = tipoDeSuelo;
 	}
 
+	@Override
+	public String toString() {
+		return "Campo [tamanio=" + tamanio + ", climaDeLaRegion=" + climaDeLaRegion + ", tipoDeSuelo=" + tipoDeSuelo
+				+ "]";
+	}
+
 }

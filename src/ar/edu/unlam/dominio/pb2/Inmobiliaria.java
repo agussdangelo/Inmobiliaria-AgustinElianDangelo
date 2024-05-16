@@ -1,10 +1,13 @@
 package ar.edu.unlam.dominio.pb2;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 
 public class Inmobiliaria {
 	
+	// ATRIBUTOS
 	private String nombre;
 	private String direccion;
 	private Integer telefono;
@@ -21,6 +24,7 @@ public class Inmobiliaria {
 	private static HashSet<Persona> cliente;
 	private Integer cantidadCliente;
 	
+	// CONTRUCTOR POR DEFAULT
 	public Inmobiliaria() {
 		Inmobiliaria.casa = new ArrayList<Casa>();
 		Inmobiliaria.cliente = new HashSet<Persona>();
@@ -28,15 +32,9 @@ public class Inmobiliaria {
 		Inmobiliaria.campo = new ArrayList<Campo>();
 		Inmobiliaria.ph = new ArrayList<Ph>();
 	    Inmobiliaria.terreno = new ArrayList<Terreno>();
-		this.cantidadCliente = 0;
-		this.cantidadCasas = 0;
-		this.cantidadDepartamentos = 0;
-		this.cantidadCampos = 0;
-		this.cantidadPh = 0;
-	    this.cantidadTerrenos = 0;
 	}
 	
-	// CONSTRUCTOR PARA CREAR LA INMOBILIARIA	
+	// CONSTRUCTOR PARA CREAR LA INMOBILIARIA CON SUS PROPIEDADES
 	public Inmobiliaria(String nombre, String direccion, Integer telefono) {
 		this.nombre = nombre;	
 		this.direccion = direccion;
@@ -250,265 +248,351 @@ public class Inmobiliaria {
         }
     }
 	
-	public static Casa[] ordenarPrecioCasa(Casa[] array) {
-	    Casa value;
-	    for (int i = array.length - 1; i > 0; i--) {
-	        for (int j = 0; j < i; j++) {
-	            if (array[j].getPrecio() < array[j + 1].getPrecio()) {
-	                value = array[j + 1];
-	                array[j + 1] = array[j];
-	                array[j] = value;
-	            }
+	public static ArrayList<Casa> ordenarPrecioCasa(ArrayList<Casa> casas) {
+	    ArrayList<Casa> casasOrdenadas = new ArrayList<>(casas);
+	    Collections.sort(casasOrdenadas, new Comparator<Casa>() {
+	        @Override
+	        public int compare(Casa c1, Casa c2) {
+	            return Double.compare(c1.getPrecio(), c2.getPrecio());
 	        }
-	    }
-	    return array;
+	    });
+	    return casasOrdenadas;
 	}
 	
-	public static Departamento[] ordenarPrecioDepartamento(Departamento[] array) {
-	    Departamento value;
-	    for (int i = array.length - 1; i > 0; i--) {
-	        for (int j = 0; j < i; j++) {
-	            if (array[j].getPrecio() < array[j + 1].getPrecio()) {
-	                value = array[j + 1];
-	                array[j + 1] = array[j];
-	                array[j] = value;
-	            }
+	public static ArrayList<Departamento> ordenarPrecioDepartamento(ArrayList<Departamento> depto) {
+		ArrayList<Departamento> deptosOrdenados = new ArrayList<>(depto);
+	    Collections.sort(deptosOrdenados, new Comparator<Departamento>() {
+	    	@Override
+	        public int compare(Departamento d1, Departamento d2) {
+	            return Double.compare(d1.getPrecio(), d2.getPrecio());
 	        }
-	    }
-	    return array;
+	    });
+	    return deptosOrdenados;
 	}
 	
-	public static Ph[] ordenarPrecioPh(Ph[] array) {
-	    Ph value;
-	    for (int i = array.length - 1; i > 0; i--) {
-	        for (int j = 0; j < i; j++) {
-	            if (array[j].getPrecio() < array[j + 1].getPrecio()) {
-	                value = array[j + 1];
-	                array[j + 1] = array[j];
-	                array[j] = value;
-	            }
+	public static ArrayList<Ph> ordenarPrecioPh(ArrayList<Ph> ph) {
+		ArrayList<Ph> phOrdenados = new ArrayList<>(ph);
+	    Collections.sort(phOrdenados, new Comparator<Ph>() {
+	    	@Override
+	        public int compare(Ph ph1, Ph ph2) {
+	            return Double.compare(ph1.getPrecio(), ph2.getPrecio());
 	        }
-	    }
-	    return array;
+	    });
+	    return phOrdenados;
 	}
 	
-	public static Terreno[] ordenarPrecioTerreno(Terreno[] array) {
-	    Terreno value;
-	    for (int i = array.length - 1; i > 0; i--) {
-	        for (int j = 0; j < i; j++) {
-	            if (array[j].getPrecio() < array[j + 1].getPrecio()) {
-	                value = array[j + 1];
-	                array[j + 1] = array[j];
-	                array[j] = value;
-	            }
+	public static ArrayList<Terreno> ordenarPrecioTerreno(ArrayList<Terreno> terreno) {
+		ArrayList<Terreno> terrenosOrdenados = new ArrayList<>(terreno);
+	    Collections.sort(terrenosOrdenados, new Comparator<Terreno>() {
+	    	@Override
+	        public int compare(Terreno t1, Terreno t2) {
+	            return Double.compare(t1.getPrecio(), t2.getPrecio());
 	        }
-	    }
-	    return array;
+	    });
+	    return terrenosOrdenados;
     }
 	
-	public static Campo[] ordenarPrecioCampo(Campo[] array) {
-	    Campo value;
-	    for (int i = array.length - 1; i > 0; i--) {
-	        for (int j = 0; j < i; j++) {
-	            if (array[j].getPrecio() < array[j + 1].getPrecio()) {
-	                value = array[j + 1];
-	                array[j + 1] = array[j];
-	                array[j] = value;
-	            }
+	public static ArrayList<Campo> ordenarPrecioCampo(ArrayList<Campo> campo) {
+		ArrayList<Campo> camposOrdenados = new ArrayList<>(campo);
+	    Collections.sort(camposOrdenados, new Comparator<Campo>() {
+	    	@Override
+	        public int compare(Campo c1, Campo c2) {
+	            return Double.compare(c1.getPrecio(), c2.getPrecio());
 	        }
-	    }
-	    return array;
+	    });
+	    return camposOrdenados;
 	}
 	
-	public static Casa[] ordenarUbicacionesCasa(Casa[] casas) {
-        int n = casas.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (casas[j].getLocalidad().compareTo(casas[j + 1].getLocalidad()) > 0) {
-                    Casa temp = casas[j];
-                    casas[j] = casas[j + 1];
-                    casas[j + 1] = temp;
-                }
-            }
-        }
-		return casas;
-    }
+	public static ArrayList<Casa> ordenarUbicacionesCasa(ArrayList<Casa> casas) {
+	    int n = casas.size();
+	    for (int i = 0; i < n - 1; i++) {
+	        for (int j = 0; j < n - i - 1; j++) {
+	            if (casas.get(j).getLocalidad().compareTo(casas.get(j + 1).getLocalidad()) > 0) {
+	                Casa temp = casas.get(j);
+	                casas.set(j, casas.get(j + 1));
+	                casas.set(j + 1, temp);
+	            }
+	        }
+	    }
+	    return casas;
+	}
 	
-	public static Departamento[] ordenarUbicacionesDepto(Departamento[] depto) {
-        int n = depto.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (depto[j].getLocalidad().compareTo(depto[j + 1].getLocalidad()) > 0) {
-                    Departamento temp = depto[j];
-                    depto[j] = depto[j + 1];
-                    depto[j + 1] = temp;
-                }
-            }
-        }
-		return depto;
-    }
+	public static ArrayList<Departamento> ordenarUbicacionesDepartamento(ArrayList<Departamento> depto) {
+	    int n = depto.size();
+	    for (int i = 0; i < n - 1; i++) {
+	        for (int j = 0; j < n - i - 1; j++) {
+	            if (depto.get(j).getLocalidad().compareTo(depto.get(j + 1).getLocalidad()) > 0) {
+	                Departamento temp = depto.get(j);
+	                depto.set(j, depto.get(j + 1));
+	                depto.set(j + 1, temp);
+	            }
+	        }
+	    }
+	    return depto;
+	}
 	
-	public static Ph[] ordenarUbicacionesPh(Ph[] ph) {
-        int n = ph.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (ph[j].getLocalidad().compareTo(ph[j + 1].getLocalidad()) > 0) {
-                    Ph temp = ph[j];
-                    ph[j] = ph[j + 1];
-                    ph[j + 1] = temp;
-                }
-            }
-        }
-		return ph;
-    }
+	public static ArrayList<Ph> ordenarUbicacionesPh(ArrayList<Ph> ph) {
+	    int n = ph.size();
+	    for (int i = 0; i < n - 1; i++) {
+	        for (int j = 0; j < n - i - 1; j++) {
+	            if (ph.get(j).getLocalidad().compareTo(ph.get(j + 1).getLocalidad()) > 0) {
+	                Ph temp = ph.get(j);
+	                ph.set(j, ph.get(j + 1));
+	                ph.set(j + 1, temp);
+	            }
+	        }
+	    }
+	    return ph;
+	}
 	
-	public static Terreno[] ordenarUbicacionesTerreno(Terreno[] terreno) {
-        int n = terreno.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (terreno[j].getLocalidad().compareTo(terreno[j + 1].getLocalidad()) > 0) {
-                    Terreno temp = terreno[j];
-                    terreno[j] = terreno[j + 1];
-                    terreno[j + 1] = temp;
-                }
-            }
-        }
-		return terreno;
-    }
+	public static ArrayList<Terreno> ordenarUbicacionesTerreno(ArrayList<Terreno> terreno) {
+	    int n = terreno.size();
+	    for (int i = 0; i < n - 1; i++) {
+	        for (int j = 0; j < n - i - 1; j++) {
+	            if (terreno.get(j).getLocalidad().compareTo(terreno.get(j + 1).getLocalidad()) > 0) {
+	                Terreno temp = terreno.get(j);
+	                terreno.set(j, terreno.get(j + 1));
+	                terreno.set(j + 1, temp);
+	            }
+	        }
+	    }
+	    return terreno;
+	}
 	
-	public static Campo[] ordenarUbicacionesCampo(Campo[] campos) {
-        int n = campos.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (campos[j].getLocalidad().compareTo(campos[j + 1].getLocalidad()) > 0) {
-                    Campo temp = campos[j];
-                    campos[j] = campos[j + 1];
-                    campos[j + 1] = temp;
-                }
-            }
-        }
-		return campos;
-    }
+	public static ArrayList<Campo> ordenarUbicacionesCampo(ArrayList<Campo> campo) {
+	    int n = campo.size();
+	    for (int i = 0; i < n - 1; i++) {
+	        for (int j = 0; j < n - i - 1; j++) {
+	            if (campo.get(j).getLocalidad().compareTo(campo.get(j + 1).getLocalidad()) > 0) {
+	                Campo temp = campo.get(j);
+	                campo.set(j, campo.get(j + 1));
+	                campo.set(j + 1, temp);
+	            }
+	        }
+	    }
+	    return campo;
+	}
 	
-	public static void buscarPropiedadesPorPrecioCasa(Casa[] casas, long precioMin, long precioMax) {
+	public static void buscarPropiedadesPorPrecioCasa(ArrayList<Casa> casas, long precioMin, long precioMax) {
         System.out.println("Propiedades encontradas dentro del rango de precios: ");
         for (Casa p : casas) {
            if (p.getPrecio() >= precioMin && p.getPrecio() <= precioMax) {
                System.out.println("#############################");
-                System.out.println("Fue encontrada la casa con direccion " + p.getCalle() + " altura " + p.getAltura() 
-                + " con un precio de " + p.getPrecio() + " y codigo " + p.getCodigo());
-                System.out.println("#############################");
+               System.out.println(p.toString());
+               System.out.println("#############################");
             }
         }
     }
 	
-	public static void buscarPropiedadesPorPrecioDepto(Departamento[] depto, long precioMin, long precioMax) {
+	public static void buscarPropiedadesPorPrecioDepto(ArrayList<Departamento> depto, long precioMin, long precioMax) {
         System.out.println("Propiedades encontradas dentro del rango de precios: ");
         for (Departamento d : depto) {
            if (d.getPrecio() >= precioMin && d.getPrecio() <= precioMax) {
                System.out.println("#############################");
-               System.out.println("Fue encontrada el departamento con direccion " + d.getCalle() + " altura " + d.getAltura() 
-               + " con un precio de " + d.getPrecio() + " y codigo " + d.getCodigo());
-                System.out.println("#############################");
+               System.out.println(d.toString());
+               System.out.println("#############################");
             }
         }
     }
 	
-	public static void buscarPropiedadesPorPrecioCampo(Campo[] campo, long precioMin, long precioMax) {
+	public static void buscarPropiedadesPorPrecioCampo(ArrayList<Campo> campo, long precioMin, long precioMax) {
         System.out.println("Propiedades encontradas dentro del rango de precios: ");
         for (Campo campos : campo) {
            if (campos.getPrecio() >= precioMin && campos.getPrecio() <= precioMax) {
                System.out.println("#############################");
-               System.out.println("Fue encontrada el campo ubicado en " + campos.getLocalidad() + " tamanio " + campos.getTamanio() 
-               + " con un precio de " + campos.getPrecio() + " y codigo " + campos.getCodigo());
-                System.out.println("#############################");
+               System.out.println(campos.toString());
+               System.out.println("#############################");
             }
         }
     }
 	
-	public static void buscarPropiedadesPorPrecioPh(Ph[] ph, long precioMin, long precioMax) {
+	public static void buscarPropiedadesPorPrecioPh(ArrayList<Ph> ph, long precioMin, long precioMax) {
         System.out.println("Propiedades encontradas dentro del rango de precios: ");
         for (Ph phs : ph) {
            if (phs.getPrecio() >= precioMin && phs.getPrecio() <= precioMax) {
                System.out.println("#############################");
-               System.out.println("Fue encontrada la casa con direccion " + phs.getCalle() + " altura " + phs.getAltura() 
-               + " con un precio de " + phs.getPrecio() + " y codigo " + phs.getCodigo());
-                System.out.println("#############################");
+               System.out.println(phs.toString());
+               System.out.println("#############################");
             }
         }
     }
 	
-	public static void buscarPropiedadesPorPrecioTerrenos(Terreno[] terreno, long precioMin, long precioMax) {
+	public static void buscarPropiedadesPorPrecioTerrenos(ArrayList<Terreno> terreno, long precioMin, long precioMax) {
         System.out.println("Propiedades encontradas dentro del rango de precios: ");
         for (Terreno t : terreno) {
            if (t.getPrecio() >= precioMin && t.getPrecio() <= precioMax) {
                System.out.println("#############################");
-               System.out.println("El terreno ubicado en " + t.getLocalidad() + " con un tamanio de " + 
-						t.getTamanio() + " tiene un precio de " + t.getPrecio() + " y su codigo " + t.getCodigo());
-                System.out.println("#############################");
+               System.out.println(t.toString());
+               System.out.println("#############################");
             }
         }
     }
 	
-	public static void buscarPropiedadesPorUbicacionCasa(Casa[] casas, String ubicacionBusqueda) {
+	public static void buscarPropiedadesPorUbicacionCasa(ArrayList<Casa> casas, String ubicacionBusqueda) {
         System.out.println("Propiedades encontradas en la ubicación " + ubicacionBusqueda + " : ");
         for (Casa c : casas) {
             if (c.getLocalidad().equalsIgnoreCase(ubicacionBusqueda)) {
-                 System.out.println("#############################");
-                 System.out.println("La propiedad casa en la calle " + c.getCalle() + " con altura " + 
-     					c.getAltura() + " ubicado en " + c.getLocalidad());
+                System.out.println("#############################");
+                System.out.println(c.toString());
                 System.out.println("#############################");
             }
         }
     }
 	
-	public static void buscarPropiedadesPorUbicacionDepto(Departamento[] depto, String ubicacionBusqueda) {
+	public static void buscarPropiedadesPorUbicacionDepto(ArrayList<Departamento> depto, String ubicacionBusqueda) {
         System.out.println("Propiedades encontradas en la ubicación " + ubicacionBusqueda + " : ");
         for (Departamento d : depto) {
             if (d.getLocalidad().equalsIgnoreCase(ubicacionBusqueda)) {
-                 System.out.println("#############################");
-                 System.out.println("La propiedad departamento en la calle " + d.getCalle() + " con altura " + 
-     					d.getAltura() + " ubicado en " + d.getLocalidad() + " piso numero " + d.getPiso());
+                System.out.println("#############################");
+                System.out.println(d.toString());
                 System.out.println("#############################");
             }
         }
     }
 	
-	public static void buscarPropiedadesPorUbicacionPh(Ph[] ph, String ubicacionBusqueda) {
+	public static void buscarPropiedadesPorUbicacionPh(ArrayList<Ph> ph, String ubicacionBusqueda) {
         System.out.println("Propiedades encontradas en la ubicación " + ubicacionBusqueda + " : ");
         for (Ph p : ph) {
             if (p.getLocalidad().equalsIgnoreCase(ubicacionBusqueda)) {
-                 System.out.println("#############################");
-                 System.out.println("La propiedad PH en la calle " + p.getCalle() + " con altura " + 
-     					p.getAltura() + " ubicado en " + p.getLocalidad());
+                System.out.println("#############################");
+                System.out.println(p.toString());
                 System.out.println("#############################");
             }
         }
     }
 	
-	public static void buscarPropiedadesPorUbicacionTerreno(Terreno[] terreno, String ubicacionBusqueda) {
+	public static void buscarPropiedadesPorUbicacionTerreno(ArrayList<Terreno> terreno, String ubicacionBusqueda) {
         System.out.println("Propiedades encontradas en la ubicación " + ubicacionBusqueda + " : ");
         for (Terreno t : terreno) {
             if (t.getLocalidad().equalsIgnoreCase(ubicacionBusqueda)) {
-                 System.out.println("#############################");
-                 System.out.println("La propiedad Terreno con forma de " + t.getForma() + " con tamanio " + 
-     					t.getTamanio() + " ubicado en " + t.getLocalidad());
+                System.out.println("#############################");
+                System.out.println(t.toString());
                 System.out.println("#############################");
             }
         }
     }
 	
-	public static void buscarPropiedadesPorUbicacionCampo(Campo[] campo, String ubicacionBusqueda) {
+	public static void buscarPropiedadesPorUbicacionCampo(ArrayList<Campo> campo, String ubicacionBusqueda) {
         System.out.println("Propiedades encontradas en la ubicación " + ubicacionBusqueda + " : ");
         for (Campo campos : campo) {
             if (campos.getLocalidad().equalsIgnoreCase(ubicacionBusqueda)) {
-                 System.out.println("#############################");
-                 System.out.println("La propiedad Campo con tamanio de " + campos.getTamanio() + " con tipo de suelo " + 
-     					campos.getTipoDeSuelo() + " ubicado en " + campos.getLocalidad());
+                System.out.println("#############################");
+                System.out.println(campos.toString());
                 System.out.println("#############################");
             }
         }
     }
+	
+	public static void buscarPropiedadesPorAlquilerCasa(ArrayList<Casa> casas, Boolean estaEnAlquiler) {
+        System.out.println("Propiedades alquiladas encontradas: ");
+        for (Casa casaActual : casas) {
+           if (casaActual.getFueAlquilado().equals(estaEnAlquiler)) {
+                System.out.println("#############################");
+                System.out.println(casaActual.toString());
+                System.out.println("#############################");
+            }
+        }
+    }
+	
+	public static void buscarPropiedadesPorAlquilerDepto(ArrayList<Departamento> depto, Boolean estaEnAlquiler) {
+		 System.out.println("Propiedades alquiladas encontradas: ");
+        for (Departamento deptoActual : depto) {
+           if (deptoActual.getFueAlquilado().equals(estaEnAlquiler)) {
+               System.out.println("#############################");
+               System.out.println(deptoActual.toString());
+               System.out.println("#############################");
+            }
+        }
+    }
+	
+	public static void buscarPropiedadesPorAlquilerPh(ArrayList<Ph> ph, Boolean estaEnAlquiler) {
+		 System.out.println("Propiedades alquiladas encontradas: ");
+        for (Ph phs : ph) {
+           if (phs.getFueAlquilado().equals(estaEnAlquiler)) {
+        	   System.out.println("#############################");
+        	   System.out.println(phs.toString());
+               System.out.println("#############################");
+            }
+        }
+    }
+	
+	public static void buscarPropiedadesPorAlquilerTerreno(ArrayList<Terreno> terreno, Boolean estaEnAlquiler) {
+		 System.out.println("Propiedades alquiladas encontradas: ");
+        for (Terreno terrenoActual : terreno) {
+           if (terrenoActual.getFueAlquilado().equals(estaEnAlquiler)) {
+        	   System.out.println("#############################");
+               System.out.println(terrenoActual.toString());
+               System.out.println("#############################");
+            }
+        }
+    }
+	
+	public static void buscarPropiedadesPorAlquilerCampo(ArrayList<Campo> campo, Boolean estaEnAlquiler) {
+		 System.out.println("Propiedades alquiladas encontradas: ");
+        for (Campo campoActual : campo) {
+           if (campoActual.getFueAlquilado().equals(estaEnAlquiler)) {
+        	   System.out.println("#############################");
+               System.out.println(campoActual.toString());
+               System.out.println("#############################");
+            }
+        }
+    }
+	
+	public static void buscarPropiedadesPorVentaCasa(ArrayList<Casa> casas, Boolean estaEnVenta) {
+		 System.out.println("Propiedades vendidas encontradas: ");
+        for (Casa casaActual : casas) {
+           if (casaActual.getFueVendido().equals(estaEnVenta)) {
+               System.out.println("#############################");
+               System.out.println(casaActual.toString());
+               System.out.println("#############################");
+            }
+        }
+    }
+	
+	public static void buscarPropiedadesPorVentaDepto(ArrayList<Departamento> depto, Boolean estaEnVenta) {
+		System.out.println("Propiedades vendidas encontradas: ");
+        for (Departamento deptoActual : depto) {
+           if (deptoActual.getFueVendido().equals(estaEnVenta)) {
+                System.out.println("#############################");
+                System.out.println(deptoActual.toString());
+                System.out.println("#############################");
+            }
+        }
+    }
+	
+	public static void buscarPropiedadesPorVentaPh(ArrayList<Ph> ph, Boolean estaEnVenta) {
+		System.out.println("Propiedades vendidas encontradas: ");
+        for (Ph phs : ph) {
+           if (phs.getFueVendido().equals(estaEnVenta)) {
+        	   System.out.println("#############################");
+               System.out.println(phs.toString());
+               System.out.println("#############################");
+            }
+        }
+    }
+	
+	public static void buscarPropiedadesPorVentaTerreno(ArrayList<Terreno> terreno, Boolean estaEnVenta) {
+		System.out.println("Propiedades vendidas encontradas: ");
+        for (Terreno terrenoActual : terreno) {
+           if (terrenoActual.getFueVendido().equals(estaEnVenta)) {
+        	  System.out.println("#############################");
+              System.out.println(terrenoActual.toString());
+              System.out.println("#############################");
+            }
+        }
+    }
+	
+	public static void buscarPropiedadesPorVentaCampo(ArrayList<Campo> campo, Boolean estaEnVenta) {
+		System.out.println("Propiedades vendidas encontradas: ");
+        for (Campo campoActual : campo) {
+           if (campoActual.getFueVendido().equals(estaEnVenta)) {
+        	   System.out.println("#############################");
+               System.out.println(campoActual.toString());
+               System.out.println("#############################");
+            }
+        }
+    }
+
 	
 	public Boolean agregarCasa(Casa casaNueva) {
 		return casa.add(casaNueva);
@@ -517,6 +601,18 @@ public class Inmobiliaria {
 	public Boolean agregarDepartamento(Departamento deptoNuevo) {
        return departamento.add(deptoNuevo);
     }
+	
+	public Boolean agregarPh(Ph phNuevo) {
+	   return ph.add(phNuevo);
+	}
+	
+	public Boolean agregarCampo(Campo campoNuevo) {
+	   return campo.add(campoNuevo);
+	}
+	
+	public Boolean agregarTerreno(Terreno terrenoNuevo) {
+	    return terreno.add(terrenoNuevo);
+	}
 	
 	public Boolean agregarCliente(Persona clienteNuevo) {
 		for (Persona cliente : cliente) {
@@ -606,6 +702,7 @@ public class Inmobiliaria {
         for (Casa casa : casas) {
             if (casa != null && casa.getPrecio() >= precioMin && casa.getPrecio() <= precioMax) {
                 casasBuscadas.add(casa);
+         
             }
         }
         
@@ -616,5 +713,37 @@ public class Inmobiliaria {
         }
 
    }
+	
+	public static ArrayList<Casa> buscarPropiedadesPorVenta(Boolean propiedadPorVentaBuscada) {
+	ArrayList<Casa> casasBuscadas = new ArrayList<>();
+		
+		for (Casa casaActual : casa) {
+			if(casa != null && casaActual.getFueVendido().equals(propiedadPorVentaBuscada)) {
+				casasBuscadas.add(casaActual);
+			}
+		}
+		if(casasBuscadas.isEmpty()) {
+			return casasBuscadas;
+		}
+		return casasBuscadas;
+		
+    }
+	
+	public static ArrayList<Casa> buscarPropiedadPorVentaNulo(ArrayList<Casa> casas, Boolean propiedadPorVentaBuscada) {
+		ArrayList<Casa> casasBuscadas = new ArrayList<>();
+		
+		for (Casa casaActual : casas) {
+			if(casa != null && casaActual.getFueVendido().equals(propiedadPorVentaBuscada)) {
+				casasBuscadas.add(casaActual);
+			}
+		}
+		
+		if(casasBuscadas.isEmpty()) {
+			return casasBuscadas;
+		}else {
+			return null;
+		}
+		
+	}
 
 }

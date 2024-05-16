@@ -37,4 +37,9 @@ public class Departamento extends Propiedad{
 		this.piso = piso;
 	}
 
+	@Override
+	public String toString() {
+		return "Departamento [calle=" + calle + ", altura=" + altura + ", piso=" + piso + "]";
+	}
+
 }

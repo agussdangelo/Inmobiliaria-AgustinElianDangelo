@@ -36,5 +36,10 @@ public class Terreno extends Propiedad{
 	public void setCondicionDeSuelo(String condicionDeSuelo) {
 		this.condicionDeSuelo = condicionDeSuelo;
 	}
+
+	@Override
+	public String toString() {
+		return "Terreno [tamanio=" + tamanio + ", forma=" + forma + ", condicionDeSuelo=" + condicionDeSuelo + "]";
+	}
 	
 }

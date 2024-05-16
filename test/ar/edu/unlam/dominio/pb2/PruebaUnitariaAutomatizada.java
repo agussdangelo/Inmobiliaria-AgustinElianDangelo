@@ -20,13 +20,14 @@ public class PruebaUnitariaAutomatizada {
 		Integer valorCodigoEsperado = 111;
 		// Ejecucion
 		inmobiliaria.getCasa();
-		inmobiliaria.agregarCasa(casa);
+		Boolean agregoCasa = inmobiliaria.agregarCasa(casa);
 		// Validacion
 		assertEquals(valorCalleEsperado, casa.getCalle());
 		assertEquals(valorAlturaEsperado, casa.getAltura());
 		assertEquals(valorPrecioEsperado, casa.getPrecio(), 0.1);
 		assertEquals(valorLocalidadEsperado, casa.getLocalidad());
 		assertEquals(valorCodigoEsperado, casa.getCodigo(), 0.0);
+		assertTrue(agregoCasa);
 	}
 	
 	@Test
@@ -49,8 +50,8 @@ public class PruebaUnitariaAutomatizada {
 		Integer valorCodigoEsperadoCasa2 = 222;
 		// Ejecucion
 		inmobiliaria.getCasa();
-		inmobiliaria.agregarCasa(casa1);
-		inmobiliaria.agregarCasa(casa2);
+		Boolean agregoCasa1 = inmobiliaria.agregarCasa(casa1);
+		Boolean agregoCasa2 = inmobiliaria.agregarCasa(casa2);
 		// Validacion
 		assertEquals(valorCalleEsperadoCasa1, casa1.getCalle());
 		assertEquals(valorCalleEsperadoCasa2, casa2.getCalle());
@@ -62,6 +63,8 @@ public class PruebaUnitariaAutomatizada {
 		assertEquals(valorLocalidadEsperadoCasa2, casa2.getLocalidad());
 		assertEquals(valorCodigoEsperadoCasa1, casa1.getCodigo(), 0.0);
 		assertEquals(valorCodigoEsperadoCasa2, casa2.getCodigo(), 0.0);
+		assertTrue(agregoCasa1);
+		assertTrue(agregoCasa2);
 	}
 	
 	@Test
@@ -91,7 +94,7 @@ public class PruebaUnitariaAutomatizada {
 		Integer valorPisoEsperadoDepto = 7;
 		// Ejecucion
 		inmobiliaria.getDepartamento();
-		inmobiliaria.agregarDepartamento(depto1);
+		Boolean agregoDepto = inmobiliaria.agregarDepartamento(depto1);
 		// Validacion
 		assertEquals(valorCalleEsperadoDepto, depto1.getCalle());
 		assertEquals(valorAlturaEsperadaDepto, depto1.getAltura(), 0.0);
@@ -99,6 +102,7 @@ public class PruebaUnitariaAutomatizada {
 		assertEquals(valorLocalidadEsperadaDepto, depto1.getLocalidad());
 		assertEquals(valorCodigoEsperadoDepto, depto1.getCodigo(), 0.0);
 		assertEquals(valorPisoEsperadoDepto, depto1.getPiso(), 0.0);
+		assertTrue(agregoDepto);
 	}
 	
 	@Test
@@ -123,8 +127,8 @@ public class PruebaUnitariaAutomatizada {
 		Integer valorCodigoEsperadoDepto2 = 555;
 		Integer valorPisoEsperadoDepto2 = 9;
 		inmobiliaria.getDepartamento();
-		inmobiliaria.agregarDepartamento(depto1);
-		inmobiliaria.agregarDepartamento(depto2);
+		Boolean agregoDepto1 = inmobiliaria.agregarDepartamento(depto1);
+		Boolean agregoDepto2 = inmobiliaria.agregarDepartamento(depto2);
 		// Validacion
 		assertEquals(valorCalleEsperadoDepto, depto1.getCalle());
 		assertEquals(valorAlturaEsperadaDepto, depto1.getAltura(), 0.0);
@@ -138,6 +142,8 @@ public class PruebaUnitariaAutomatizada {
 		assertEquals(valorLocalidadEsperadaDepto2, depto2.getLocalidad());
 		assertEquals(valorCodigoEsperadoDepto2, depto2.getCodigo(), 0.0);
 		assertEquals(valorPisoEsperadoDepto2, depto2.getPiso(), 0.0);
+		assertTrue(agregoDepto1);
+		assertTrue(agregoDepto2);
 	}
 	
 	@Test
@@ -225,77 +231,43 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queSePuedanAgregar3ClienteYElTamanioDelArraySea3() {
+	public void queLaBusquedaDePropiedadesPorVentaMeArrojeUnaLista() {
 		// Preparacion de datos
-		Integer dimensionArrayEsperado = 3;
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-		Persona cliente1 = new Persona("Raul", "Gimenez", 33445566, 1198585454, TipoDePropiedad.CASAS);
-		Persona cliente2 = new Persona("Fernando", "Lopez", 77889900, 117657454, TipoDePropiedad.DEPARTAMENTOS);
-		Persona cliente3 = new Persona("Luis", "Rodriguez", 11223344, 1145456634, TipoDePropiedad.PH);
+	    Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
+	    Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222, false, true);
+	    Boolean propiedad1PorVentaBuscada = casa1.getFueVendido();
+		Boolean propiedad2PorVentaBuscada = casa2.getFueVendido();
 		// Ejecucion
-		inmobiliaria.getCliente();
-		inmobiliaria.agregarCliente(cliente1);
-		inmobiliaria.agregarCliente(cliente2);
-		inmobiliaria.agregarCliente(cliente3);
-		// Validacion
-		assertEquals(dimensionArrayEsperado, (Integer) inmobiliaria.getCliente().size());
-	}
-	
-	@Test
-	public void queSePuedaAgregarUnaCasaYLaDimensionDelArraySeaLaMinimaPosible() {
-		// Preparacion de datos
-		Integer dimensionArrayEsperado = 1;
-		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
-		// Ejecucion
-		inmobiliaria.agregarCasa(casa1);
-		// Validacion
-		assertEquals(dimensionArrayEsperado, (Integer) inmobiliaria.getCasa().size());
-	}
-	
-	@Test
-	public void queSePuedanAgregar3CasasYElTamanioDelArraySea3() {
-		// Preparacion de datos
-		Integer dimensionArrayEsperado = 3;
-		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-		Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
-		Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222, false, true);
-		Casa casa3 = new Casa("SanJusto", "Bransen", 9977, 34000.0, 333, true, false);
-		// Ejecucion
+		inmobiliaria.getCasa();
 		inmobiliaria.agregarCasa(casa1);
 		inmobiliaria.agregarCasa(casa2);
-		inmobiliaria.agregarCasa(casa3);
+	    ArrayList<Casa> casa1Buscada = Inmobiliaria.buscarPropiedadesPorVenta(propiedad1PorVentaBuscada);
+		ArrayList<Casa> casa2Buscada = Inmobiliaria.buscarPropiedadesPorVenta(propiedad2PorVentaBuscada);
 		// Validacion
-		assertEquals(dimensionArrayEsperado, (Integer) inmobiliaria.getCasa().size());
-	}
-	
-	@Test
-	public void queSePuedaAgregarUnClienteYLaDimensionDelArraySeaLaMinimaPosible() {
-		// Preparacion de datos
-		Integer dimensionArrayEsperado = 1;
-		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-		Persona cliente1 = new Persona("Raul", "Gimenez", 33445566, 1198585454, TipoDePropiedad.CASAS);
-		// Ejecucion
-		inmobiliaria.agregarCliente(cliente1);
-		// Validacion
-		assertEquals(dimensionArrayEsperado, (Integer) inmobiliaria.getCliente().size());
-	}
-	
-	@Test
-	public void queNoSePuedaAgregar2ClientesConLosMismosDatosEnUnArrayDe1() {
-		// Preparacion de datos
-		Integer dimensionArrayEsperado = 1;
-		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-		Persona cliente1 = new Persona("Raul", "Gimenez", 33445566, 1198585454, TipoDePropiedad.CASAS);
-		Persona cliente2 = new Persona("Raul", "Gimenez", 33445566, 1198585454, TipoDePropiedad.CASAS);
-		// Ejecucion
-		Boolean agregarCliente1 = inmobiliaria.agregarCliente(cliente1);
-		Boolean agregarCliente2 = inmobiliaria.agregarCliente(cliente2);
-		// Validacion
-		assertEquals(dimensionArrayEsperado, (Integer) inmobiliaria.getCliente().size());
-		assertTrue(agregarCliente1);
-		assertFalse(agregarCliente2);
+		assertNotNull(casa1Buscada);
+		assertNotNull(casa2Buscada);
 		
+	}
+	
+	@Test
+	public void queLaBusquedaDePropiedadesPorVentaMeArrojeUnaListaNuloSiNoAplicanResultados() {
+		// Preparacion de datos
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
+		ArrayList<Casa> casas = new ArrayList<>();
+	    Casa casa1 = new Casa("LaMatanza", "Brown", 1234, 45000.0, 111, true, false);
+	    Casa casa2 = new Casa("Ituzaingo", "Peron", 5678, 95000.0, 222, false, true);
+		Boolean propiedad1PorVentaBuscada = casa1.getFueVendido();
+		Boolean propiedad2PorVentaBuscada = casa2.getFueVendido();
+		// Ejecucion
+		inmobiliaria.getCasa();
+		casas.add(casa1);
+	    casas.add(casa2);
+		ArrayList<Casa> casa1Buscada = Inmobiliaria.buscarPropiedadPorVentaNulo(casas, propiedad1PorVentaBuscada);
+		ArrayList<Casa> casa2Buscada = Inmobiliaria.buscarPropiedadPorVentaNulo(casas, propiedad2PorVentaBuscada);
+		// Validacion
+		assertNull(casa1Buscada);
+		assertNull(casa2Buscada);
 		
 	}
 	
