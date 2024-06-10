@@ -56,5 +56,8 @@ public abstract class Propiedad {
 		this.fueAlquilado = fueAlquilado;
 	}
 	
+	public void alquilarPropiedad() {
+		this.fueAlquilado = true;
+	} 
 	
 }

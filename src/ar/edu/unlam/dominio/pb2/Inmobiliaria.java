@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 
-public class Inmobiliaria implements Comparable<Object>{
+public class Inmobiliaria{
 	
 	// ATRIBUTOS
 	private String nombre;
@@ -17,6 +17,7 @@ public class Inmobiliaria implements Comparable<Object>{
 	private ArrayList<Terreno> terreno;
 	private ArrayList<Campo> campo;
 	private HashSet<Persona> cliente;
+	private ArrayList<Propiedad> propiedad;
 	
 	// CONTRUCTOR POR DEFAULT
 	public Inmobiliaria() {
@@ -26,6 +27,7 @@ public class Inmobiliaria implements Comparable<Object>{
 		this.campo = new ArrayList<Campo>();
 		this.ph = new ArrayList<Ph>();
 	    this.terreno = new ArrayList<Terreno>();
+	    this.propiedad = new ArrayList<Propiedad>();
 	}
 	
 	// CONSTRUCTOR PARA CREAR LA INMOBILIARIA CON SUS PROPIEDADES
@@ -39,6 +41,7 @@ public class Inmobiliaria implements Comparable<Object>{
 		this.campo = new ArrayList<Campo>();
 		this.ph = new ArrayList<Ph>();
 	    this.terreno = new ArrayList<Terreno>();
+	    this.propiedad = new ArrayList<Propiedad>();
 	}
 
 	// GETTERS AND SETTERS
@@ -113,6 +116,14 @@ public class Inmobiliaria implements Comparable<Object>{
 	public void setCliente(HashSet<Persona> cliente) {
 		this.cliente = cliente;
 	}
+	
+	public ArrayList<Propiedad> getPropiedad() {
+		return propiedad;
+	}
+
+	public void setPropiedad(ArrayList<Propiedad> propiedad) {
+		this.propiedad = propiedad;
+	}
 
 	public Integer getCantidadCasas() {
 		return casa.size();
@@ -139,7 +150,11 @@ public class Inmobiliaria implements Comparable<Object>{
 	public Integer getCantidadCliente() {
 		return cliente.size();
 	}
-
+	
+	public Integer getCantidadPropiedades() {
+		return propiedad.size();
+	}
+	
 	// METODOS
 	
 	public static void buscarPropiedadesPorCodigoCasas(Inmobiliaria inmobiliaria, int codigoBusqueda) {
@@ -586,6 +601,14 @@ public class Inmobiliaria implements Comparable<Object>{
 	    return terreno.add(terrenoNuevo);
 	}
 	
+	public Boolean agregarPropiedad(Propiedad propiedadNuevo) {
+	    return propiedad.add(propiedadNuevo);
+	}
+	
+	public Boolean venderPropiedad(Propiedad propiedadNuevo) {
+	    return propiedad.remove(propiedadNuevo);
+	}
+	
 	public Boolean agregarCliente(Persona clienteNuevo) {
 		for (Persona cliente : cliente) {
 			if(cliente != null && cliente.getNombre().equals(clienteNuevo.getNombre()) && 
@@ -717,10 +740,24 @@ public class Inmobiliaria implements Comparable<Object>{
 		}
 		
 	}
-
-	@Override
-	public int compareTo(Object o) {
-		return 0;
+	
+	public Boolean alquilarPropiedad(Propiedad propiedad) {
+		if (this.propiedad.contains(propiedad) && !propiedad.getFueAlquilado()) {
+			propiedad.alquilarPropiedad();
+	        return true;
+	    }
+		return false;
 	}
+	
+	public Boolean permutaPropiedades(Propiedad propiedad1, Inmobiliaria otraInmobiliaria, Propiedad propiedad2) {
+        if (this.propiedad.contains(propiedad1) && otraInmobiliaria.getPropiedad().contains(propiedad2)) {
+            this.propiedad.remove(propiedad1);
+            otraInmobiliaria.getPropiedad().remove(propiedad2);
+            this.propiedad.add(propiedad2);
+            otraInmobiliaria.getPropiedad().add(propiedad1);
+            return true;
+        }
+        return false;
+    }
 
 }
