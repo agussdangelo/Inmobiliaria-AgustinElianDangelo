@@ -5,33 +5,33 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 
-public class Inmobiliaria {
+public class Inmobiliaria implements Comparable{
 	
 	// ATRIBUTOS
 	private String nombre;
 	private String direccion;
 	private Integer telefono;
-	private static ArrayList<Casa> casa;
+	private ArrayList<Casa> casa;
 	private Integer cantidadCasas;
-	private static ArrayList<Departamento> departamento;
+	private ArrayList<Departamento> departamento;
 	private Integer cantidadDepartamentos;
-	private static ArrayList<Ph> ph;
+	private ArrayList<Ph> ph;
 	private Integer cantidadPh;
-	private static ArrayList<Terreno> terreno;
+	private ArrayList<Terreno> terreno;
 	private Integer cantidadTerrenos;
-	private static ArrayList<Campo> campo;
+	private ArrayList<Campo> campo;
 	private Integer cantidadCampos;
-	private static HashSet<Persona> cliente;
+	private HashSet<Persona> cliente;
 	private Integer cantidadCliente;
 	
 	// CONTRUCTOR POR DEFAULT
 	public Inmobiliaria() {
-		Inmobiliaria.casa = new ArrayList<Casa>();
-		Inmobiliaria.cliente = new HashSet<Persona>();
-		Inmobiliaria.departamento = new ArrayList<Departamento>();
-		Inmobiliaria.campo = new ArrayList<Campo>();
-		Inmobiliaria.ph = new ArrayList<Ph>();
-	    Inmobiliaria.terreno = new ArrayList<Terreno>();
+		this.casa = new ArrayList<Casa>();
+		this.cliente = new HashSet<Persona>();
+		this.departamento = new ArrayList<Departamento>();
+		this.campo = new ArrayList<Campo>();
+		this.ph = new ArrayList<Ph>();
+	    this.terreno = new ArrayList<Terreno>();
 	}
 	
 	// CONSTRUCTOR PARA CREAR LA INMOBILIARIA CON SUS PROPIEDADES
@@ -39,12 +39,12 @@ public class Inmobiliaria {
 		this.nombre = nombre;	
 		this.direccion = direccion;
 		this.telefono = telefono;
-		Inmobiliaria.casa = new ArrayList<Casa>();
-		Inmobiliaria.cliente = new HashSet<Persona>();
-		Inmobiliaria.departamento = new ArrayList<Departamento>();
-		Inmobiliaria.campo = new ArrayList<Campo>();
-		Inmobiliaria.ph = new ArrayList<Ph>();
-	    Inmobiliaria.terreno = new ArrayList<Terreno>();
+		this.casa = new ArrayList<Casa>();
+		this.cliente = new HashSet<Persona>();
+		this.departamento = new ArrayList<Departamento>();
+		this.campo = new ArrayList<Campo>();
+		this.ph = new ArrayList<Ph>();
+	    this.terreno = new ArrayList<Terreno>();
 	}
 
 	// GETTERS AND SETTERS
@@ -77,7 +77,7 @@ public class Inmobiliaria {
 	}
 
 	public void setCasa(ArrayList<Casa> casa) {
-		Inmobiliaria.casa = casa;
+		this.casa = casa;
 	}
 
 	public ArrayList<Departamento> getDepartamento() {
@@ -85,7 +85,7 @@ public class Inmobiliaria {
 	}
 
 	public void setDepartamento(ArrayList<Departamento> departamento) {
-		Inmobiliaria.departamento = departamento;
+		this.departamento = departamento;
 	}
 
 	public ArrayList<Ph> getPh() {
@@ -93,7 +93,7 @@ public class Inmobiliaria {
 	}
 
 	public void setPh(ArrayList<Ph> ph) {
-		Inmobiliaria.ph = ph;
+		this.ph = ph;
 	}
 
 	public ArrayList<Terreno> getTerreno() {
@@ -101,7 +101,7 @@ public class Inmobiliaria {
 	}
 
 	public void setTerreno(ArrayList<Terreno> terreno) {
-		Inmobiliaria.terreno = terreno;
+		this.terreno = terreno;
 	}
 
 	public ArrayList<Campo> getCampo() {
@@ -109,7 +109,7 @@ public class Inmobiliaria {
 	}
 
 	public void setCampo(ArrayList<Campo> campo) {
-		Inmobiliaria.campo = campo;
+		this.campo = campo;
 	}
 
 	public HashSet<Persona> getCliente() {
@@ -117,11 +117,11 @@ public class Inmobiliaria {
 	}
 
 	public void setCliente(HashSet<Persona> cliente) {
-		Inmobiliaria.cliente = cliente;
+		this.cliente = cliente;
 	}
 
 	public Integer getCantidadCasas() {
-		return cantidadCasas;
+		return casa.size();
 	}
 
 	public void setCantidadCasas(Integer cantidadCasas) {
@@ -129,7 +129,7 @@ public class Inmobiliaria {
 	}
 
 	public Integer getCantidadDepartamentos() {
-		return cantidadDepartamentos;
+		return departamento.size();
 	}
 
 	public void setCantidadDepartamentos(Integer cantidadDepartamentos) {
@@ -137,7 +137,7 @@ public class Inmobiliaria {
 	}
 
 	public Integer getCantidadPh() {
-		return cantidadPh;
+		return ph.size();
 	}
 
 	public void setCantidadPh(Integer cantidadPh) {
@@ -145,7 +145,7 @@ public class Inmobiliaria {
 	}
 
 	public Integer getCantidadTerrenos() {
-		return cantidadTerrenos;
+		return terreno.size();
 	}
 
 	public void setCantidadTerrenos(Integer cantidadTerrenos) {
@@ -153,7 +153,7 @@ public class Inmobiliaria {
 	}
 
 	public Integer getCantidadCampos() {
-		return cantidadCampos;
+		return campo.size();
 	}
 
 	public void setCantidadCampos(Integer cantidadCampos) {
@@ -161,7 +161,7 @@ public class Inmobiliaria {
 	}
 
 	public Integer getCantidadCliente() {
-		return cantidadCliente;
+		return cliente.size();
 	}
 
 	public void setCantidadCliente(Integer cantidadCliente) {
@@ -628,7 +628,7 @@ public class Inmobiliaria {
 		return retorno;
     }
 	
-	public Boolean noAgregarDepartamentoMismaDireccion(Departamento nuevoDepartamento) {
+	public Boolean agregarDepartamentoMismaDireccion(Departamento nuevoDepartamento) {
 	    for (Departamento deptoExistente : departamento) {
 	        if (deptoExistente != null && deptoExistente.getCalle().equals(nuevoDepartamento.getCalle()) &&
 	                deptoExistente.getAltura() == nuevoDepartamento.getAltura() &&
@@ -636,11 +636,11 @@ public class Inmobiliaria {
 	                deptoExistente.getFueAlquilado().equals(nuevoDepartamento.getFueAlquilado()) &&
 	                deptoExistente.getFueVendido().equals(nuevoDepartamento.getFueVendido())) {
 	            System.err.println("Ya existe un departamento en la misma dirección.");
-	            return true;
+	            return false;
 	        }
 	    }
 	    agregarDepartamento(nuevoDepartamento); // Si no hay otro departamento con la misma dirección, lo agregamos
-	    return false;
+	    return true;
 	}
 	
 	public Boolean noAgregarCasasMismaDireccion(Casa nuevaCasa) {
@@ -651,11 +651,11 @@ public class Inmobiliaria {
 	                casaActual.getFueAlquilado().equals(nuevaCasa.getFueAlquilado()) &&
 	                casaActual.getFueVendido().equals(nuevaCasa.getFueVendido())) {
 	            System.err.println("Ya existe un departamento en la misma dirección.");
-	            return true;
+	            return false;
 	        }
 	    }
 	    agregarCasa(nuevaCasa); // Si no hay otro departamento con la misma dirección, lo agregamos
-	    return false;
+	    return true;
 	}
 
 	public Integer calcularPrecioPromedioCasas() {
@@ -686,7 +686,7 @@ public class Inmobiliaria {
 		return resultado;
 	}
 
-	public static ArrayList<Casa> buscarCasasPorRangoDePrecios(Double precioMin, Double precioMax) {
+	public ArrayList<Casa> buscarCasasPorRangoDePrecios(Double precioMin, Double precioMax) {
 		ArrayList<Casa> resultado = new ArrayList<Casa>();
 		for (Casa casaActual : casa) {
 			if(casaActual.getPrecio() >= precioMin && casaActual.getPrecio() <= precioMax) {
@@ -696,7 +696,7 @@ public class Inmobiliaria {
 		return resultado;
     }
 		
-	public static ArrayList<Casa> buscarCasasPorRangoDePrecioNulo(ArrayList<Casa> casas, Double precioMin, Double precioMax) {
+	public ArrayList<Casa> buscarCasasPorRangoDePrecioNulo(ArrayList<Casa> casas, Double precioMin, Double precioMax) {
 		ArrayList<Casa> casasBuscadas = new ArrayList<>();
 
         for (Casa casa : casas) {
@@ -714,7 +714,7 @@ public class Inmobiliaria {
 
    }
 	
-	public static ArrayList<Casa> buscarPropiedadesPorVenta(Boolean propiedadPorVentaBuscada) {
+	public ArrayList<Casa> buscarPropiedadesPorVenta(Boolean propiedadPorVentaBuscada) {
 	ArrayList<Casa> casasBuscadas = new ArrayList<>();
 		
 		for (Casa casaActual : casa) {
@@ -729,7 +729,7 @@ public class Inmobiliaria {
 		
     }
 	
-	public static ArrayList<Casa> buscarPropiedadPorVentaNulo(ArrayList<Casa> casas, Boolean propiedadPorVentaBuscada) {
+	public ArrayList<Casa> buscarPropiedadPorVentaNulo(ArrayList<Casa> casas, Boolean propiedadPorVentaBuscada) {
 		ArrayList<Casa> casasBuscadas = new ArrayList<>();
 		
 		for (Casa casaActual : casas) {
@@ -744,6 +744,11 @@ public class Inmobiliaria {
 			return null;
 		}
 		
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		return 0;
 	}
 
 }
