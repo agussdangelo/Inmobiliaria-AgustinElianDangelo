@@ -5,24 +5,18 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 
-public class Inmobiliaria implements Comparable{
+public class Inmobiliaria implements Comparable<Object>{
 	
 	// ATRIBUTOS
 	private String nombre;
 	private String direccion;
 	private Integer telefono;
 	private ArrayList<Casa> casa;
-	private Integer cantidadCasas;
 	private ArrayList<Departamento> departamento;
-	private Integer cantidadDepartamentos;
 	private ArrayList<Ph> ph;
-	private Integer cantidadPh;
 	private ArrayList<Terreno> terreno;
-	private Integer cantidadTerrenos;
 	private ArrayList<Campo> campo;
-	private Integer cantidadCampos;
 	private HashSet<Persona> cliente;
-	private Integer cantidadCliente;
 	
 	// CONTRUCTOR POR DEFAULT
 	public Inmobiliaria() {
@@ -124,50 +118,28 @@ public class Inmobiliaria implements Comparable{
 		return casa.size();
 	}
 
-	public void setCantidadCasas(Integer cantidadCasas) {
-		this.cantidadCasas = cantidadCasas;
-	}
-
 	public Integer getCantidadDepartamentos() {
 		return departamento.size();
-	}
-
-	public void setCantidadDepartamentos(Integer cantidadDepartamentos) {
-		this.cantidadDepartamentos = cantidadDepartamentos;
 	}
 
 	public Integer getCantidadPh() {
 		return ph.size();
 	}
 
-	public void setCantidadPh(Integer cantidadPh) {
-		this.cantidadPh = cantidadPh;
-	}
 
 	public Integer getCantidadTerrenos() {
 		return terreno.size();
 	}
 
-	public void setCantidadTerrenos(Integer cantidadTerrenos) {
-		this.cantidadTerrenos = cantidadTerrenos;
-	}
 
 	public Integer getCantidadCampos() {
 		return campo.size();
-	}
-
-	public void setCantidadCampos(Integer cantidadCampos) {
-		this.cantidadCampos = cantidadCampos;
 	}
 
 	public Integer getCantidadCliente() {
 		return cliente.size();
 	}
 
-	public void setCantidadCliente(Integer cantidadCliente) {
-		this.cantidadCliente = cantidadCliente;
-	}
-	
 	// METODOS
 	
 	public static void buscarPropiedadesPorCodigoCasas(Inmobiliaria inmobiliaria, int codigoBusqueda) {
