@@ -427,7 +427,7 @@ public class Inmobiliaria{
 		return casas;
     }
 	
-	public static void buscarPropiedadesPorUbicacionDepto(ArrayList<Departamento> depto, String ubicacionBusqueda) {
+	public ArrayList<Departamento> buscarPropiedadesPorUbicacionDepto(ArrayList<Departamento> depto, String ubicacionBusqueda) {
         System.out.println("Propiedades encontradas en la ubicación " + ubicacionBusqueda + " : ");
         for (Departamento d : depto) {
             if (d.getLocalidad().equalsIgnoreCase(ubicacionBusqueda)) {
@@ -436,6 +436,7 @@ public class Inmobiliaria{
                 System.out.println("#############################");
             }
         }
+		return depto;
     }
 	
 	public static void buscarPropiedadesPorUbicacionPh(ArrayList<Ph> ph, String ubicacionBusqueda) {
@@ -687,6 +688,16 @@ public class Inmobiliaria{
 		for (Casa casaActual : casa) {
 			if(casaActual.getPrecio() >= precioMin && casaActual.getPrecio() <= precioMax) {
 				resultado.add(casaActual);
+			}
+		}
+		return resultado;
+    }
+	
+	public ArrayList<Departamento> buscarDepartamentosPorRangoDePrecios(Double precioMin, Double precioMax) {
+		ArrayList<Departamento> resultado = new ArrayList<Departamento>();
+		for (Departamento deptoActual : departamento) {
+			if(deptoActual.getPrecio() >= precioMin && deptoActual.getPrecio() <= precioMax) {
+				resultado.add(deptoActual);
 			}
 		}
 		return resultado;
