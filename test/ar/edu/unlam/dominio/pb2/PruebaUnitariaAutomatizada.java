@@ -356,32 +356,56 @@ public class PruebaUnitariaAutomatizada {
 	
 	@Test
 	public void queSePuedaRealizarLaBusquedaDeCasasPorRangoDePreciosYElResultadoEsteOrdenadoPorPrecio() {
-		// Preparacion de datos
-		
-		// Ejecucion
-		
-		// Validacion
-		
+		// Preparación de datos
+        Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);     
+       	Casa casa1 = new Casa("CABA", "Montiel", 9090, 150000.0, 3, true, false);
+       	Casa casa2 = new Casa("RamosMejia", "Suarez", 3355, 120000.0, 4, false, true);
+       	Casa casa3 = new Casa("Moron", "Belgrano", 1234, 180000.0, 3, false, true);
+        inmobiliaria.agregarCasa(casa1);
+        inmobiliaria.agregarCasa(casa2);
+        inmobiliaria.agregarCasa(casa3);
+        Integer arrayEsperado = 3;
+        // Ejecución
+        Double precioMinimo = 100000.0;
+        Double precioMaximo = 180000.0;
+        ArrayList<Casa> casasEncontradas = inmobiliaria.buscarCasasPorRangoDePrecios(precioMinimo, precioMaximo);
+        // Validación
+        assertEquals(arrayEsperado, inmobiliaria.getCantidadCasas());
+        assertNotNull(casasEncontradas);
+        assertEquals(casa1, casasEncontradas.get(0));
+        assertEquals(casa2, casasEncontradas.get(1));
+        assertEquals(casa3, casasEncontradas.get(2));
+  
 	}
 	
-	@Test
-	public void queSePuedaRealizarLaBusquedaDeCasasPorRangoDePrecioYElResultadoEsteOrdenadoPorPrecio() {
-		// Preparacion de datos
-		
-		// Ejecucion
-		
-		// Validacion
-		
-	}
 	
 	@Test
 	public void queSePuedaRealizarLaBusquedaDeCasasPorUbicacionYElResultadoEsteOrdenadoPorUbicacion() {
-		// Preparacion de datos
-		
+		// Preparación de datos
+        Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455); 
+        ArrayList<Casa> casas = new ArrayList<Casa>();
+       	Casa casa1 = new Casa("CABA", "Montiel", 9090, 150000.0, 3, true, false);
+       	Casa casa2 = new Casa("RamosMejia", "Suarez", 3355, 120000.0, 4, false, true);
+       	Casa casa3 = new Casa("Moron", "Belgrano", 1234, 180000.0, 3, false, true);
+       	casas.add(casa1);
+	    casas.add(casa2);
+	    casas.add(casa3);
+        Integer arrayEsperado = 3;
+        String localidadCasa1 = "CABA";
+        String localidadCasa2 = "Moron";
+        String localidadCasa3 = "RamosMejia";
 		// Ejecucion
-		
+        ArrayList<Casa> casasEncontradas1 = inmobiliaria.buscarPropiedadesPorUbicacionCasa(casas, localidadCasa1);
+        ArrayList<Casa> casasEncontradas2 = inmobiliaria.buscarPropiedadesPorUbicacionCasa(casas, localidadCasa2);
+        ArrayList<Casa> casasEncontradas3 = inmobiliaria.buscarPropiedadesPorUbicacionCasa(casas, localidadCasa3);
 		// Validacion
-		
+        assertEquals(arrayEsperado, casas.size(), 0.0);
+        assertNotNull(casasEncontradas1);
+        assertNotNull(casasEncontradas2);
+        assertNotNull(casasEncontradas3);
+        assertEquals(casa1, casasEncontradas1.get(0));
+        assertEquals(casa2, casasEncontradas2.get(1));
+        assertEquals(casa3, casasEncontradas3.get(2));
 	}
 	
 	@Test

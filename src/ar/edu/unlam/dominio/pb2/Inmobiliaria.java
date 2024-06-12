@@ -415,7 +415,7 @@ public class Inmobiliaria{
         }
     }
 	
-	public static void buscarPropiedadesPorUbicacionCasa(ArrayList<Casa> casas, String ubicacionBusqueda) {
+	public ArrayList<Casa> buscarPropiedadesPorUbicacionCasa(ArrayList<Casa> casas, String ubicacionBusqueda) {
         System.out.println("Propiedades encontradas en la ubicación " + ubicacionBusqueda + " : ");
         for (Casa c : casas) {
             if (c.getLocalidad().equalsIgnoreCase(ubicacionBusqueda)) {
@@ -424,6 +424,7 @@ public class Inmobiliaria{
                 System.out.println("#############################");
             }
         }
+		return casas;
     }
 	
 	public static void buscarPropiedadesPorUbicacionDepto(ArrayList<Departamento> depto, String ubicacionBusqueda) {
