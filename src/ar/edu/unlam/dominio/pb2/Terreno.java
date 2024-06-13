@@ -6,8 +6,8 @@ public class Terreno extends Propiedad{
 	private String forma;
 	private String condicionDeSuelo;
 	
-	public Terreno(String localidad, Double tamanio, String forma, String condicionDeSuelo, Double precio, Integer codigo, Boolean fueAlquilado, Boolean fueVendido) {
-		super(localidad, precio, codigo, fueAlquilado, fueVendido);
+	public Terreno(String localidad, Double tamanio, String forma, String condicionDeSuelo, Double precio, Integer codigo, Boolean estaDisponible, TipoOperacion operacion) {
+		super(localidad, precio, codigo, estaDisponible, operacion);
 		this.tamanio = tamanio;
 		this.forma = forma;
 		this.condicionDeSuelo = condicionDeSuelo;

@@ -1,19 +1,21 @@
 package ar.edu.unlam.dominio.pb2;
 
-public abstract class Propiedad {
+public class Propiedad implements Comparable<Propiedad>{
 	
 	private String localidad;
 	private Double precio;
 	private Integer codigo;
-	protected Boolean fueVendido;
-	protected Boolean fueAlquilado;
+	private Boolean estaDisponible;
+	private TipoOperacion operacion;
+	private Persona propietario;
 	
-	public Propiedad(String localidad, Double precio, Integer codigo, Boolean fueAlquilado, Boolean fueVendido) {
+	public Propiedad(String localidad, Double precio, Integer codigo, Boolean estaDisponible, TipoOperacion operacion) {
 		this.localidad = localidad;
 		this.precio = precio;
 		this.codigo = codigo;
-		this.fueAlquilado = fueAlquilado;
-		this.fueVendido = fueVendido;
+		this.estaDisponible = estaDisponible;
+		this.operacion = operacion;
+		this.propietario = null;
 	}
 
 	public String getLocalidad() {
@@ -40,24 +42,35 @@ public abstract class Propiedad {
 		this.codigo = codigo;
 	}
 
-	public Boolean getFueVendido() {
-		return fueVendido;
+	@Override
+	public int compareTo(Propiedad o) {
+		return localidad.compareToIgnoreCase(o.getLocalidad());
 	}
 
-	public void setFueVendido(Boolean fueVendido) {
-		this.fueVendido = fueVendido;
+	public Boolean getEstaDisponible() {
+		return estaDisponible;
 	}
 
-	public Boolean getFueAlquilado() {
-		return fueAlquilado;
+	public void setEstaDisponible(Boolean estaDisponible) {
+		this.estaDisponible = estaDisponible;
 	}
 
-	public void setFueAlquilado(Boolean fueAlquilado) {
-		this.fueAlquilado = fueAlquilado;
+	public TipoOperacion getOperacion() {
+		return operacion;
+	}
+
+	public void setOperacion(TipoOperacion operacion) {
+		this.operacion = operacion;
+	}
+
+	public Persona getPropietario() {
+		return propietario;
+	}
+
+	public void setPropietario(Persona propietario) {
+		this.propietario = propietario;
 	}
 	
-	public void alquilarPropiedad() {
-		this.fueAlquilado = true;
-	} 
+	
 	
 }

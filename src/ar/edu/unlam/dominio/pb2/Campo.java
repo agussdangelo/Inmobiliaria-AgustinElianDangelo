@@ -6,8 +6,8 @@ public class Campo extends Propiedad{
 	private String climaDeLaRegion;
 	private String tipoDeSuelo;
 	
-	public Campo(String localidad, Double tamanio, String climaDeLaRegion, String tipoDeSuelo, Integer codigo, Double precio, Boolean fueAlquilado, Boolean fueVendido) {
-		super(localidad, precio, codigo, fueAlquilado, fueVendido);
+	public Campo(String localidad, Double tamanio, String climaDeLaRegion, String tipoDeSuelo, Integer codigo, Double precio, Boolean estaDisponible, TipoOperacion operacion) {
+		super(localidad, precio, codigo, estaDisponible, operacion);
 		this.tamanio = tamanio;
 		this.climaDeLaRegion = climaDeLaRegion;
 		this.tipoDeSuelo = tipoDeSuelo;
