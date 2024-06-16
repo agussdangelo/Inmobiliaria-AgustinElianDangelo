@@ -89,6 +89,26 @@ public class Inmobiliaria{
 		return propiedadesEncontrados;
     }
 	
+	public TreeSet<Propiedad> buscarPropiedadesPorRangoDePrecios(Double precioMin, Double precioMax) {
+		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
+	        for (Propiedad propiedadActual : propiedad) {
+	        	if (propiedadActual.getPrecio() >= precioMin && propiedadActual.getPrecio() <= precioMax) {
+	        	   propiedadesEncontrados.add(propiedadActual);
+	            }
+	        }
+		return propiedadesEncontrados;
+   }
+	
+	public TreeSet<Propiedad> buscarPropiedadesPorUbicacion(String propiedadBuscada) {
+		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
+	        for (Propiedad propiedadActual : propiedad) {
+	        	if (propiedadActual.getLocalidad().equals(propiedadBuscada)) {
+	        	   propiedadesEncontrados.add(propiedadActual);
+	            }
+	        }
+		return propiedadesEncontrados;
+	}
+	
 	public TreeSet<Propiedad> buscarPropiedadesPorAlquiler() {
         TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
         for (Propiedad propiedadActual : propiedad) {

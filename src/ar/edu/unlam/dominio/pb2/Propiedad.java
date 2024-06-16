@@ -70,6 +70,12 @@ public class Propiedad implements Comparable<Propiedad>{
 	public void setPropietario(Persona propietario) {
 		this.propietario = propietario;
 	}
+
+	@Override
+	public String toString() {
+		return "Propiedad [localidad=" + localidad + ", precio=" + precio + ", codigo=" + codigo + ", estaDisponible="
+				+ estaDisponible + ", operacion=" + operacion + ", propietario=" + propietario + "]";
+	}
 	
 	
 	

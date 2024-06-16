@@ -2,7 +2,7 @@ package ar.edu.unlam.dominio.pb2;
 
 import java.util.Objects;
 
-public class Persona {
+public class Persona implements Comparable<Persona>{
 	
 	private String nombre;
 	private String apellido;
@@ -86,6 +86,11 @@ public class Persona {
 			return false;
 		Persona other = (Persona) obj;
 		return Objects.equals(dni, other.dni);
+	}
+
+	@Override
+	public int compareTo(Persona o) {
+		return Long.compare(this.dni, o.getDni());
 	}
 	
 	
