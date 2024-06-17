@@ -410,14 +410,26 @@ public class PruebaUnitariaAutomatizada {
    
 	}
 	
-	@Test
+	@Test (expected = SinResultadosException.class)
 	public void queAlBuscarPorUnCriterioQueNoArrojeResultadosSeProduzcaLaExcepcionSinResultadosException() {
-		// Preparacion de datos
-		
-		// Ejecucion
-		
-		// Validacion
-		
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);  
+		Propiedad depto1 = new Departamento("Ramos Mejia", "Suarez", 3355, 86500.0, 222, 9, true, TipoOperacion.VENTA);
+        Propiedad depto2 = new Departamento("CABA", "Montiel", 9090, 49000.0, 111, 7, false, TipoOperacion.ALQUILER);
+        inmobiliaria.agregarPropiedad(depto1);
+        inmobiliaria.agregarPropiedad(depto2);
+        String criterioDeBusqueda = "Ituzaingo";
+
+        try {
+            // Realizamos la búsqueda
+            TreeSet<Propiedad> resultado = inmobiliaria.buscarPropiedadesPorCriterio(criterioDeBusqueda);
+            fail("Se esperaba que se lanzara una SinResultadosException");
+        } catch (SinResultadosException e) {
+            // Verificamos el mensaje de la excepción
+            assertEquals("No se encontraron propiedades que coincidan con el criterio: " + criterioDeBusqueda, e.getMessage());
+        }
+
+        // Adicionalmente, verificamos que la lista de propiedades sigue conteniendo las propiedades agregadas inicialmente
+        assertFalse(inmobiliaria.getPropiedad().isEmpty());
 	}
 	
 	@Test
