@@ -463,7 +463,7 @@ public class PruebaUnitariaAutomatizada {
 	@Test
 	public void queAlIntentarGuardarUnaPropiedadParaLaVentaCuyoImporteEstaPorDebajoDelUmbral10000SeArrojeLaExcepcionUmbralMinimoNoAlcanzadoException() {
 		// Preparacion de datos
-		
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455); 
 		// Ejecucion
 		
 		// Validacion
