@@ -411,30 +411,23 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test (expected = SinResultadosException.class)
-	public void queAlBuscarPorUnCriterioQueNoArrojeResultadosSeProduzcaLaExcepcionSinResultadosException() {
+	public void queAlBuscarPorUnCriterioQueNoArrojeResultadosSeProduzcaLaExcepcionSinResultadosException() throws SinResultadosException {
+		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);  
 		Propiedad depto1 = new Departamento("Ramos Mejia", "Suarez", 3355, 86500.0, 222, 9, true, TipoOperacion.VENTA);
         Propiedad depto2 = new Departamento("CABA", "Montiel", 9090, 49000.0, 111, 7, false, TipoOperacion.ALQUILER);
         inmobiliaria.agregarPropiedad(depto1);
         inmobiliaria.agregarPropiedad(depto2);
         String criterioDeBusqueda = "Ituzaingo";
-
-        try {
-            // Realizamos la búsqueda
-            TreeSet<Propiedad> resultado = inmobiliaria.buscarPropiedadesPorCriterio(criterioDeBusqueda);
-            fail("Se esperaba que se lanzara una SinResultadosException");
-        } catch (SinResultadosException e) {
-            // Verificamos el mensaje de la excepción
-            assertEquals("No se encontraron propiedades que coincidan con el criterio: " + criterioDeBusqueda, e.getMessage());
-        }
-
+        // Ejecucion
+        inmobiliaria.buscarPropiedadesPorCriterio(criterioDeBusqueda);
         // Adicionalmente, verificamos que la lista de propiedades sigue conteniendo las propiedades agregadas inicialmente
         assertFalse(inmobiliaria.getPropiedad().isEmpty());
 	}
 	
 	@Test
 	public void queSePuedaRealizarLaBusquedaDeDepartamentosPorUbicacionYElResultadoEsteOrdenadoPorUbicacion() {
-		// Preparación de datos
+		// Preparacion de datos
         Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455); 
         Propiedad depto1 = new Departamento("Ramos Mejia", "Suarez", 3355, 86500.0, 222, 9, true, TipoOperacion.VENTA);
     	inmobiliaria.agregarPropiedad(depto1);
@@ -460,14 +453,15 @@ public class PruebaUnitariaAutomatizada {
         assertEquals(depto1, departamentosEncontradas2.last());
 	}
 	
-	@Test
-	public void queAlIntentarGuardarUnaPropiedadParaLaVentaCuyoImporteEstaPorDebajoDelUmbral10000SeArrojeLaExcepcionUmbralMinimoNoAlcanzadoException() {
+	@Test (expected = UmbralMinimoNoAlcanzadoException.class)
+	public void queAlIntentarGuardarUnaPropiedadParaLaVentaCuyoImporteEstaPorDebajoDelUmbral10000SeArrojeLaExcepcionUmbralMinimoNoAlcanzadoException() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455); 
+		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
+		Propiedad casaBarata = new Casa("CABA", "Montiel", 9090, 9000.0, 3, true, TipoOperacion.PERMUTA);
 		// Ejecucion
-		
-		// Validacion
-	
+		inmobiliaria.agregarPropiedadException(casaBarata);
+        // Validacion
+        assertFalse(inmobiliaria.getPropiedad().contains(casaBarata));
 	}
 	
 

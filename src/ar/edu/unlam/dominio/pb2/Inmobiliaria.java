@@ -12,6 +12,7 @@ public class Inmobiliaria{
 	private Integer telefono;
 	private HashSet<Persona> cliente;
 	private TreeSet<Propiedad> propiedad;
+	private static final Double UMBRAL_MINIMO = 10000.0;
 	
 	// CONTRUCTOR POR DEFAULT
 	public Inmobiliaria() {
@@ -139,8 +140,16 @@ public class Inmobiliaria{
 		return propiedadesEncontrados;
 	}
 	
+	public Boolean agregarPropiedadException(Propiedad propiedadNuevo) throws UmbralMinimoNoAlcanzadoException {
+	    if(propiedadNuevo.getPrecio() < UMBRAL_MINIMO) {
+	    	throw new UmbralMinimoNoAlcanzadoException("El importe de la propiedad está por debajo del umbral mínimo de " + UMBRAL_MINIMO);
+	    }
+		
+		return propiedad.add(propiedadNuevo);
+	}
+	
 	public Boolean agregarPropiedad(Propiedad propiedadNuevo) {
-	    return propiedad.add(propiedadNuevo);
+		return propiedad.add(propiedadNuevo);
 	}
 	
 	public Boolean venderPropiedad(Propiedad propiedadNuevo) {
