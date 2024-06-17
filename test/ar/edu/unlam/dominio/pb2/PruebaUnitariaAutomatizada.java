@@ -421,8 +421,10 @@ public class PruebaUnitariaAutomatizada {
         String criterioDeBusqueda = "Ituzaingo";
         // Ejecucion
         inmobiliaria.buscarPropiedadesPorCriterio(criterioDeBusqueda);
-        // Adicionalmente, verificamos que la lista de propiedades sigue conteniendo las propiedades agregadas inicialmente
+        // Validacion de que la inmobiliaria haya agregado con exito los departamentos
         assertFalse(inmobiliaria.getPropiedad().isEmpty());
+        assertTrue(inmobiliaria.getPropiedad().contains(depto1));
+        assertTrue(inmobiliaria.getPropiedad().contains(depto2));
 	}
 	
 	@Test
@@ -460,8 +462,9 @@ public class PruebaUnitariaAutomatizada {
 		Propiedad casaBarata = new Casa("CABA", "Montiel", 9090, 9000.0, 3, true, TipoOperacion.PERMUTA);
 		// Ejecucion
 		inmobiliaria.agregarPropiedadException(casaBarata);
-        // Validacion
+        // Validacion de que la inmobiliaria este vacia y no haya agregado a la casaBarata
         assertFalse(inmobiliaria.getPropiedad().contains(casaBarata));
+        assertTrue(inmobiliaria.getPropiedad().isEmpty());
 	}
 	
 

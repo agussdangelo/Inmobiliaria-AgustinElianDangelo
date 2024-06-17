@@ -294,17 +294,17 @@ public class Inmobiliaria{
         return true;
     }
 	
-	public TreeSet<Propiedad> buscarPropiedadesPorCriterio(String criterio) throws SinResultadosException {
+	public TreeSet<Propiedad> buscarPropiedadesPorCriterio(String criterioDeBusqueda) throws SinResultadosException {
 		TreeSet<Propiedad> resultado = new TreeSet<Propiedad>();
 
 		for (Propiedad propiedad : propiedad) {
-			if (propiedad.getLocalidad().equalsIgnoreCase(criterio)) {
+			if (propiedad.getLocalidad().equalsIgnoreCase(criterioDeBusqueda)) {
 				resultado.add(propiedad);
 			}
 		}
 
 		if (resultado.isEmpty()) {
-			throw new SinResultadosException("No se encontraron propiedades que coincidan con el criterio: " + criterio);
+			throw new SinResultadosException("No se encontraron propiedades que coincidan con el criterio: " + criterioDeBusqueda);
 		}
 
 	    return resultado;
