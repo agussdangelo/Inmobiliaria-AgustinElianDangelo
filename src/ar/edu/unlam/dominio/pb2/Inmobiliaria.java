@@ -1,5 +1,6 @@
 package ar.edu.unlam.dominio.pb2;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.TreeSet;
 
@@ -77,7 +78,7 @@ public class Inmobiliaria{
 		return propiedad.size();
 	}
 	
-	// METODOS
+	// METODO USADO EN EL MAIN
 	
 	public TreeSet<Propiedad> buscarPropiedadesPorCodigo(Integer codigoIngresado) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
@@ -89,6 +90,30 @@ public class Inmobiliaria{
 		return propiedadesEncontrados;
     }
 	
+	public TreeSet<Propiedad> buscarPropiedadesPorRangoDePrecios(Double precioMin, Double precioMax) {
+		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
+	        for (Propiedad propiedadActual : propiedad) {    	
+				if (propiedadActual.getPrecio() >= precioMin && propiedadActual.getPrecio() <= precioMax) {
+					propiedadesEncontrados.add(propiedadActual);
+				}	        	        	
+	        }
+		return propiedadesEncontrados;
+	}
+	
+	public TreeSet<Propiedad> buscarPropiedadesPorUbicacion(String propiedadBuscada) {
+		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
+	        for (Propiedad propiedadActual : propiedad) {
+	        	if(propiedadActual instanceof Casa) {
+	        		if (propiedadActual.getLocalidad().equals(propiedadBuscada)) {
+	 	        	   propiedadesEncontrados.add(propiedadActual);
+	 	            }
+	        	}      	
+	        }
+		return propiedadesEncontrados;
+	}
+	
+	// METODOS USADOS EN EL TEST
+	
 	public TreeSet<Propiedad> buscarCasasPorRangoDePrecios(Double precioMin, Double precioMax) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
 	        for (Propiedad propiedadActual : propiedad) {
@@ -99,7 +124,7 @@ public class Inmobiliaria{
 	        	}        	
 	        }
 		return propiedadesEncontrados;
-   }
+	}
 	
 	public TreeSet<Propiedad> buscarDepartamentosPorRangoDePrecios(Double precioMin, Double precioMax) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
@@ -111,7 +136,7 @@ public class Inmobiliaria{
 	        	}        	
 	        }
 		return propiedadesEncontrados;
-  }
+	}
 	
 	public TreeSet<Propiedad> buscarCasasPorUbicacion(String propiedadBuscada) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
@@ -165,6 +190,7 @@ public class Inmobiliaria{
 		return propiedadesEncontrados;
 	}
 	
+	// METODO USADO EN EL TEST CON EXCEPTION
 	public Boolean agregarPropiedadException(Propiedad propiedadNuevo) throws UmbralMinimoNoAlcanzadoException {
 	    if(propiedadNuevo.getPrecio() < UMBRAL_MINIMO) {
 	    	throw new UmbralMinimoNoAlcanzadoException("El importe de la propiedad está por debajo del umbral mínimo de " + UMBRAL_MINIMO);
@@ -194,32 +220,6 @@ public class Inmobiliaria{
 		Boolean retorno = cliente.add(clienteNuevo); 
 		return retorno;
     }
-	
-	public Boolean agregarDepartamentoMismaDireccion(Propiedad nuevaPropiedad) {
-	    for (Propiedad deptoExistente : propiedad) {
-	        if (deptoExistente != null &&
-	                deptoExistente.getLocalidad().equals(nuevaPropiedad.getLocalidad()) &&
-	                deptoExistente.getEstaDisponible().equals(nuevaPropiedad.getEstaDisponible())) {
-	            System.err.println("Ya existe un departamento en la misma dirección.");
-	            return false;
-	        }
-	    }
-	    agregarPropiedad(nuevaPropiedad); // Si no hay otro departamento con la misma dirección, lo agregamos
-	    return true;
-	}
-	
-	public Boolean noAgregarCasasMismaDireccion(Propiedad nuevaPropiedad) {
-	    for (Propiedad casaActual : propiedad) {
-	        if (casaActual != null &&
-	                casaActual.getLocalidad().equals(nuevaPropiedad.getLocalidad()) &&
-	                casaActual.getEstaDisponible().equals(nuevaPropiedad.getEstaDisponible())) {
-	            System.err.println("Ya existe un departamento en la misma dirección.");
-	            return false;
-	        }
-	    }
-	    agregarPropiedad(nuevaPropiedad); // Si no hay otro departamento con la misma dirección, lo agregamos
-	    return true;
-	}
 
 	public Integer calcularPrecioPromedioPropiedad() {
 		Double promedio = 0.0;
@@ -234,7 +234,21 @@ public class Inmobiliaria{
 		Integer resultado = (int) Math.round(promedio);
 		return resultado;
 	}
-			
+	
+	public TreeSet<Propiedad> devolverPropiedadOrdenadoPorPrecio() {
+		return ordenarPropiedadParaDevolver(new ordenadoPorPrecio());
+	}
+	
+	public TreeSet<Propiedad> devolverPropiedadOrdenadoPorUbicacion() {
+		return ordenarPropiedadParaDevolver(new ordenadoPorUbicacion());
+	}
+	
+	public TreeSet<Propiedad> ordenarPropiedadParaDevolver(Comparator<Propiedad> citerioDeOrdenacion) {
+		TreeSet<Propiedad> propiedadOrdenada = new TreeSet<Propiedad>(citerioDeOrdenacion);
+		propiedadOrdenada.addAll(propiedad);
+		return propiedadOrdenada;
+	}
+		
 	public TreeSet<Propiedad> buscarCasasPorRangoDePrecioNulo(Double precioMin, Double precioMax) {
 		TreeSet<Propiedad> casasBuscadas = new TreeSet<Propiedad>();
 
@@ -250,23 +264,6 @@ public class Inmobiliaria{
         	return null;
         }
 
-   }
-	
-	public TreeSet<Propiedad> buscarPropiedadPorVentaNulo() {
-		TreeSet<Propiedad> casasBuscadas = new TreeSet<>();
-		
-		for (Propiedad propiedadActual : propiedad) {
-			if(propiedad != null && propiedadActual.getOperacion().equals(TipoOperacion.VENTA)) {
-				casasBuscadas.add(propiedadActual);
-			}
-		}
-		
-		if(casasBuscadas.isEmpty()) {
-			return casasBuscadas;
-		}else {		
-			return null;
-		}
-		
 	}
 	
 	public Boolean alquilarPropiedad(Propiedad otraPropiedad, Inmobiliaria inmobiliaria) {
