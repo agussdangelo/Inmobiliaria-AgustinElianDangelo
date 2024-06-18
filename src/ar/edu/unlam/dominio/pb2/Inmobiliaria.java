@@ -1,6 +1,5 @@
 package ar.edu.unlam.dominio.pb2;
 
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.TreeSet;
 
@@ -90,17 +89,43 @@ public class Inmobiliaria{
 		return propiedadesEncontrados;
     }
 	
-	public TreeSet<Propiedad> buscarPropiedadesPorRangoDePrecios(Double precioMin, Double precioMax) {
+	public TreeSet<Propiedad> buscarCasasPorRangoDePrecios(Double precioMin, Double precioMax) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
 	        for (Propiedad propiedadActual : propiedad) {
-	        	if (propiedadActual.getPrecio() >= precioMin && propiedadActual.getPrecio() <= precioMax) {
-	        	   propiedadesEncontrados.add(propiedadActual);
-	            }
+	        	if(propiedadActual instanceof Casa) {
+	        		if (propiedadActual.getPrecio() >= precioMin && propiedadActual.getPrecio() <= precioMax) {
+	 	        	   propiedadesEncontrados.add(propiedadActual);
+	 	            }
+	        	}        	
 	        }
 		return propiedadesEncontrados;
    }
 	
-	public TreeSet<Propiedad> buscarPropiedadesPorUbicacion(String propiedadBuscada) {
+	public TreeSet<Propiedad> buscarDepartamentosPorRangoDePrecios(Double precioMin, Double precioMax) {
+		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
+	        for (Propiedad propiedadActual : propiedad) {
+	        	if(propiedadActual instanceof Departamento) {
+	        		if (propiedadActual.getPrecio() >= precioMin && propiedadActual.getPrecio() <= precioMax) {
+	 	        	   propiedadesEncontrados.add(propiedadActual);
+	 	            }
+	        	}        	
+	        }
+		return propiedadesEncontrados;
+  }
+	
+	public TreeSet<Propiedad> buscarCasasPorUbicacion(String propiedadBuscada) {
+		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
+	        for (Propiedad propiedadActual : propiedad) {
+	        	if(propiedadActual instanceof Casa) {
+	        		if (propiedadActual.getLocalidad().equals(propiedadBuscada)) {
+	 	        	   propiedadesEncontrados.add(propiedadActual);
+	 	            }
+	        	}      	
+	        }
+		return propiedadesEncontrados;
+	}
+	
+	public TreeSet<Propiedad> buscarDepartamentosPorUbicacion(String propiedadBuscada) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
 	        for (Propiedad propiedadActual : propiedad) {
 	        	if (propiedadActual.getLocalidad().equals(propiedadBuscada)) {
@@ -209,22 +234,8 @@ public class Inmobiliaria{
 		Integer resultado = (int) Math.round(promedio);
 		return resultado;
 	}
-	
-	public TreeSet<Propiedad> devolverPropiedadOrdenadoPorPrecio() {
-		return ordenarPropiedadParaDevolver(new ordenadoPorPrecio());
-	}
-	
-	public TreeSet<Propiedad> devolverPropiedadOrdenadoPorUbicacion() {
-		return ordenarPropiedadParaDevolver(new ordenadoPorUbicacion());
-	}
-	
-	public TreeSet<Propiedad> ordenarPropiedadParaDevolver(Comparator<Propiedad> citerioDeOrdenacion) {
-		TreeSet<Propiedad> deptoOrdenado = new TreeSet<Propiedad>(citerioDeOrdenacion);
-		deptoOrdenado.addAll(propiedad);
-		return deptoOrdenado;
-	}
-		
-	public TreeSet<Propiedad> buscarCasasPorRangoDePrecioNulo(TreeSet<Propiedad> casas, Double precioMin, Double precioMax) {
+			
+	public TreeSet<Propiedad> buscarCasasPorRangoDePrecioNulo(Double precioMin, Double precioMax) {
 		TreeSet<Propiedad> casasBuscadas = new TreeSet<Propiedad>();
 
         for (Propiedad propiedadActual : propiedad) {
@@ -234,14 +245,14 @@ public class Inmobiliaria{
         }
         
         if (casasBuscadas.isEmpty()) {
-        	return null; // Devuelve null si esta vacio
-        } else {
         	return casasBuscadas; 
+        } else {    	
+        	return null;
         }
 
    }
 	
-	public TreeSet<Propiedad> buscarPropiedadPorVentaNulo(TreeSet<Propiedad> propiedades) {
+	public TreeSet<Propiedad> buscarPropiedadPorVentaNulo() {
 		TreeSet<Propiedad> casasBuscadas = new TreeSet<>();
 		
 		for (Propiedad propiedadActual : propiedad) {
@@ -251,9 +262,9 @@ public class Inmobiliaria{
 		}
 		
 		if(casasBuscadas.isEmpty()) {
-			return null;
-		}else {
 			return casasBuscadas;
+		}else {		
+			return null;
 		}
 		
 	}

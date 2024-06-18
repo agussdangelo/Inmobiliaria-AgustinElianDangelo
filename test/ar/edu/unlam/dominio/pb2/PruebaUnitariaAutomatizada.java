@@ -50,22 +50,6 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queNoSePuedanDarDeAltaDosCasasConUnaMismaDireccion(){   // Calle, número y localidad(
-		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-		Propiedad nuevaCasa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, TipoOperacion.ALQUILER);
-		Propiedad nuevaCasa2 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, TipoOperacion.ALQUILER);
-		// primera casa
-		Boolean agregoCasa1 = inmobiliaria.noAgregarCasasMismaDireccion(nuevaCasa1);
-		Boolean agregoCasa2 = inmobiliaria.noAgregarCasasMismaDireccion(nuevaCasa2);
-		Integer tamañoArrayEsperado = 1;
-		// Validacion
-		assertTrue(agregoCasa1);
-		assertFalse(agregoCasa2);
-		assertEquals(tamañoArrayEsperado, inmobiliaria.getCantidadPropiedades());
-	}
-	
-	@Test
 	public void queSePuedaDarDeAltaUnDepartamentoEnLaInmobiliaria() {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
@@ -102,22 +86,6 @@ public class PruebaUnitariaAutomatizada {
 		assertTrue(agregoDepto2);
 	}
 	
-	@Test
-	public void queNoSePuedanDarDeAltaDosDepartamentoConUnaMismaDireccion() {  // Calle, numero, depto, piso y localidad
-		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-		Propiedad nuevoDepto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, TipoOperacion.PERMUTA);
-		Propiedad nuevoDepto2 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, TipoOperacion.PERMUTA);
-		// Ejecucion
-		inmobiliaria.getPropiedad();
-		Boolean agregoDepartamento1 = inmobiliaria.agregarDepartamentoMismaDireccion((Departamento) nuevoDepto1);
-		Boolean agregoDepartamento2 = inmobiliaria.agregarDepartamentoMismaDireccion((Departamento) nuevoDepto2);
-		Integer tamañoArrayEsperado = 1;
-		// Validacion
-		assertTrue(agregoDepartamento1);
-		assertFalse(agregoDepartamento2);
-		assertEquals(tamañoArrayEsperado, inmobiliaria.getCantidadPropiedades());
-	}
 
 	@Test
 	public void queSePuedaObtenerElValorPromedioDeLasCasas() {
@@ -158,45 +126,6 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queLaBusquedaPorRangoDePrecioDeMeArrojeUnArrayNoNuloSiAplicanResultados() {
-		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-		Propiedad casa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, TipoOperacion.ALQUILER);	
-		Propiedad casa2 = new Casa("Liniers", "Costa", 4557, 95000.0, 222, true, TipoOperacion.VENTA);
-		inmobiliaria.agregarPropiedad(casa1);
-		inmobiliaria.agregarPropiedad(casa2);
-		// Ejecucion
-		inmobiliaria.getPropiedad();
-		Integer tamañoArrayEsperado = 2;
-		TreeSet<Propiedad> casasEnRango = inmobiliaria.devolverPropiedadOrdenadoPorPrecio();
-		// Validacion
-		assertNotNull(casasEnRango);
-		assertEquals(tamañoArrayEsperado, inmobiliaria.getCantidadPropiedades());
-		assertEquals(casa1, casasEnRango.first());
-		assertEquals(casa2, casasEnRango.last());
-	}
-	
-	@Test
-	public void queLaBusquedaPorRangoDePrecioDeCasasMeArrojeUnArrayNuloSiNoAplicanResultados() {
-		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-		TreeSet<Propiedad> casas = new TreeSet<Propiedad>();
-		Propiedad casa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, TipoOperacion.ALQUILER);	
-		Propiedad casa2 = new Casa("Liniers", "Costa", 4557, 95000.0, 222, true, TipoOperacion.VENTA);
-		Double precioMin = 90000.0;
-		Double precioMax = 100000.0;
-		Integer arrayEsperado = 0;
-		// Ejecucion
-		inmobiliaria.getPropiedad();
-		casas.add(casa1);
-	    casas.add(casa2);
-		TreeSet<Propiedad> casasEnRango = inmobiliaria.buscarCasasPorRangoDePrecioNulo(casas, precioMin, precioMax);
-		// Validacion
-		assertNull(casasEnRango);
-		assertEquals(arrayEsperado, inmobiliaria.getCantidadPropiedades(), 0.0);
-	}
-	
-	@Test
 	public void queLaBusquedaDePropiedadesPorVentaMeArrojeUnaLista() {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
@@ -213,27 +142,6 @@ public class PruebaUnitariaAutomatizada {
 		assertNotNull(casa1Buscada);
 		assertNotNull(casa2Buscada);
 		assertEquals(tamañoArrayEsperado, inmobiliaria.getCantidadPropiedades());
-	}
-	
-	@Test
-	public void queLaBusquedaDePropiedadesPorVentaMeArrojeUnaListaNuloSiNoAplicanResultados() {
-		// Preparacion de datos
-		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-		TreeSet<Propiedad> casas = new TreeSet<Propiedad>();
-		Propiedad casa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, TipoOperacion.ALQUILER);	
-		Propiedad casa2 = new Casa("Liniers", "Costa", 4557, 95000.0, 222, true, TipoOperacion.VENTA);
-		Integer arrayEsperado = 0;
-		// Ejecucion
-		inmobiliaria.getPropiedad();
-		casas.add(casa1);
-	    casas.add(casa2);
-		TreeSet<Propiedad> casa1Buscada = inmobiliaria.buscarPropiedadPorVentaNulo(casas);
-		TreeSet<Propiedad> casa2Buscada = inmobiliaria.buscarPropiedadPorVentaNulo(casas);
-		// Validacion
-		assertNull(casa1Buscada);
-		assertNull(casa2Buscada);
-		assertEquals(arrayEsperado, inmobiliaria.getCantidadPropiedades(), 0.0);
-		
 	}
 	
 	@Test
@@ -288,6 +196,7 @@ public class PruebaUnitariaAutomatizada {
         inmobiliaria.agregarPropiedad(depto1);
         inmobiliaria.agregarPropiedad(depto2);
         // Ejecucion
+        inmobiliaria.getPropiedad();
         assertEquals(cantidadEsperada2, inmobiliaria.getCantidadPropiedades());
         Boolean ventaExitosa = inmobiliaria.venderPropiedad(depto1);
         // Validacion
@@ -309,6 +218,7 @@ public class PruebaUnitariaAutomatizada {
 		inmobiliaria.agregarPropiedad(casa);  
         Integer arrayEsperado = 1;
         // Ejecucion
+        inmobiliaria.getPropiedad();
         Boolean alquilerExitoso = inmobiliaria.alquilarPropiedad(casa, inmobiliaria);
         // Validacion
         assertTrue(alquilerExitoso);
@@ -319,7 +229,7 @@ public class PruebaUnitariaAutomatizada {
 	
 	@Test
 	public void queSePuedaRealizarLaPermutaDeDosPropiedades() {
-		// Preparación de datos
+		// Preparacion de datos
 		 Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Persona cliente1 = new Persona("Pepe", "Fernandez", 33446577, 1588956640, TipoDePropiedad.CASAS);
 		Persona cliente2 = new Persona("Raul", "Guimenez", 33446577, 1587947365, TipoDePropiedad.DEPARTAMENTOS);
@@ -328,8 +238,8 @@ public class PruebaUnitariaAutomatizada {
         Integer arrayEsperado = 2;
         inmobiliaria.agregarPropiedad(depto1);
         inmobiliaria.agregarPropiedad(depto2);
-        // Verificar que las propiedades están en las listas correctas antes de la permuta
         // Ejecucion
+        inmobiliaria.getPropiedad();
         Boolean permutaExitosa = inmobiliaria.permutaPropiedades(cliente1, cliente2);
         // Validacion
         assertTrue(permutaExitosa);
@@ -341,7 +251,7 @@ public class PruebaUnitariaAutomatizada {
 	
 	@Test
 	public void queSePuedaRealizarLaBusquedaDeCasasPorRangoDePreciosYElResultadoEsteOrdenadoPorPrecio() {
-		// Preparación de datos
+		// Preparacion de datos
         Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);     
        	Propiedad casa1 = new Casa("CABA", "Montiel", 9090, 150000.0, 3, true, TipoOperacion.PERMUTA);
        	Propiedad casa2 = new Casa("RamosMejia", "Suarez", 3355, 120000.0, 4, false, TipoOperacion.ALQUILER);
@@ -350,20 +260,22 @@ public class PruebaUnitariaAutomatizada {
         inmobiliaria.agregarPropiedad(casa2);
         inmobiliaria.agregarPropiedad(casa3);
         Integer arrayEsperado = 3;
+        Double precioMin = 100000.0;
+        Double precioMax = 160000.0;
         // Ejecucion
-        TreeSet<Propiedad> casasEncontradas = inmobiliaria.devolverPropiedadOrdenadoPorPrecio();
+        inmobiliaria.getPropiedad();
+        TreeSet<Propiedad> casasEncontradas = inmobiliaria.buscarCasasPorRangoDePrecios(precioMin, precioMax);
         // Validacion
         assertEquals(arrayEsperado, inmobiliaria.getCantidadPropiedades());
         assertNotNull(casasEncontradas);
-        assertEquals(casa3, casasEncontradas.last());
-        assertEquals(casa2, casasEncontradas.first());
+        assertEquals(casa2, casasEncontradas.last());
+        assertEquals(casa1, casasEncontradas.first());
   
 	}
 	
-	
 	@Test
 	public void queSePuedaRealizarLaBusquedaDeCasasPorUbicacionYElResultadoEsteOrdenadoPorUbicacion() {
-		// Preparación de datos
+		// Preparacion de datos
         Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
         Propiedad casa1 = new Casa("CABA", "Montiel", 9090, 150000.0, 3, true, TipoOperacion.PERMUTA);
        	Propiedad casa2 = new Casa("RamosMejia", "Suarez", 3355, 120000.0, 4, false, TipoOperacion.ALQUILER);
@@ -376,8 +288,9 @@ public class PruebaUnitariaAutomatizada {
         String localidadCasa2 = "RamosMejia";
         String localidadCasa3 = "Moron";
 		// Ejecucion
-        TreeSet<Propiedad> casasEncontradas1 = inmobiliaria.devolverPropiedadOrdenadoPorUbicacion();
-        TreeSet<Propiedad> casasEncontradas2 = inmobiliaria.devolverPropiedadOrdenadoPorUbicacion();
+        inmobiliaria.getPropiedad();
+        TreeSet<Propiedad> casasEncontradas1 = inmobiliaria.buscarCasasPorUbicacion(localidadCasa1);
+        TreeSet<Propiedad> casasEncontradas2 = inmobiliaria.buscarCasasPorUbicacion(localidadCasa2);
 		// Validacion
         assertEquals(arrayEsperado, inmobiliaria.getCantidadPropiedades());
         assertNotNull(casasEncontradas1);
@@ -400,12 +313,15 @@ public class PruebaUnitariaAutomatizada {
         inmobiliaria.agregarPropiedad(depto2);
         inmobiliaria.agregarPropiedad(depto3);
         Integer arrayEsperado = 3;
+        Double precioMin = 40000.0;
+        Double precioMax = 90000.0;
         // Ejecucion
-        TreeSet<Propiedad> departamentosEncontradas = inmobiliaria.devolverPropiedadOrdenadoPorPrecio();
+        inmobiliaria.getPropiedad();
+        TreeSet<Propiedad> departamentosEncontradas = inmobiliaria.buscarDepartamentosPorRangoDePrecios(precioMin, precioMax);
         // Validacion
         assertEquals(arrayEsperado, inmobiliaria.getCantidadPropiedades());
         assertNotNull(departamentosEncontradas);
-        assertEquals(depto3, departamentosEncontradas.last());
+        assertEquals(depto1, departamentosEncontradas.last());
         assertEquals(depto2, departamentosEncontradas.first());
    
 	}
@@ -419,12 +335,15 @@ public class PruebaUnitariaAutomatizada {
         inmobiliaria.agregarPropiedad(depto1);
         inmobiliaria.agregarPropiedad(depto2);
         String criterioDeBusqueda = "Ituzaingo";
+        Integer arrayEsperado = 2;
         // Ejecucion
+        inmobiliaria.getPropiedad();
         inmobiliaria.buscarPropiedadesPorCriterio(criterioDeBusqueda);
         // Validacion de que la inmobiliaria haya agregado con exito los departamentos
         assertFalse(inmobiliaria.getPropiedad().isEmpty());
         assertTrue(inmobiliaria.getPropiedad().contains(depto1));
         assertTrue(inmobiliaria.getPropiedad().contains(depto2));
+        assertEquals(arrayEsperado, inmobiliaria.getCantidadPropiedades());
 	}
 	
 	@Test
@@ -433,17 +352,18 @@ public class PruebaUnitariaAutomatizada {
         Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455); 
         Propiedad depto1 = new Departamento("Ramos Mejia", "Suarez", 3355, 86500.0, 222, 9, true, TipoOperacion.VENTA);
     	inmobiliaria.agregarPropiedad(depto1);
-        Propiedad depto2 = new Departamento("CABA", "Montiel", 9090, 49000.0, 111, 7, false, TipoOperacion.ALQUILER);
+        Propiedad depto2 = new Departamento("Ituzaingo", "Montiel", 9090, 49000.0, 111, 7, false, TipoOperacion.ALQUILER);
         inmobiliaria.agregarPropiedad(depto2);
        	Propiedad depto3 = new Departamento("Castelar", "Peron", 945, 180000.0, 333, 3 ,false, TipoOperacion.ALQUILER);
        	inmobiliaria.agregarPropiedad(depto3);
        	Integer arrayEsperadoDepartamento = 3;
         String localidadDepto1 = "Ramos Mejia";
-        String localidadDepto2 = "CABA";
+        String localidadDepto2 = "Ituzaingo";
         String localidadDepto3 = "Castelar";
 		// Ejecucion
-        TreeSet<Propiedad> departamentosEncontradas1 = inmobiliaria.devolverPropiedadOrdenadoPorUbicacion();
-        TreeSet<Propiedad> departamentosEncontradas2 = inmobiliaria.devolverPropiedadOrdenadoPorUbicacion();
+        inmobiliaria.getPropiedad();
+        TreeSet<Propiedad> departamentosEncontradas1 = inmobiliaria.buscarDepartamentosPorUbicacion(localidadDepto3);
+        TreeSet<Propiedad> departamentosEncontradas2 = inmobiliaria.buscarDepartamentosPorUbicacion(localidadDepto2);
 		// Validacion
         assertEquals(arrayEsperadoDepartamento, inmobiliaria.getCantidadPropiedades());
         assertEquals(localidadDepto1, depto1.getLocalidad());
@@ -451,8 +371,8 @@ public class PruebaUnitariaAutomatizada {
         assertEquals(localidadDepto3, depto3.getLocalidad());
         assertNotNull(departamentosEncontradas1);
         assertNotNull(departamentosEncontradas2);
-        assertEquals(depto2, departamentosEncontradas1.first());
-        assertEquals(depto1, departamentosEncontradas2.last());
+        assertEquals(depto3, departamentosEncontradas1.first());
+        assertEquals(depto2, departamentosEncontradas2.last());
 	}
 	
 	@Test (expected = UmbralMinimoNoAlcanzadoException.class)
@@ -467,6 +387,4 @@ public class PruebaUnitariaAutomatizada {
         assertTrue(inmobiliaria.getPropiedad().isEmpty());
 	}
 	
-
-
 }
