@@ -8,7 +8,7 @@ public class Main {
 	public static Scanner teclado = new Scanner(System.in);
 	
 	@SuppressWarnings("unused")
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UmbralMinimoNoAlcanzadoException {
 		
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		TreeSet<Persona> clientes = new TreeSet<Persona>();
@@ -110,7 +110,7 @@ public class Main {
 						personaInteresadaVenta.setPropiedadInteres(TipoDePropiedad.TERRENOS);
 						System.out.println("Ingrese la ubicacion del terreno:");
 						String ubicacionTerreno = teclado.nextLine();
-						System.out.println("Ingrese el tamanio del terreno:");
+						System.out.println("Ingrese el tamaño del terreno:");
 						Double tamanioTerreno = teclado.nextDouble();
 						teclado.nextLine();
 						System.out.println("Ingrese la forma del terreno:");
@@ -120,7 +120,7 @@ public class Main {
 						System.out.println("Ingrese el precio del terreno:");
 						Double precioTerreno = teclado.nextDouble();
 						teclado.nextLine();
-						System.out.println("Ingrese el código de la casa:");
+						System.out.println("Ingrese el código del terreno:");
 						Integer codigoTerreno = teclado.nextInt();
 						teclado.nextLine();
 						System.out.println("Esta disponible? ");
@@ -182,7 +182,7 @@ public class Main {
 						personaInteresadaVenta.setPropiedadInteres(TipoDePropiedad.CAMPOS);
 						System.out.println("Ingrese la ubicacion del campo:");
 						String ubicacionCampo = teclado.nextLine();
-						System.out.println("Ingrese el tamanio del campo:");
+						System.out.println("Ingrese el tamaño del campo:");
 						Double tamanioCampo = teclado.nextDouble();
 						teclado.nextLine();
 						System.out.println("Ingrese el clima de la region del campo:");
@@ -311,7 +311,7 @@ public class Main {
 						inmobiliaria.buscarPropiedadesPorCodigo(codigoBusqueda);
 						System.out.println("Ingrese la ubicacion del terreno a modificar:");
 						String ubicacionTerreno = teclado.nextLine();
-						System.out.println("Ingrese el tamanio del terreno a modificar:");
+						System.out.println("Ingrese el tamaño del terreno a modificar:");
 						Double tamanioTerreno = teclado.nextDouble();
 						teclado.nextLine();
 						System.out.println("Ingrese la forma del terreno a modificar:");
@@ -385,7 +385,7 @@ public class Main {
 						inmobiliaria.buscarPropiedadesPorCodigo(codigoBusqueda);
 						System.out.println("Ingrese la ubicacion del campo a modificar:");
 						String ubicacionCampo = teclado.nextLine();
-						System.out.println("Ingrese el tamanio del campo a modificar:");
+						System.out.println("Ingrese el tamaño del campo a modificar:");
 						Double tamanioCampo = teclado.nextDouble();
 						teclado.nextLine();
 						System.out.println("Ingrese el clima de la region del campo a modificar:");

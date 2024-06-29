@@ -9,7 +9,7 @@ import org.junit.Test;
 public class PruebaUnitariaAutomatizada {
 
 	@Test
-	public void queSePuedaDarDeAltaUnaCasaEnLaInmobiliaria() {
+	public void queSePuedaDarDeAltaUnaCasaEnLaInmobiliaria() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Casa casa = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, TipoOperacion.ALQUILER);
@@ -33,7 +33,7 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queSePuedanDarDeAltaDosCasasEnLaInmobiliaria() {
+	public void queSePuedanDarDeAltaDosCasasEnLaInmobiliaria() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Propiedad nuevaCasa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, TipoOperacion.ALQUILER);
@@ -50,7 +50,7 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queSePuedaDarDeAltaUnDepartamentoEnLaInmobiliaria() {
+	public void queSePuedaDarDeAltaUnDepartamentoEnLaInmobiliaria() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Propiedad depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, TipoOperacion.PERMUTA);
@@ -70,7 +70,7 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queSePuedaDarDeAltaDosDepartamentoEnLaInmobiliaria() {
+	public void queSePuedaDarDeAltaDosDepartamentoEnLaInmobiliaria() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Propiedad nuevoDepto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, TipoOperacion.PERMUTA);
@@ -88,7 +88,7 @@ public class PruebaUnitariaAutomatizada {
 	
 
 	@Test
-	public void queSePuedaObtenerElValorPromedioDeLasCasas() {
+	public void queSePuedaObtenerElValorPromedioDeLasCasas() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Propiedad casaAgregada = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, TipoOperacion.ALQUILER);
@@ -107,7 +107,7 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queSePuedaObtenerElValorPromedioDeLosDepartamentos() {
+	public void queSePuedaObtenerElValorPromedioDeLosDepartamentos() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Propiedad deptoAgregado = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, TipoOperacion.PERMUTA);
@@ -126,7 +126,7 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queLaBusquedaDePropiedadesPorVentaMeArrojeUnaLista() {
+	public void queLaBusquedaDePropiedadesPorVentaMeArrojeUnaLista() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Propiedad casa1 = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, TipoOperacion.ALQUILER);	
@@ -186,7 +186,7 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queSePuedaRealizarLaVentaDeUnaPropiedad() {
+	public void queSePuedaRealizarLaVentaDeUnaPropiedad() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
         Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
         Propiedad depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, TipoOperacion.VENTA);
@@ -209,7 +209,7 @@ public class PruebaUnitariaAutomatizada {
 	// Aqui profe lo que hace es agregar 2 propiedades de tipo Casa, luego al realizar el alquiler hace que una de las casas
 	// se elimine del array, quedando como arrayEsperado = 1.
 	@Test
-	public void queSePuedaRealizarElAlquilerDeUnaPropiedad() {
+	public void queSePuedaRealizarElAlquilerDeUnaPropiedad() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
         Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
         Propiedad casa = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, TipoOperacion.ALQUILER);
@@ -228,7 +228,7 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queSePuedaRealizarLaPermutaDeDosPropiedades() {
+	public void queSePuedaRealizarLaPermutaDeDosPropiedades() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
 		 Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Persona cliente1 = new Persona("Pepe", "Fernandez", 33446577, 1588956640, TipoDePropiedad.CASAS);
@@ -250,12 +250,12 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queSePuedaRealizarLaBusquedaDeCasasPorRangoDePreciosYElResultadoEsteOrdenadoPorPrecio() {
+	public void queSePuedaRealizarLaBusquedaDeCasasPorRangoDePreciosYElResultadoEsteOrdenadoPorPrecio() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
         Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);     
        	Propiedad casa1 = new Casa("CABA", "Montiel", 9090, 150000.0, 3, true, TipoOperacion.PERMUTA);
        	Propiedad casa2 = new Casa("RamosMejia", "Suarez", 3355, 120000.0, 4, false, TipoOperacion.ALQUILER);
-       	Propiedad casa3 = new Casa("Moron", "Belgrano", 1234, 180000.0, 3, false, TipoOperacion.ALQUILER);
+       	Propiedad casa3 = new Casa("Moron", "Belgrano", 1234, 180000.0, 5, false, TipoOperacion.ALQUILER);
         inmobiliaria.agregarPropiedad(casa1);
         inmobiliaria.agregarPropiedad(casa2);
         inmobiliaria.agregarPropiedad(casa3);
@@ -274,12 +274,12 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queSePuedaRealizarLaBusquedaDeCasasPorUbicacionYElResultadoEsteOrdenadoPorUbicacion() {
+	public void queSePuedaRealizarLaBusquedaDeCasasPorUbicacionYElResultadoEsteOrdenadoPorUbicacion() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
         Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
         Propiedad casa1 = new Casa("CABA", "Montiel", 9090, 150000.0, 3, true, TipoOperacion.PERMUTA);
        	Propiedad casa2 = new Casa("RamosMejia", "Suarez", 3355, 120000.0, 4, false, TipoOperacion.ALQUILER);
-       	Propiedad casa3 = new Casa("Moron", "Belgrano", 1234, 180000.0, 3, false, TipoOperacion.ALQUILER);
+       	Propiedad casa3 = new Casa("Moron", "Belgrano", 1234, 180000.0, 5, false, TipoOperacion.ALQUILER);
 	    inmobiliaria.agregarPropiedad(casa1);
 	    inmobiliaria.agregarPropiedad(casa2);
 	    inmobiliaria.agregarPropiedad(casa3);
@@ -303,7 +303,7 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queSePuedaRealizarLaBusquedaDeDepartamentosPorRangoDePreciosYElResultadoEsteOrdenadoPorPrecio() {
+	public void queSePuedaRealizarLaBusquedaDeDepartamentosPorRangoDePreciosYElResultadoEsteOrdenadoPorPrecio() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
         Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);     
         Propiedad depto1 = new Departamento("RamosMejia", "Suarez", 3355, 86500.0, 222, 9, true, TipoOperacion.VENTA);
@@ -327,7 +327,7 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test (expected = SinResultadosException.class)
-	public void queAlBuscarPorUnCriterioQueNoArrojeResultadosSeProduzcaLaExcepcionSinResultadosException() throws SinResultadosException {
+	public void queAlBuscarPorUnCriterioQueNoArrojeResultadosSeProduzcaLaExcepcionSinResultadosException() throws SinResultadosException, UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);  
 		Propiedad depto1 = new Departamento("Ramos Mejia", "Suarez", 3355, 86500.0, 222, 9, true, TipoOperacion.VENTA);
@@ -347,7 +347,7 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queSePuedaRealizarLaBusquedaDeDepartamentosPorUbicacionYElResultadoEsteOrdenadoPorUbicacion() {
+	public void queSePuedaRealizarLaBusquedaDeDepartamentosPorUbicacionYElResultadoEsteOrdenadoPorUbicacion() throws UmbralMinimoNoAlcanzadoException {
 		// Preparacion de datos
         Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455); 
         Propiedad depto1 = new Departamento("Ramos Mejia", "Suarez", 3355, 86500.0, 222, 9, true, TipoOperacion.VENTA);
@@ -381,7 +381,7 @@ public class PruebaUnitariaAutomatizada {
 		Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
 		Propiedad casaBarata = new Casa("CABA", "Montiel", 9090, 9000.0, 3, true, TipoOperacion.PERMUTA);
 		// Ejecucion
-		inmobiliaria.agregarPropiedadException(casaBarata);
+		inmobiliaria.agregarPropiedad(casaBarata);
         // Validacion de que la inmobiliaria este vacia y no haya agregado a la casaBarata
         assertFalse(inmobiliaria.getPropiedad().contains(casaBarata));
         assertTrue(inmobiliaria.getPropiedad().isEmpty());

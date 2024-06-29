@@ -10,14 +10,14 @@ public class Inmobiliaria{
 	private String nombre;
 	private String direccion;
 	private Integer telefono;
-	private HashSet<Persona> cliente;
-	private TreeSet<Propiedad> propiedad;
+	private HashSet<Persona> clientes;
+	private TreeSet<Propiedad> propiedades;
 	private static final Double UMBRAL_MINIMO = 10000.0;
 	
 	// CONTRUCTOR POR DEFAULT
 	public Inmobiliaria() {
-		this.cliente = new HashSet<Persona>();
-	    this.propiedad = new TreeSet<Propiedad>();
+		this.clientes = new HashSet<Persona>();
+	    this.propiedades = new TreeSet<Propiedad>();
 	}
 	
 	// CONSTRUCTOR PARA CREAR LA INMOBILIARIA CON SUS PROPIEDADES
@@ -25,8 +25,8 @@ public class Inmobiliaria{
 		this.nombre = nombre;	
 		this.direccion = direccion;
 		this.telefono = telefono;
-		this.cliente = new HashSet<Persona>();
-	    this.propiedad = new TreeSet<Propiedad>();
+		this.clientes = new HashSet<Persona>();
+	    this.propiedades = new TreeSet<Propiedad>();
 	}
 
 	// GETTERS AND SETTERS
@@ -55,34 +55,34 @@ public class Inmobiliaria{
 	}
 
 	public HashSet<Persona> getCliente() {
-		return cliente;
+		return clientes;
 	}
 
-	public void setCliente(HashSet<Persona> cliente) {
-		this.cliente = cliente;
+	public void setCliente(HashSet<Persona> clientes) {
+		this.clientes = clientes;
 	}
 	
 	public TreeSet<Propiedad> getPropiedad() {
-		return propiedad;
+		return propiedades;
 	}
 
 	public void setPropiedad(TreeSet<Propiedad> propiedad) {
-		this.propiedad = propiedad;
+		this.propiedades = propiedad;
 	}
 
 	public Integer getCantidadCliente() {
-		return cliente.size();
+		return clientes.size();
 	}
 	
 	public Integer getCantidadPropiedades() {
-		return propiedad.size();
+		return propiedades.size();
 	}
 	
 	// METODO USADO EN EL MAIN
 	
 	public TreeSet<Propiedad> buscarPropiedadesPorCodigo(Integer codigoIngresado) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
-	        for (Propiedad propiedadActual : propiedad) {
+	        for (Propiedad propiedadActual : propiedades) {
 	        	if (propiedadActual.getCodigo().equals(codigoIngresado)) {
 	        	   propiedadesEncontrados.add(propiedadActual);
 	            }
@@ -92,7 +92,7 @@ public class Inmobiliaria{
 	
 	public TreeSet<Propiedad> buscarPropiedadesPorRangoDePrecios(Double precioMin, Double precioMax) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
-	        for (Propiedad propiedadActual : propiedad) {    	
+	        for (Propiedad propiedadActual : propiedades) {    	
 				if (propiedadActual.getPrecio() >= precioMin && propiedadActual.getPrecio() <= precioMax) {
 					propiedadesEncontrados.add(propiedadActual);
 				}	        	        	
@@ -102,7 +102,7 @@ public class Inmobiliaria{
 	
 	public TreeSet<Propiedad> buscarPropiedadesPorUbicacion(String propiedadBuscada) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
-	        for (Propiedad propiedadActual : propiedad) {
+	        for (Propiedad propiedadActual : propiedades) {
 	        	if(propiedadActual instanceof Casa) {
 	        		if (propiedadActual.getLocalidad().equals(propiedadBuscada)) {
 	 	        	   propiedadesEncontrados.add(propiedadActual);
@@ -116,7 +116,7 @@ public class Inmobiliaria{
 	
 	public TreeSet<Propiedad> buscarCasasPorRangoDePrecios(Double precioMin, Double precioMax) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
-	        for (Propiedad propiedadActual : propiedad) {
+	        for (Propiedad propiedadActual : propiedades) {
 	        	if(propiedadActual instanceof Casa) {
 	        		if (propiedadActual.getPrecio() >= precioMin && propiedadActual.getPrecio() <= precioMax) {
 	 	        	   propiedadesEncontrados.add(propiedadActual);
@@ -128,7 +128,7 @@ public class Inmobiliaria{
 	
 	public TreeSet<Propiedad> buscarDepartamentosPorRangoDePrecios(Double precioMin, Double precioMax) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
-	        for (Propiedad propiedadActual : propiedad) {
+	        for (Propiedad propiedadActual : propiedades) {
 	        	if(propiedadActual instanceof Departamento) {
 	        		if (propiedadActual.getPrecio() >= precioMin && propiedadActual.getPrecio() <= precioMax) {
 	 	        	   propiedadesEncontrados.add(propiedadActual);
@@ -140,7 +140,7 @@ public class Inmobiliaria{
 	
 	public TreeSet<Propiedad> buscarCasasPorUbicacion(String propiedadBuscada) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
-	        for (Propiedad propiedadActual : propiedad) {
+	        for (Propiedad propiedadActual : propiedades) {
 	        	if(propiedadActual instanceof Casa) {
 	        		if (propiedadActual.getLocalidad().equals(propiedadBuscada)) {
 	 	        	   propiedadesEncontrados.add(propiedadActual);
@@ -152,7 +152,7 @@ public class Inmobiliaria{
 	
 	public TreeSet<Propiedad> buscarDepartamentosPorUbicacion(String propiedadBuscada) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
-	        for (Propiedad propiedadActual : propiedad) {
+	        for (Propiedad propiedadActual : propiedades) {
 	        	if (propiedadActual.getLocalidad().equals(propiedadBuscada)) {
 	        	   propiedadesEncontrados.add(propiedadActual);
 	            }
@@ -162,7 +162,7 @@ public class Inmobiliaria{
 	
 	public TreeSet<Propiedad> buscarPropiedadesPorAlquiler() {
         TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
-        for (Propiedad propiedadActual : propiedad) {
+        for (Propiedad propiedadActual : propiedades) {
         	if (propiedadActual.getOperacion().equals(TipoOperacion.ALQUILER)) {
         	   propiedadesEncontrados.add(propiedadActual);
             }
@@ -172,7 +172,7 @@ public class Inmobiliaria{
 	
 	public TreeSet<Propiedad> buscarPropiedadesPorVenta() {
 		TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
-		for (Propiedad propiedadActual : propiedad) {
+		for (Propiedad propiedadActual : propiedades) {
 			if (propiedadActual.getOperacion().equals(TipoOperacion.VENTA)) {
 	        	   propiedadesEncontrados.add(propiedadActual);
 	        }
@@ -182,7 +182,7 @@ public class Inmobiliaria{
 	
 	public TreeSet<Propiedad> buscarPropiedadesPorPermuta() {
 		TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
-		for (Propiedad propiedadActual : propiedad) {
+		for (Propiedad propiedadActual : propiedades) {
 			if (propiedadActual.getOperacion().equals(TipoOperacion.PERMUTA)) {
 	        	   propiedadesEncontrados.add(propiedadActual);
 	        }
@@ -191,33 +191,24 @@ public class Inmobiliaria{
 	}
 	
 	// METODO USADO EN EL TEST CON EXCEPTION
-	public Boolean agregarPropiedadException(Propiedad propiedadNuevo) throws UmbralMinimoNoAlcanzadoException {
+	public Boolean agregarPropiedad(Propiedad propiedadNuevo) throws UmbralMinimoNoAlcanzadoException {
 	    if(propiedadNuevo.getPrecio() < UMBRAL_MINIMO) {
 	    	throw new UmbralMinimoNoAlcanzadoException("El importe de la propiedad está por debajo del umbral mínimo de " + UMBRAL_MINIMO);
 	    }
 		
-		return propiedad.add(propiedadNuevo);
-	}
-	
-	public Boolean agregarPropiedad(Propiedad propiedadNuevo) {
-		return propiedad.add(propiedadNuevo);
+		return propiedades.add(propiedadNuevo);
 	}
 	
 	public Boolean venderPropiedad(Propiedad propiedadNuevo) {
-	    return propiedad.remove(propiedadNuevo);
+	    return propiedades.remove(propiedadNuevo);
 	}
 	
 	public Boolean agregarCliente(Persona clienteNuevo) {
-		for (Persona cliente : cliente) {
-			if(cliente != null && cliente.getNombre().equals(clienteNuevo.getNombre()) && 
-					cliente.getApellido().equals(clienteNuevo.getApellido()) && 
-							cliente.getDni().equals(clienteNuevo.getDni()) &&
-									cliente.getTelefono().equals(clienteNuevo.getTelefono()) &&
-									cliente.getPropiedadInteres().equals(clienteNuevo.getPropiedadInteres())){
-				return false;
-			}
+		if(clienteNuevo == null){
+			return false;
 		}
-		Boolean retorno = cliente.add(clienteNuevo); 
+		
+		Boolean retorno = clientes.add(clienteNuevo); 
 		return retorno;
     }
 
@@ -225,12 +216,12 @@ public class Inmobiliaria{
 		Double promedio = 0.0;
 		Double sumatoria = 0.0;
 		
-		for (Propiedad propiedadActual : propiedad) {
+		for (Propiedad propiedadActual : propiedades) {
 			if(propiedadActual != null) {
 				sumatoria += propiedadActual.getPrecio();
 			}
 		}
-		promedio = sumatoria / propiedad.size();
+		promedio = sumatoria / propiedades.size();
 		Integer resultado = (int) Math.round(promedio);
 		return resultado;
 	}
@@ -245,15 +236,15 @@ public class Inmobiliaria{
 	
 	public TreeSet<Propiedad> ordenarPropiedadParaDevolver(Comparator<Propiedad> citerioDeOrdenacion) {
 		TreeSet<Propiedad> propiedadOrdenada = new TreeSet<Propiedad>(citerioDeOrdenacion);
-		propiedadOrdenada.addAll(propiedad);
+		propiedadOrdenada.addAll(propiedades);
 		return propiedadOrdenada;
 	}
 		
 	public TreeSet<Propiedad> buscarCasasPorRangoDePrecioNulo(Double precioMin, Double precioMax) {
 		TreeSet<Propiedad> casasBuscadas = new TreeSet<Propiedad>();
 
-        for (Propiedad propiedadActual : propiedad) {
-            if (propiedad != null && propiedadActual.getPrecio() >= precioMin && propiedadActual.getPrecio() <= precioMax) {
+        for (Propiedad propiedadActual : propiedades) {
+            if (propiedades != null && propiedadActual.getPrecio() >= precioMin && propiedadActual.getPrecio() <= precioMax) {
                 casasBuscadas.add(propiedadActual);
             }
         }
@@ -267,15 +258,15 @@ public class Inmobiliaria{
 	}
 	
 	public Boolean alquilarPropiedad(Propiedad otraPropiedad, Inmobiliaria inmobiliaria) {
-		if (this.propiedad.contains(otraPropiedad) && otraPropiedad.getEstaDisponible()) {
+		if (this.propiedades.contains(otraPropiedad) && otraPropiedad.getEstaDisponible()) {
 			inmobiliaria.getPropiedad().remove(otraPropiedad);
 	        return true;
 	    }
 		return false;
 	}
 	
-	public void eliminarPropiedad(Propiedad propiedades) {
-        propiedad.remove(propiedades);
+	public void eliminarPropiedad(Propiedad propiedad) {
+        propiedades.remove(propiedad);
     }
 	
 	public Boolean permutaPropiedades(Persona persona1, Persona persona2) {
@@ -283,7 +274,7 @@ public class Inmobiliaria{
         Propiedad propiedadPersona2 = null;
 
         // Buscar la propiedad asociada a cada persona
-        for (Propiedad propiedad : propiedad) {
+        for (Propiedad propiedad : propiedades) {
             if (propiedad.getPropietario() != null && propiedad.getPropietario().equals(persona1)) {
                 propiedadPersona1 = propiedad;
             }
@@ -305,7 +296,7 @@ public class Inmobiliaria{
 	public TreeSet<Propiedad> buscarPropiedadesPorCriterio(String criterioDeBusqueda) throws SinResultadosException {
 		TreeSet<Propiedad> resultado = new TreeSet<Propiedad>();
 
-		for (Propiedad propiedad : propiedad) {
+		for (Propiedad propiedad : propiedades) {
 			if (propiedad.getLocalidad().equalsIgnoreCase(criterioDeBusqueda)) {
 				resultado.add(propiedad);
 			}

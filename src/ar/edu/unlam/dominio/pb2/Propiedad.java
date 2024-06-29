@@ -44,7 +44,7 @@ public class Propiedad implements Comparable<Propiedad>{
 
 	@Override
 	public int compareTo(Propiedad o) {
-		return localidad.compareToIgnoreCase(o.getLocalidad());
+		return codigo.compareTo(o.getCodigo());
 	}
 
 	public Boolean getEstaDisponible() {
