@@ -280,30 +280,7 @@ public class Inmobiliaria{
 	
 	public Boolean ejecutarOperacion(Operacion operacion, Propiedad propiedad1, Persona nuevoPropietario1, Propiedad propiedad2, Persona nuevoPropietario2) {
 		if (propiedad1 != null && propiedades.contains(propiedad1) && (propiedad2 == null || propiedades.contains(propiedad2))) {
-            boolean resultado = operacion.ejecutar(propiedad1, nuevoPropietario1, propiedad2, nuevoPropietario2);
-            if (resultado) {
-                // Si la operacion es una venta, eliminamos la propiedad vendida
-                if (operacion instanceof Venta) {
-                    propiedades.remove(propiedad1);
-                }
-                // Si la operacion es un alquiler, ademas de tener un propietario, tiene un inquilino
-                if(operacion instanceof Alquiler) {
-                	clientes.add(nuevoPropietario2);
-                }
-                // Si la operacion es una permuta, los propietarios se intercambian sus propiedades
-                if(operacion instanceof Permuta) {
-                    Persona propietarioActual1 = propiedad1.getPropietario();
-                    Persona propietarioActual2 = propiedad2.getPropietario();
-
-                    propiedad1.setPropietario(nuevoPropietario1);
-                    propiedad2.setPropietario(nuevoPropietario2);
-
-                    clientes.remove(propietarioActual1);
-                    clientes.add(nuevoPropietario1);
-                    clientes.remove(propietarioActual2);
-                    clientes.add(nuevoPropietario2);
-                }
-            }
+            Boolean resultado = operacion.ejecutar(propiedad1, nuevoPropietario1, propiedad2, nuevoPropietario2);
             return resultado;
         }
         return false;
