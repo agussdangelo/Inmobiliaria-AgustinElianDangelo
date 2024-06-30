@@ -153,7 +153,7 @@ public class PruebaUnitariaAutomatizada {
 		String apellidoCliente = "Fernandez";
 		Long dniCliente = (long) 33446577;
 		Long telefonoCliente = (long) 1588956640;
-		TipoDePropiedad propiedadCliente = TipoDePropiedad.CASAS;
+		TipoDePropiedad propiedadClienteInteres = TipoDePropiedad.CASAS;
 		// Ejecucion
 		inmobiliaria.getCliente();
 		Integer tamañoArrayEsperado = 1;
@@ -163,7 +163,7 @@ public class PruebaUnitariaAutomatizada {
 		assertEquals(apellidoCliente, cliente.getApellido());
 		assertEquals(dniCliente, cliente.getDni());
 		assertEquals(telefonoCliente, cliente.getTelefono());
-		assertEquals(propiedadCliente, cliente.getPropiedadInteres());
+		assertEquals(propiedadClienteInteres, cliente.getPropiedadInteres());
 		assertTrue(agregoCliente);
 		assertEquals(tamañoArrayEsperado, inmobiliaria.getCantidadCliente());
 	}
@@ -184,8 +184,7 @@ public class PruebaUnitariaAutomatizada {
 		assertFalse(agregoCliente2);
 		assertEquals(tamañoArrayEsperado, inmobiliaria.getCantidadCliente());
 	}
-	
-	// Tanto VENTA, ALQUILER Y PERMUTA la cantidad de propiedades son en 0, ya que se elimina la propiedad de inmobiliaria
+
 	@Test
     public void queSePuedaRealizarLaVentaDeUnaPropiedad() throws UmbralMinimoNoAlcanzadoException {
         // Preparacion de datos
@@ -237,12 +236,12 @@ public class PruebaUnitariaAutomatizada {
         inmobiliaria.agregarPropiedad(depto2);
         // Ejecucion
         Operacion permuta = new Permuta();
-        Boolean permutaExitosa = inmobiliaria.ejecutarOperacion(permuta, depto1, propietario2, depto2, propietario1);
+        Boolean permutaExitosa = inmobiliaria.ejecutarOperacion(permuta, depto1, propietario1, depto2, propietario2);
         // Validacion
         assertTrue(permutaExitosa);
         assertEquals(cantidadEsperada, inmobiliaria.getCantidadPropiedades());
-        assertEquals(depto1.getPropietario(), propietario1);
-        assertEquals(depto2.getPropietario(), propietario2);
+        assertEquals(depto1.getPropietario(), propietario2);
+        assertEquals(depto2.getPropietario(), propietario1);
     }
 	
 	@Test
@@ -335,7 +334,7 @@ public class PruebaUnitariaAutomatizada {
         // Ejecucion
         inmobiliaria.getPropiedad();
         inmobiliaria.buscarPropiedadesPorCriterio(criterioDeBusqueda);
-        // Validacion de que la inmobiliaria haya agregado con exito los departamentos
+        // Validacion
         assertFalse(inmobiliaria.getPropiedad().isEmpty());
         assertTrue(inmobiliaria.getPropiedad().contains(depto1));
         assertTrue(inmobiliaria.getPropiedad().contains(depto2));
@@ -378,7 +377,7 @@ public class PruebaUnitariaAutomatizada {
 		Propiedad casaBarata = new Casa("CABA", "Montiel", 9090, 9000.0, 3, true, TipoOperacion.PERMUTA);
 		// Ejecucion
 		inmobiliaria.agregarPropiedad(casaBarata);
-        // Validacion de que la inmobiliaria este vacia y no haya agregado a la casaBarata
+        // Validacion
         assertFalse(inmobiliaria.getPropiedad().contains(casaBarata));
         assertTrue(inmobiliaria.getPropiedad().isEmpty());
 	}

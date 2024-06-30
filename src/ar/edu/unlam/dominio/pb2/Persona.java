@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Persona implements Comparable<Persona>{
 	
+	// ATRIBUTOS
 	private String nombre;
 	private String apellido;
 	private Long dni;
@@ -13,6 +14,7 @@ public class Persona implements Comparable<Persona>{
 	private Persona propietario;
 	private Persona inquilino;
 	
+	// CONSTRUCTOR
 	public Persona(String nombre, String apellido, long dni, long telefono, TipoDePropiedad propiedadInteres) {
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -21,10 +23,12 @@ public class Persona implements Comparable<Persona>{
 		this.propiedadInteres = propiedadInteres;
 	}
 
+	// CONSTRUCTOR POR DEFAULT
 	public Persona() {
 
 	}
 
+	// GETTERS AND SETTERSS
 	public String getNombre() {
 		return nombre;
 	}

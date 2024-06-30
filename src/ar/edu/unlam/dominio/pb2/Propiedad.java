@@ -2,6 +2,7 @@ package ar.edu.unlam.dominio.pb2;
 
 public class Propiedad implements Comparable<Propiedad>{
 	
+	// ATRIBUTOS
 	private String localidad;
 	private Double precio;
 	private Integer codigo;
@@ -10,6 +11,7 @@ public class Propiedad implements Comparable<Propiedad>{
 	private Persona propietario;
 	private Persona inquilino;
 	
+	// CONSTRUCTOR
 	public Propiedad(String localidad, Double precio, Integer codigo, Boolean estaDisponible, TipoOperacion operacion) {
 		this.localidad = localidad;
 		this.precio = precio;
@@ -19,6 +21,7 @@ public class Propiedad implements Comparable<Propiedad>{
 		this.propietario = null;
 	}
 
+	// GETTERS AND SETTERS
 	public String getLocalidad() {
 		return localidad;
 	}
@@ -41,11 +44,6 @@ public class Propiedad implements Comparable<Propiedad>{
 
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
-	}
-
-	@Override
-	public int compareTo(Propiedad o) {
-		return codigo.compareTo(o.getCodigo());
 	}
 
 	public Boolean getEstaDisponible() {
@@ -71,13 +69,7 @@ public class Propiedad implements Comparable<Propiedad>{
 	public void setPropietario(Persona propietario) {
 		this.propietario = propietario;
 	}
-
-	@Override
-	public String toString() {
-		return "Propiedad [localidad=" + localidad + ", precio=" + precio + ", codigo=" + codigo + ", estaDisponible="
-				+ estaDisponible + ", operacion=" + operacion + ", propietario=" + propietario + "]";
-	}
-
+	
 	public Persona getInquilino() {
 		return inquilino;
 	}
@@ -85,7 +77,16 @@ public class Propiedad implements Comparable<Propiedad>{
 	public void setInquilino(Persona inquilino) {
 		this.inquilino = inquilino;
 	}
+
+	@Override
+	public int compareTo(Propiedad o) {
+		return codigo.compareTo(o.getCodigo());
+	}
 	
-	
+	@Override
+	public String toString() {
+		return "Propiedad [localidad=" + localidad + ", precio=" + precio + ", codigo=" + codigo + ", estaDisponible="
+				+ estaDisponible + ", operacion=" + operacion + ", propietario=" + propietario + "]";
+	}
 	
 }

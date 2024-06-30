@@ -88,7 +88,7 @@ public class Inmobiliaria{
 		return propiedades.size();
 	}
 	
-	// METODO USADO EN EL MAIN
+	// METODOS USADOS EN EL MAIN
 	
 	public TreeSet<Propiedad> buscarPropiedadesPorCodigo(Integer codigoIngresado) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
@@ -160,6 +160,7 @@ public class Inmobiliaria{
 		return propiedadesEncontrados;
 	}
 	
+	// METODOS USADOS EN EL MAIN
 	public TreeSet<Propiedad> buscarDepartamentosPorUbicacion(String propiedadBuscada) {
 		 TreeSet<Propiedad> propiedadesEncontrados = new TreeSet<Propiedad>();
 	        for (Propiedad propiedadActual : propiedades) {
@@ -200,6 +201,7 @@ public class Inmobiliaria{
 		return propiedadesEncontrados;
 	}
 	
+	// METODOS USADOS EN TESTs Y MAIN
 	public Boolean agregarPropiedad(Propiedad propiedadNuevo) throws UmbralMinimoNoAlcanzadoException {
 	    if(propiedadNuevo.getPrecio() < UMBRAL_MINIMO) {
 	    	throw new UmbralMinimoNoAlcanzadoException("El importe de la propiedad está por debajo del umbral mínimo de " + UMBRAL_MINIMO);
@@ -278,6 +280,7 @@ public class Inmobiliaria{
 	    return resultado;
 	}
 	
+	// METODO PARA EJECUTAR LA VENTA, ALQUILER Y PERMUTA
 	public Boolean ejecutarOperacion(Operacion operacion, Propiedad propiedad1, Persona nuevoPropietario1, Propiedad propiedad2, Persona nuevoPropietario2) {
 		if (propiedad1 != null && propiedades.contains(propiedad1) && (propiedad2 == null || propiedades.contains(propiedad2))) {
             Boolean resultado = operacion.ejecutar(propiedad1, nuevoPropietario1, propiedad2, nuevoPropietario2);
