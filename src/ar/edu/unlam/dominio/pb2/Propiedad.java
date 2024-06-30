@@ -8,6 +8,7 @@ public class Propiedad implements Comparable<Propiedad>{
 	private Boolean estaDisponible;
 	private TipoOperacion operacion;
 	private Persona propietario;
+	private Persona inquilino;
 	
 	public Propiedad(String localidad, Double precio, Integer codigo, Boolean estaDisponible, TipoOperacion operacion) {
 		this.localidad = localidad;
@@ -75,6 +76,14 @@ public class Propiedad implements Comparable<Propiedad>{
 	public String toString() {
 		return "Propiedad [localidad=" + localidad + ", precio=" + precio + ", codigo=" + codigo + ", estaDisponible="
 				+ estaDisponible + ", operacion=" + operacion + ", propietario=" + propietario + "]";
+	}
+
+	public Persona getInquilino() {
+		return inquilino;
+	}
+
+	public void setInquilino(Persona inquilino) {
+		this.inquilino = inquilino;
 	}
 	
 	

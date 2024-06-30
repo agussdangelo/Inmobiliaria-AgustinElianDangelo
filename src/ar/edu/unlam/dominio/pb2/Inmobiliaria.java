@@ -1,5 +1,6 @@
 package ar.edu.unlam.dominio.pb2;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.TreeSet;
@@ -12,6 +13,7 @@ public class Inmobiliaria{
 	private Integer telefono;
 	private HashSet<Persona> clientes;
 	private TreeSet<Propiedad> propiedades;
+	private ArrayList<Operacion> operaciones;
 	private static final Double UMBRAL_MINIMO = 10000.0;
 	
 	// CONTRUCTOR POR DEFAULT
@@ -68,6 +70,14 @@ public class Inmobiliaria{
 
 	public void setPropiedad(TreeSet<Propiedad> propiedad) {
 		this.propiedades = propiedad;
+	}
+	
+	public ArrayList<Operacion> getOperaciones() {
+		return operaciones;
+	}
+
+	public void setOperaciones(ArrayList<Operacion> operaciones) {
+		this.operaciones = operaciones;
 	}
 
 	public Integer getCantidadCliente() {
@@ -190,7 +200,6 @@ public class Inmobiliaria{
 		return propiedadesEncontrados;
 	}
 	
-	// METODO USADO EN EL TEST CON EXCEPTION
 	public Boolean agregarPropiedad(Propiedad propiedadNuevo) throws UmbralMinimoNoAlcanzadoException {
 	    if(propiedadNuevo.getPrecio() < UMBRAL_MINIMO) {
 	    	throw new UmbralMinimoNoAlcanzadoException("El importe de la propiedad está por debajo del umbral mínimo de " + UMBRAL_MINIMO);
@@ -198,11 +207,7 @@ public class Inmobiliaria{
 		
 		return propiedades.add(propiedadNuevo);
 	}
-	
-	public Boolean venderPropiedad(Propiedad propiedadNuevo) {
-	    return propiedades.remove(propiedadNuevo);
-	}
-	
+		
 	public Boolean agregarCliente(Persona clienteNuevo) {
 		if(clienteNuevo == null){
 			return false;
@@ -265,10 +270,6 @@ public class Inmobiliaria{
 		return false;
 	}
 	
-	public void eliminarPropiedad(Propiedad propiedad) {
-        propiedades.remove(propiedad);
-    }
-	
 	public Boolean permutaPropiedades(Persona persona1, Persona persona2) {
 		Propiedad propiedadPersona1 = null;
         Propiedad propiedadPersona2 = null;
@@ -308,5 +309,19 @@ public class Inmobiliaria{
 
 	    return resultado;
 	}
-
+	
+	public boolean ejecutarOperacion(Operacion operacion, Propiedad propiedad1, Persona nuevoPropietario1, Propiedad propiedad2, Persona nuevoPropietario2) {
+		if (propiedad1 != null && propiedades.contains(propiedad1) && (propiedad2 == null || propiedades.contains(propiedad2))) {
+            boolean resultado = operacion.ejecutar(propiedad1, nuevoPropietario1, propiedad2, nuevoPropietario2);
+            if (resultado) {
+                // Si la operación es una venta, eliminamos la propiedad vendida
+                if (operacion instanceof Venta) {
+                    propiedades.remove(propiedad1);
+                }
+            }
+            return resultado;
+        }
+        return false;
+	}
+	
 }

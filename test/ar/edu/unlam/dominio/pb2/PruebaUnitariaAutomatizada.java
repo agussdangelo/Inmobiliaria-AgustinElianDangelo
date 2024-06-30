@@ -186,68 +186,67 @@ public class PruebaUnitariaAutomatizada {
 	}
 	
 	@Test
-	public void queSePuedaRealizarLaVentaDeUnaPropiedad() throws UmbralMinimoNoAlcanzadoException {
-		// Preparacion de datos
+    public void queSePuedaRealizarLaVentaDeUnaPropiedad() throws UmbralMinimoNoAlcanzadoException {
+        // Preparacion de datos
         Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-        Propiedad depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, TipoOperacion.VENTA);
-		Propiedad depto2 = new Departamento("RamosMejia", "Suarez", 3355, 86500.0, 555, 9, true, TipoOperacion.VENTA);
-        Integer cantidadEsperada2 = 2;
-        Integer cantidadEsperada1 = 1;
+        Persona dueño = new Persona("Juan", "Beliz", 9843784, 117847474, TipoDePropiedad.DEPARTAMENTOS);
+        Persona comprador = new Persona("Maria", "Nieves", 1263262, 1126352738, TipoDePropiedad.DEPARTAMENTOS);
+        Propiedad depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 111, 7, true, TipoOperacion.VENTA);
+        Integer cantidadEsperada = 0;
         inmobiliaria.agregarPropiedad(depto1);
-        inmobiliaria.agregarPropiedad(depto2);
         // Ejecucion
-        inmobiliaria.getPropiedad();
-        assertEquals(cantidadEsperada2, inmobiliaria.getCantidadPropiedades());
-        Boolean ventaExitosa = inmobiliaria.venderPropiedad(depto1);
+        Operacion venta = new Venta();
+        Boolean ventaExitosa = inmobiliaria.ejecutarOperacion(venta, depto1, comprador, depto1, dueño);
         // Validacion
         assertTrue(ventaExitosa);
-        assertEquals(cantidadEsperada1, inmobiliaria.getCantidadPropiedades());
+        assertEquals(cantidadEsperada, inmobiliaria.getCantidadPropiedades());
         assertFalse(inmobiliaria.getPropiedad().contains(depto1));
-        assertTrue(inmobiliaria.getPropiedad().contains(depto2));
-	}
-	
-	// Aqui profe lo que hace es agregar 2 propiedades de tipo Casa, luego al realizar el alquiler hace que una de las casas
-	// se elimine del array, quedando como arrayEsperado = 1.
-	@Test
-	public void queSePuedaRealizarElAlquilerDeUnaPropiedad() throws UmbralMinimoNoAlcanzadoException {
-		// Preparacion de datos
+        assertEquals(depto1.getPropietario(), comprador);
+    }
+
+    @Test
+    public void queSePuedaRealizarElAlquilerDeUnaPropiedad() throws UmbralMinimoNoAlcanzadoException {
+        // Preparacion de datos
         Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-        Propiedad casa = new Casa("Merlo", "Mitre", 1234, 45000.0, 111, true, TipoOperacion.ALQUILER);
-		inmobiliaria.agregarPropiedad(casa);
-		casa = new Casa("Liniers", "Costa", 4557, 95000.0, 222, true, TipoOperacion.ALQUILER);
-		inmobiliaria.agregarPropiedad(casa);  
-        Integer arrayEsperado = 1;
+        Persona dueño = new Persona("Juan", "Beliz", 9843784, 117847474, TipoDePropiedad.DEPARTAMENTOS );
+        Persona inquilino = new Persona("Pedro", "Ramirez", 2372374, 1174854950, TipoDePropiedad.DEPARTAMENTOS);
+        Propiedad depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 111, 7, true, TipoOperacion.ALQUILER);
+        Integer cantidadEsperada = 1;
+        inmobiliaria.agregarPropiedad(depto1);
+
         // Ejecucion
-        inmobiliaria.getPropiedad();
-        Boolean alquilerExitoso = inmobiliaria.alquilarPropiedad(casa, inmobiliaria);
+        assertEquals(cantidadEsperada, inmobiliaria.getCantidadPropiedades());
+        Operacion alquiler = new Alquiler();
+        Boolean alquilerExitoso = inmobiliaria.ejecutarOperacion(alquiler, depto1, dueño, depto1, inquilino);
+
         // Validacion
         assertTrue(alquilerExitoso);
-        assertTrue(casa.getEstaDisponible());
-        assertEquals(arrayEsperado, inmobiliaria.getCantidadPropiedades());
-     
-	}
-	
-	@Test
-	public void queSePuedaRealizarLaPermutaDeDosPropiedades() throws UmbralMinimoNoAlcanzadoException {
-		// Preparacion de datos
-		 Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
-		Persona cliente1 = new Persona("Pepe", "Fernandez", 33446577, 1588956640, TipoDePropiedad.CASAS);
-		Persona cliente2 = new Persona("Raul", "Guimenez", 33446577, 1587947365, TipoDePropiedad.DEPARTAMENTOS);
-        Propiedad depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 333, 7, false, TipoOperacion.PERMUTA);
-		Propiedad depto2 = new Departamento("RamosMejia", "Suarez", 3355, 86500.0, 555, 9, true, TipoOperacion.PERMUTA);
-        Integer arrayEsperado = 2;
+        assertEquals(cantidadEsperada, inmobiliaria.getCantidadPropiedades());
+        assertTrue(inmobiliaria.getPropiedad().contains(depto1));
+        assertEquals(depto1.getInquilino(), inquilino);
+    }
+
+    @Test
+    public void queSePuedaRealizarLaPermutaDePropiedades() throws UmbralMinimoNoAlcanzadoException {
+        // Preparacion de datos
+        Inmobiliaria inmobiliaria = new Inmobiliaria("DangeloPropiedades", "La Matanza", 1122334455);
+        Persona propietario1 = new Persona("Juan", "Beliz", 9843784, 117847474, TipoDePropiedad.DEPARTAMENTOS );
+        Persona propietario2 = new Persona("Maria", "Nieves", 1263262, 1126352738, TipoDePropiedad.DEPARTAMENTOS);
+        Propiedad depto1 = new Departamento("CABA", "Montiel", 9090, 49000.0, 111, 7, true, TipoOperacion.PERMUTA);
+        Propiedad depto2 = new Departamento("RamosMejia", "Suarez", 3355, 86500.0, 333, 9, true, TipoOperacion.PERMUTA);
+        Integer cantidadEsperada = 2;
         inmobiliaria.agregarPropiedad(depto1);
         inmobiliaria.agregarPropiedad(depto2);
         // Ejecucion
-        inmobiliaria.getPropiedad();
-        Boolean permutaExitosa = inmobiliaria.permutaPropiedades(cliente1, cliente2);
+        assertEquals(cantidadEsperada, inmobiliaria.getCantidadPropiedades());
+        Operacion permuta = new Permuta();
+        Boolean permutaExitosa = inmobiliaria.ejecutarOperacion(permuta, depto1, propietario1, depto2, propietario2);
         // Validacion
         assertTrue(permutaExitosa);
-        assertTrue(inmobiliaria.getPropiedad().contains(depto1));
-        assertTrue(inmobiliaria.getPropiedad().contains(depto2));
-        assertEquals(arrayEsperado, inmobiliaria.getCantidadPropiedades());
-
-	}
+        assertEquals(cantidadEsperada, inmobiliaria.getCantidadPropiedades());
+        assertEquals(depto1.getPropietario(), propietario2);
+        assertEquals(depto2.getPropietario(), propietario1);
+    }
 	
 	@Test
 	public void queSePuedaRealizarLaBusquedaDeCasasPorRangoDePreciosYElResultadoEsteOrdenadoPorPrecio() throws UmbralMinimoNoAlcanzadoException {

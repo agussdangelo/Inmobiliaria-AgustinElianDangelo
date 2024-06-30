@@ -10,6 +10,8 @@ public class Persona implements Comparable<Persona>{
 	private Long telefono;
 	private Double dinero;
 	private TipoDePropiedad propiedadInteres;
+	private Persona propietario;
+	private Persona inquilino;
 	
 	public Persona(String nombre, String apellido, long dni, long telefono, TipoDePropiedad propiedadInteres) {
 		this.nombre = nombre;
@@ -71,6 +73,22 @@ public class Persona implements Comparable<Persona>{
 		this.dinero = dinero;
 	}
 	
+	public Persona getPropietario() {
+		return propietario;
+	}
+
+	public void setPropietario(Persona propietario) {
+		this.propietario = propietario;
+	}
+
+	public Persona getInquilino() {
+		return inquilino;
+	}
+
+	public void setInquilino(Persona inquilino) {
+		this.inquilino = inquilino;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(dni);
@@ -86,13 +104,11 @@ public class Persona implements Comparable<Persona>{
 			return false;
 		Persona other = (Persona) obj;
 		return Objects.equals(dni, other.dni);
-	}
-
+	}	
+	
 	@Override
 	public int compareTo(Persona o) {
 		return Long.compare(this.dni, o.getDni());
 	}
-	
-	
 
 }
