@@ -244,8 +244,8 @@ public class PruebaUnitariaAutomatizada {
         // Validacion
         assertTrue(permutaExitosa);
         assertEquals(cantidadEsperada, inmobiliaria.getCantidadPropiedades());
-        assertEquals(depto1.getPropietario(), propietario2);
-        assertEquals(depto2.getPropietario(), propietario1);
+        assertEquals(depto1.getPropietario(), propietario1);
+        assertEquals(depto2.getPropietario(), propietario2);
     }
 	
 	@Test

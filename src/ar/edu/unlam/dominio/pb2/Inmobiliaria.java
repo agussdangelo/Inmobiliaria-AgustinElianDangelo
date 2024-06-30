@@ -261,39 +261,7 @@ public class Inmobiliaria{
         }
 
 	}
-	
-	public Boolean alquilarPropiedad(Propiedad otraPropiedad, Inmobiliaria inmobiliaria) {
-		if (this.propiedades.contains(otraPropiedad) && otraPropiedad.getEstaDisponible()) {
-			inmobiliaria.getPropiedad().remove(otraPropiedad);
-	        return true;
-	    }
-		return false;
-	}
-	
-	public Boolean permutaPropiedades(Persona persona1, Persona persona2) {
-		Propiedad propiedadPersona1 = null;
-        Propiedad propiedadPersona2 = null;
-
-        // Buscar la propiedad asociada a cada persona
-        for (Propiedad propiedad : propiedades) {
-            if (propiedad.getPropietario() != null && propiedad.getPropietario().equals(persona1)) {
-                propiedadPersona1 = propiedad;
-            }
-            if (propiedad.getPropietario() != null && propiedad.getPropietario().equals(persona2)) {
-                propiedadPersona2 = propiedad;
-            }
-        }
-
-        if (propiedadPersona1 != null && propiedadPersona2 != null) {
-            // Intercambiar propiedades
-            propiedadPersona1.setPropietario(persona2);
-            propiedadPersona2.setPropietario(persona1);
-
-            return false;
-        }
-        return true;
-    }
-	
+		
 	public TreeSet<Propiedad> buscarPropiedadesPorCriterio(String criterioDeBusqueda) throws SinResultadosException {
 		TreeSet<Propiedad> resultado = new TreeSet<Propiedad>();
 
@@ -310,13 +278,30 @@ public class Inmobiliaria{
 	    return resultado;
 	}
 	
-	public boolean ejecutarOperacion(Operacion operacion, Propiedad propiedad1, Persona nuevoPropietario1, Propiedad propiedad2, Persona nuevoPropietario2) {
+	public Boolean ejecutarOperacion(Operacion operacion, Propiedad propiedad1, Persona nuevoPropietario1, Propiedad propiedad2, Persona nuevoPropietario2) {
 		if (propiedad1 != null && propiedades.contains(propiedad1) && (propiedad2 == null || propiedades.contains(propiedad2))) {
             boolean resultado = operacion.ejecutar(propiedad1, nuevoPropietario1, propiedad2, nuevoPropietario2);
             if (resultado) {
-                // Si la operación es una venta, eliminamos la propiedad vendida
+                // Si la operacion es una venta, eliminamos la propiedad vendida
                 if (operacion instanceof Venta) {
                     propiedades.remove(propiedad1);
+                }
+                // Si la operacion es un alquiler, ademas de tener un propietario, tiene un inquilino
+                if(operacion instanceof Alquiler) {
+                	clientes.add(nuevoPropietario2);
+                }
+                // Si la operacion es una permuta, los propietarios se intercambian sus propiedades
+                if(operacion instanceof Permuta) {
+                    Persona propietarioActual1 = propiedad1.getPropietario();
+                    Persona propietarioActual2 = propiedad2.getPropietario();
+
+                    propiedad1.setPropietario(nuevoPropietario1);
+                    propiedad2.setPropietario(nuevoPropietario2);
+
+                    clientes.remove(propietarioActual1);
+                    clientes.add(nuevoPropietario1);
+                    clientes.remove(propietarioActual2);
+                    clientes.add(nuevoPropietario2);
                 }
             }
             return resultado;
